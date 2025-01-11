@@ -71,14 +71,21 @@ a:active {
 }
 
 .hero {
-    margin-top: 5px;
-    height: 660px;
+    margin-top: 10px;
+    height: 690px;
     width: 100%;
     background-color: #F8F8FA;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
+    border-top-right-radius: 26px;
+    border-bottom-right-radius: 26px;
+    border-bottom-left-radius: 26px;
     display: flex;
+}
+
+.leftnright{
+    display: flex;
+    align-items: center;
+    padding-bottom: 40px;
+    padding-top: 40px;
 }
 
 .hero .left {
@@ -98,11 +105,11 @@ a:active {
 }
 
 .hero .left h1 {
-    font-size: 90px;
+    font-size: 110px;
     margin-bottom: 0;
     margin-top: 0;
     padding-top: 0;
-    line-height: 88px;
+    line-height: 100px;
 }
 
 .slogan {
@@ -110,6 +117,7 @@ a:active {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin-top: 30px;
 }
 
 .slogan p {
@@ -123,7 +131,7 @@ a:active {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-top: 50px;
+    margin-top: 80px;
     position: relative;
 }
 
@@ -132,7 +140,7 @@ a:active {
     width: 450px;
     border: 0.1px solid #ccc7c74d;
     color: #655C5C;
-    border-radius: 25px;
+    border-radius: 30px;
     font-size: 18px;
     padding-left: 24px;
 }
@@ -146,7 +154,7 @@ a:active {
     color: white;
     font-weight: 500;
     border: none;
-    border-radius: 20px;
+    border-radius: 30px;
     width: 160px;
     height: 45px;
     font-size: 18px;
@@ -155,11 +163,6 @@ a:active {
     justify-content: center;
     position: absolute;
     right: 10px;
-    cursor: pointer;
-}
-
-.searchBox button:hover{
-    cursor: pointer;
 }
 
 .searchBox button img {
@@ -172,9 +175,36 @@ a:active {
     align-items: center;
     justify-content: center;
     width: 50%;
+    height: 100%;
 }
 
 
 .hero .right img {
     width: 100%;
+    padding-bottom: 45px;
+}
+
+.categoryTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.categoryTitle hr{
+    width: 300px;
+    height: 1px;
+    background-color: black;
+}
+
+.categoryBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto 80px;
+    background-color: #758BFD;
+    width: 200px;
+    height: 50px;
+    color: white;
+    border-radius: 30px;
 }
