@@ -196,7 +196,7 @@ a:active {
     background-color: black;
 }
 
-.categoryBox {
+.categoryBox{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -397,4 +397,51 @@ a:active {
 .viewCategory button img{
     width: 38px;
     margin-right: 5px;
+}
+
+.topItems {
+    width: 100%;
+    height: 1500px;
+    background-color: #f8f8f8;
+    margin-top: 150px;
+    border-radius: 50% / 180px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.TopItemsTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    height: 60px;
+    position: absolute;
+    top: 80px;
+}
+
+.TopItemsTitle hr{
+    width: 300px;
+    height: 1px;
+    background-color: black;
+}
+
+.TopItemsBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto 80px;
+    background-color: #758BFD;
+    width: 200px;
+    height: 50px;
+    color: white;
+    border-radius: 30px;
+}
+
+.topItemsList{
+    position: absolute;
+    top: 25%;
+    width: 95%;
+    height: 700px;
+    background-color: brown;
 }
