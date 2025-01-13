@@ -80,7 +80,7 @@ a:active {
     display: flex;
 }
 
-.leftnright{
+.leftnright {
     display: flex;
     align-items: center;
     padding-bottom: 40px;
@@ -144,7 +144,7 @@ a:active {
     width: 450px;
 }
 
-.searchInput:focus{
+.searchInput:focus {
     outline: none;
 }
 
@@ -190,13 +190,13 @@ a:active {
     margin-top: 100px;
 }
 
-.categoryTitle hr{
+.categoryTitle hr {
     width: 300px;
     height: 1px;
     background-color: black;
 }
 
-.categoryBox{
+.categoryBox {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -214,14 +214,14 @@ a:active {
     flex-direction: column;
 }
 
-.categoryBoxes{
+.categoryBoxes {
     width: 100%;
     height: 900px;
     margin-top: 100px;
     position: relative;
 }
 
-.autoMobiles{
+.autoMobiles {
     background-color: #232533;
     width: 45%;
     height: 100%;
@@ -233,7 +233,7 @@ a:active {
     text-align: left;
 }
 
-.autoMobiles h1{
+.autoMobiles h1 {
     position: relative;
     font-size: 90px;
     line-height: 80px;
@@ -241,7 +241,7 @@ a:active {
     left: 60px;
 }
 
-.autoMobiles button{
+.autoMobiles button {
     position: relative;
     left: 60px;
     width: 300px;
@@ -257,12 +257,12 @@ a:active {
     font-size: 28px;
 }
 
-.autoMobiles button img{
+.autoMobiles button img {
     width: 40px;
     padding-right: 10px;
 }
 
-.autoMobiles .automobilesImage{
+.autoMobiles .automobilesImage {
     position: relative;
     width: 80%;
     left: 60px;
@@ -278,7 +278,7 @@ a:active {
     border-radius: 25px;
 }
 
-.vintageItems h1{
+.vintageItems h1 {
     color: white;
     font-size: 55px;
     line-height: 70px;
@@ -287,14 +287,14 @@ a:active {
     top: 50px;
 }
 
-.vintageItems .vintageImage{
+.vintageItems .vintageImage {
     width: 330px;
     position: absolute;
     top: 32px;
     left: 450px;
 }
 
-.vintageItems button{
+.vintageItems button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -305,12 +305,12 @@ a:active {
     color: white;
     position: relative;
     left: 65px;
-    top:  90px;
+    top: 90px;
     border-radius: 25px;
     font-size: 20px;
 }
 
-.vintageItems button img{
+.vintageItems button img {
     width: 38px;
     margin-right: 10px;
 }
@@ -326,14 +326,14 @@ a:active {
     color: white;
 }
 
-.arts h1{
+.arts h1 {
     position: relative;
     top: 20px;
     left: 40px;
     font-size: 60px;
 }
 
-.arts button{
+.arts button {
     width: 220px;
     height: 55px;
     background-color: #758BFD;
@@ -349,7 +349,7 @@ a:active {
     top: 30px;
 }
 
-.arts button img{
+.arts button img {
     width: 38px;
     margin-right: 12px;
 }
@@ -361,7 +361,7 @@ a:active {
     left: 40px;
 }
 
-.viewCategory{
+.viewCategory {
     position: absolute;
     top: 50%;
     left: 75%;
@@ -376,11 +376,11 @@ a:active {
     flex-direction: column;
 }
 
-.viewCategory img{
+.viewCategory img {
     width: 220px;
 }
 
-.viewCategory button{
+.viewCategory button {
     width: 250px;
     height: 55px;
     display: flex;
@@ -394,7 +394,7 @@ a:active {
     font-size: 18px;
 }
 
-.viewCategory button img{
+.viewCategory button img {
     width: 38px;
     margin-right: 5px;
 }
@@ -414,19 +414,18 @@ a:active {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 100px;
     height: 60px;
     position: absolute;
-    top: 80px;
+    top: 10%;
 }
 
-.TopItemsTitle hr{
+.TopItemsTitle hr {
     width: 300px;
     height: 1px;
     background-color: black;
 }
 
-.TopItemsBox{
+.TopItemsBox {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -438,10 +437,65 @@ a:active {
     border-radius: 30px;
 }
 
-.topItemsList{
+.topItemsList {
     position: absolute;
     top: 25%;
     width: 95%;
     height: 700px;
-    background-color: brown;
+}
+
+.topItemContainer {
+    width: 400px;
+    height: 550px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 30px;
+    position: relative;
+}
+
+.imageContainer1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.imageContainer {
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    border: 0.5px #8e8e8e46 solid;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.imageContainer img {
+    width: 100%;
+    object-fit: contain;
+}
+
+.itemDetails {
+    margin-top: 40px;
+    position: absolute;
+    left: 16%;
+}
+
+.itemDetails h2{
+    margin-bottom: 25px;
+}
+
+.bidButton {
+    width: 100px;
+    padding: 10px 0;
+    background-color: #758BFD;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 40px;
+    margin-top: 15px;
+    border: none;
+    position: absolute;
+    left: 40%;
+    top: 552px;
 }
