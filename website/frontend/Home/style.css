@@ -399,3 +399,104 @@ a:active {
     margin-right: 5px;
 }
 
+.topItems {
+    width: 100%;
+    height: 1600px;
+    background-color: #F8F8FA;
+    margin-top: 150px;
+    border-radius: 50% / 180px;
+    padding-top: 10%;
+}
+
+.topItemsTitle {
+    display: block;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+
+.topItemsTitle hr {
+    width: 300px;
+    height: 1px;
+    background-color: black;
+}
+
+.topItemsTitleBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto 80px;
+    background-color: #758BFD;
+    width: 200px;
+    height: 50px;
+    color: white;
+    border-radius: 30px;
+}
+
+.topItemListContainer{
+    width: 100%;
+    height: 1150px;
+    background-color: yellow;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+    flex-wrap: wrap;
+}
+
+.topItemsCard {
+    background-color: white;
+    width: 350px;
+    height: 480px;
+    margin: 30px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.cardImage {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imageContainer{
+    width: 200px;
+    height: 200px;
+    background-color: transparent;
+    border: 0.5px solid #6e6e6e3d;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.imageContainer img{
+    width: 100%;
+    object-fit: contain;
+}
+
+.itemDetails {
+    text-align: justify;
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+.itemDetails h2{
+     margin-bottom: 15px;
+}
+
+.bidButton {
+    position: absolute;
+    bottom: 0;
+    width: 100px;
+    height: 45px;
+    background-color: #758BFD;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    font-size: 16px;
+}
+
