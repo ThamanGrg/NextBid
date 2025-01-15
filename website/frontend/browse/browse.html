@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>NextBid (Online Auction)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -9,6 +10,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="browse.css">
 </head>
+
 <body>
     <div class="header">
         <div class="logo">
@@ -29,7 +31,75 @@
             <button><img src="../../assets/icons/user.png">Login/Register</button>
         </div>
     </div>
-
+    <div>
+        <div>
+            <h2>100 Auctions</h2>
+        </div>
+        <input type="text" placeholder="Search for item...">
+        <button>Search</button>
+        <label for="per-page">Per Page:</label>
+        <select id="per-page">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+        </select>
+    </div>
+    <div>
+        <h3>Filter</h3>
+        <div>
+            <h4>Categories</h4>
+            <ul>
+                <li><input type="checkbox"> Vintage Items & Antiques</li>
+                <li><input type="checkbox"> Automobiles</li>
+                <li><input type="checkbox" checked> Decorative items & Gifts</li>
+                <li><input type="checkbox"> Arts</li>
+                <li><input type="checkbox"> Jewellery</li>
+                <li><input type="checkbox"> Furniture</li>
+            </ul>
+        </div>
+        <div>
+            <h4>Dates</h4>
+            <ul>
+                <li><input type="checkbox"> All Dates</li>
+                <li><input type="checkbox"> Next 5 days</li>
+                <li><input type="checkbox"> Next 10 days</li>
+                <li><input type="checkbox"> Next 15 days</li>
+                <li><input type="checkbox"> Next 30 days</li>
+            </ul>
+        </div>
+    </div>
+    <footer>
+        <div class="footerMenus">
+            <div class="Menu">
+                <h1>Menu</h1>
+                <a href="#">Home</a>
+                <a href="../browse/browse.html">Browse Auctions</a>
+                <a href="#login">Login</a>
+                <a href="#register">Register</a>
+                <a href="../Create/create.html">Create an Auction</a>
+            </div>
+            <hr>
+            <div class="supports">
+                <h1>Supports</h1>
+                <a href="terms">Terms & conditions</a>
+                <a href="privacy">Privacy Policy</a>
+            </div>
+            <hr>
+            <div class="aboutUs">
+                <h1>About Us</h1>
+                <a href="#">About Us</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Partners</a>
+            </div>
+        </div>
+        <div class="socialLinks">
+            <div>
+                <a href="#"><img src="../../assets/icons/facebook.png" alt=""></a>
+                <a href="#"><img src="../../assets/icons/instagram (1).png" alt=""></a>
+                <a href="#"><img src="../../assets/icons/twitter.png" alt=""></a>
+            </div>
+        </div>
+    </footer>
+  
 </body>
 </html>
-bibek 
