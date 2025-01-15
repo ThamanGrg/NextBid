@@ -500,3 +500,20 @@ a:active {
     font-size: 16px;
 }
 
+.moreItems {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 90px;
+}
+
+.moreItems button{
+    width: 180px;
+    height: 50px;
+    background-color: #758BFD;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+
+}
