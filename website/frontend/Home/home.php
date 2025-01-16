@@ -27,7 +27,7 @@
                     <li><a href="#">Home</a></li>
                     <li><a href="../browse/browse.html">Browse Auction</a></li>
                     <li>Category</li>
-                    <li><a href="../create/create.html">Create Auction</a></li>
+                    <li><a href="../Create/create.php">Create Auction</a></li>
                     <li><a href="#Contacts">Contacts</a></li>
                 </ul>
             </div>
