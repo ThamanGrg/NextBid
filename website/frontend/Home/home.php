@@ -1,3 +1,6 @@
+
+<?php include_once('../../../php/topItems.php')?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +27,7 @@
                     <li><a href="#">Home</a></li>
                     <li><a href="../browse/browse.html">Browse Auction</a></li>
                     <li>Category</li>
-                    <li><a href="../create/create.html">Create Auction</a></li>
+                    <li><a href="../Create/create.php">Create Auction</a></li>
                     <li><a href="#Contacts">Contacts</a></li>
                 </ul>
             </div>
@@ -73,14 +76,14 @@
             <div class="autoMobiles">
                 <h1>Auto</h1>
                 <h1>mobiles</h1>
-                <a href="browse.html?p=automobiles"><button><img src="../assets/icons/right-arrow.png"
+                <a href="browse.html?p=automobiles"><button><img src="../../assets/icons/right-arrow.png"
                             alt="">Category</button></a>
                 <img src="../../assets/images/Automobiles.png" alt="" class="automobilesImage">
             </div>
             <div class="vintageItems">
                 <h1>Vintage Items</h1>
                 <h1>& Antiques</h1>
-                <a href="browse.html?p=vintageItems"><button><img src="../assets/icons/right-arrow.png"
+                <a href="browse.html?p=vintageItems"><button><img src="../../assets/icons/right-arrow.png"
                             alt="">Category</button></a>
                 <img src="../../assets/images/vintageitems.png" alt="" class="vintageImage">
             </div>
@@ -106,20 +109,16 @@
             <hr>
         </div>
         <div class="topItemListContainer">
-            <div class="topItemsCard">
-                <div class="cardImage">
-                    <div class="imageContainer">
-                        <img src="../../../uploads/pexels-mikebirdy-3729464.jpg" alt="A title of an Item">
-                    </div>
-                </div>
-
-                <div class="itemDetails">
-                    <h2>A title of an Item</h2>
-                    <p>Time: 1 DAYS LEFT</p>
-                    <p>Current Bid: $00</p>
-                </div>
-                <a href="../itemdetails/itemdetails.html"><button class="bidButton">Bid</button></a>
-            </div>
+            <?php
+                topItems();
+                topItems();
+                topItems();
+                topItems();
+                topItems();
+                topItems();
+                topItems();
+                topItems();
+            ?>
         </div>
         <div class="moreItems">
             <a href="../browse/browse.html"><button>View more items</button></a>

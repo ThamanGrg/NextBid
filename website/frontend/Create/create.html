@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width", initial-scale=1.0">
+    <meta name="viewport" content="width" , initial-scale=1.0">
     <title>NextBid (Online Auction)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,6 +12,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="create.css">
 </head>
+
 <body>
     <header>
         <div class="header">
@@ -19,10 +21,10 @@
             </div>
             <div class="nav">
                 <ul>
-                    <li><a href="../Home/home.html">Home</a></li>
+                    <li><a href="../Home/home.php">Home</a></li>
                     <li><a href="../browse/browse.html">Browse Auction</a></li>
                     <li>Category</li>
-                    <li><a href="../create/create.html">Create Auction</a></li>
+                    <li><a href="#">Create Auction</a></li>
                     <li><a href="#Contacts">Contacts</a></li>
                 </ul>
             </div>
@@ -35,15 +37,87 @@
         </div>
     </header>
     <div class="container">
+
         <div class="auctionCreateForm">
-            <form action="../../../php/auctionform.php" method="post">
-                <label for="Item Name">Item Name: </label>
-                <input type="text" name="itemName" id="itemName">
-                <label for="initial Price">Initial Price($): </label>
-                <input type="number" name="initialPrice" id="initialPrice">
-                <label for=""></label>
+            <div class="Title">
+                <h1>Create an Auction</h1>
+                <h3>Fill the below form to apply for creation of auction.</h3>
+            </div>
+            <form action="../../../php/auctionform.php" method="post" enctype="multipart/form-data">
+                <div class="inputField">
+                    <label for="Item Name">Item Name: </label>
+                    <input type="text" name="itemName" id="itemName" maxlength="255" required>
+                </div>
+                <div class="inputField">
+                    <label for="initial Price">Initial Price($): </label>
+                    <input type="text" name="initialPrice" id="initialPrice" required>
+                </div>
+
+                <div class="inputField">
+                    <label for="maximum price">Maximum Price($): </label>
+                    <input type="text" name="maximumPrice" id="maximumPrice" required>
+                </div>
+
+                <div class="inputField">
+                    <label for="start Date">Starting Date: </label>
+                    <input type="date" name="startDate" id="startDate" required>
+                    <input type="time" name="startTime" id="startTime" required>
+                </div>
+
+                <div class="inputField">
+                    <label for="end Date">Ending Date: </label>
+                    <input type="date" name="endDate" id="endDate" required>
+                    <input type="time" name="endTime" id="endTime" required>
+                </div>
+
+                <div class="inputField">
+                    <label for="Description">Item description: </label>
+                    <textarea name="itemDescription" id="itemDescription" maxlength="255"></textarea required>
+                </div>
+
+                <div class="inputField">
+                    <label for="Item Image">Item image:</label>
+                    <input type="file" name="itemImage" id="itemImage" multiple required>
+                </div>
+                <div class="submit">
+                    <input type="submit" class="submitButton">
+                </div>
             </form>
         </div>
+
     </div>
+    <footer>
+        <div class="footerMenus">
+            <div class="Menu">
+                <h1>Menu</h1>
+                <a href="#">Home</a>
+                <a href="../browse/browse.html">Browse Auctions</a>
+                <a href="#login">Login</a>
+                <a href="#register">Register</a>
+                <a href="../Create/create.html">Create an Auction</a>
+            </div>
+            <hr>
+            <div class="supports">
+                <h1>Supports</h1>
+                <a href="terms">Terms & conditions</a>
+                <a href="privacy">Privacy Policy</a>
+            </div>
+            <hr>
+            <div class="aboutUs">
+                <h1>About Us</h1>
+                <a href="#">About Us</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Partners</a>
+            </div>
+        </div>
+        <div class="socialLinks">
+            <div>
+                <a href="#"><img src="../../assets/icons/facebook.png" alt=""></a>
+                <a href="#"><img src="../../assets/icons/instagram (1).png" alt=""></a>
+                <a href="#"><img src="../../assets/icons/twitter.png" alt=""></a>
+            </div>
+        </div>
+    </footer>
 </body>
+
 </html>
