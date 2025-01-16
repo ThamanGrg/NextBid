@@ -69,6 +69,183 @@ a:active {
     margin-left: 16px;
 }
 
+.main{
+    height: auto;
+}
+
+.upperSection{
+    width: 100%;
+    height: 950px;
+    display: flex;
+}
+
+.leftSection{
+    height: 900px;
+    width: 60%;
+}
+
+.itemImages{
+    display: flex;
+    margin-top: 25px;
+}
+
+.imageList{
+    width: 120px;
+    height: 700px;
+    margin-top: 30px;
+}
+
+.imageList .imageContainer{
+    width: 100px;
+    height: 100px;
+    border: 5px solid #674848;
+    margin: 20px 0;
+    background-color: transparent;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.imageList .imageContainer img{
+    width: 100%;
+    object-fit: contain;
+}
+
+.selectedImage{
+    width: 700px;
+    height: 800px;
+    border: 2px solid black;
+    overflow: hidden;
+    margin-left: 35px;
+    display: flex;
+    justify-content: center;
+}
+
+.selectedImage img{
+    object-fit: contain;
+    height: 100%;
+}
+
+.rightSection{
+    height: 800px;
+    width: 45%;
+}
+
+.top{
+    width: 100%;
+}
+
+.top p{
+    font-size: 35px;
+    line-height: 60px;
+    font-weight: 500;
+}
+
+.bidCard{
+    background-color: #F8F8F8;
+    margin-top: 25px;
+    border: 1px solid rgba(51, 51, 51, 0.445);
+    height: auto;
+    min-height: 700px;
+    width: 600px;
+    border-radius: 20px;
+    padding-left: 45px;
+    padding-top: 45px;
+}
+
+.biddingSection{
+    display: flex;
+    justify-content: center;
+}
+
+.biddingSection form{
+    margin-top: 30px;
+    width: 100%;
+}
+
+.biddingSection form .bidInput{
+    display: block;
+    width: 500px;
+    height: 60px;
+    border-radius: 20px;
+    border: 0.5px solid rgba(133, 133, 133, 0.438);
+    padding-left: 20px;
+    font-size: 20px;
+    color: black;
+    outline: none;
+}
+
+.bidInput:focus{
+    border: 0.5px solid rgba(133, 133, 133, 0.438);
+}
+
+.biddingSection form .submit{
+    height: 60px;
+    width: 520px;
+    border: none;
+    background-color: #758BFD;
+    border-radius: 30px;
+    margin-top: 20px;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.bidCard hr{
+    width: 90%;
+    height: 3px;
+    background-color: #bdbbbb;
+    border: none;
+    margin-top: 40px;
+}
+
+.biddedUser{
+    margin-top: 40px;
+}
+
+.biddedUser table{
+    margin-top: 25px;
+    width: 100%;
+    text-align: left;
+}
+
+.biddedUser p{
+    margin-top: 30px;
+    font-size: 25px;
+}
+
+.biddedUser button{
+    width: 24px;
+    height: 24px;
+    border: none;
+    background-color: transparent;
+}
+
+.biddedUser button img{
+    width: 20px;
+}
+
+.lowerSection{
+    margin-left: 200px;
+}
+
+.title{
+    font-size: 40px;
+}
+
+.lowerSection h3{
+    font-size: 25px;
+}
+
+.lowerSection .margin{
+    margin: 40px auto;
+}
+
+.margin li,.margin p{
+    font-size: 18px;
+    line-height: 30px;
+}
+
 footer{
     width: 100%;
     height: 500px;
