@@ -16,7 +16,7 @@ function topItems($title = "A title of an Item", $timeLeft = "1 DAYS LEFT", $cur
                 <p>Time: $timeLeft</p>
                 <p>Current Bid: $currentBid</p>
             </div>
-            <a href="../../website/frontend/itemdetails/itemdetails.html"><button class="bidButton">Bid</button></a>
+            <a href="../Itemdetails/itemdetails.html"><button class="bidButton">Bid</button></a>
         </div>
     HTML;
 
