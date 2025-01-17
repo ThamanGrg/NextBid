@@ -59,6 +59,8 @@ a:active {
     background-color: #758BFD;
     color: white;
     padding: 40px;
+    border-radius: 20px;
+    border-top-left-radius: 0; 
 }
 
 .dropDownCategory ul{

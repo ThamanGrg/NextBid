@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width" , initial-scale=1.0">
+    <meta name="viewport" content="width" , initial-scale="1.0">
     <title>NextBid (Online Auction)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,7 @@
             </div>
             <div class="nav">
                 <ul class="navList">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="../Home/home.php">Home</a></li>
                     <li><a href="../browse/browse.html">Browse Auction</a></li>
                     <li class="categoryDD">Category
                         <div class="dropDownCategory">
