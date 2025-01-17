@@ -139,16 +139,16 @@
             <div class="Menu">
                 <h1>Menu</h1>
                 <a href="#">Home</a>
-                <a href="../browse/browse.html">Browse Auctions</a>
+                <a href="../Browse/browse.html">Browse Auctions</a>
                 <a href="#login">Login</a>
                 <a href="#register">Register</a>
-                <a href="../Create/create.html">Create an Auction</a>
+                <a href="../Create/create.php">Create an Auction</a>
             </div>
             <hr>
             <div class="supports">
                 <h1>Supports</h1>
-                <a href="terms">Terms & conditions</a>
-                <a href="privacy">Privacy Policy</a>
+                <a href="#terms">Terms & conditions</a>
+                <a href="#privacy">Privacy Policy</a>
             </div>
             <hr>
             <div class="aboutUs">
