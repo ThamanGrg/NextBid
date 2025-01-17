@@ -1,4 +1,3 @@
-
 <?php include_once('../../../php/topItems.php')?>
 
 <!DOCTYPE html>
@@ -13,7 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?version=1.1">
 </head>
 
 <body>
@@ -23,10 +22,21 @@
                 <img src="../../assets/logo.png" alt="logo">
             </div>
             <div class="nav">
-                <ul>
+                <ul class="navList">
                     <li><a href="#">Home</a></li>
                     <li><a href="../browse/browse.html">Browse Auction</a></li>
-                    <li>Category</li>
+                    <li class="categoryDD">Category
+                        <div class="dropDownCategory">
+                            <ul>
+                                <li><a href="">Vintage Items & antiques</a></li>
+                                <li><a href="">Automobiles</a></li>
+                                <li><a href="">Decorative items & gifts</a></li>
+                                <li><a href="">Arts</a></li>
+                                <li><a href="">Jewellery</a></li>
+                                <li><a href="">Furnitures</a></li>
+                            </ul>
+                        </div>
+                    </li>
                     <li><a href="../Create/create.php">Create Auction</a></li>
                     <li><a href="#Contacts">Contacts</a></li>
                 </ul>
