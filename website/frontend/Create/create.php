@@ -61,12 +61,12 @@
                 </div>
                 <div class="inputField">
                     <label for="initial Price">Initial Price($): </label>
-                    <input type="text" name="initialPrice" id="initialPrice" required>
+                    <input type="number" name="initialPrice" id="initialPrice" required>
                 </div>
 
                 <div class="inputField">
                     <label for="maximum price">Maximum Price($): </label>
-                    <input type="text" name="maximumPrice" id="maximumPrice" required>
+                    <input type="number" name="maximumPrice" id="maximumPrice" required>
                 </div>
 
                 <div class="inputField">
@@ -88,10 +88,10 @@
 
                 <div class="inputField">
                     <label for="Item Image">Item image:</label>
-                    <input type="file" name="itemImage" id="itemImage" multiple required>
+                    <input type="file" name="itemImage" id="itemImage" multiple>
                 </div>
                 <div class="submit">
-                    <input type="submit" class="submitButton">
+                    <input type="submit" class="submitButton" name="submit">
                 </div>
             </form>
         </div>
