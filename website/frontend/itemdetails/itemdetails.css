@@ -27,13 +27,13 @@ body {
 
 .nav ul {
     display: flex;
-    justify-content: space-evenly;
     list-style: none;
 }
 
-.nav ul li {
+.nav .navList li {
     padding-right: 60px;
     font-weight: 700;
+    position: relative;
 }
 
 a {
@@ -45,6 +45,42 @@ a:active {
     color: #758BFD;
 }
 
+.dropDownCategory{
+    display: none;
+}
+
+.nav ul li:hover .dropDownCategory{
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 400px;
+    height: 300px;
+    background-color: #758BFD;
+    color: white;
+    padding: 40px;
+    border-radius: 20px;
+    border-top-left-radius: 0; 
+}
+
+.dropDownCategory ul{
+    display: block;
+    list-style: disc;
+}
+
+.dropDownCategory ul li{
+    margin-bottom: 16px;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.dropDownCategory ul li a{
+    color: white;
+}
+
+.dropDownCategory ul li:hover{
+    font-weight: 600;
+}
 .notification img {
     width: 30px;
 }
@@ -98,7 +134,7 @@ a:active {
 .imageList .imageContainer{
     width: 100px;
     height: 100px;
-    border: 5px solid #674848;
+    border: 4px solid #674848;
     margin: 20px 0;
     background-color: transparent;
     overflow: hidden;
@@ -107,13 +143,14 @@ a:active {
 }
 
 .imageList .imageContainer img{
-    width: 100%;
+    width: 100px;
+    height: 100px;
     object-fit: contain;
 }
 
 .selectedImage{
     width: 700px;
-    height: 800px;
+    height: 770px;
     border: 2px solid black;
     overflow: hidden;
     margin-left: 35px;
@@ -123,7 +160,8 @@ a:active {
 
 .selectedImage img{
     object-fit: contain;
-    height: 100%;
+    width: 700px;
+    height: 770px;
 }
 
 .rightSection{

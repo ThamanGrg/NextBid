@@ -16,26 +16,37 @@
 <body>
   <header>
     <div class="header">
-      <div class="logo">
-        <img src="../../assets/logo.png" alt="logo">
-      </div>
-      <div class="nav">
-        <ul>
-          <li><a href="../Home/home.php">Home</a></li>
-          <li><a href="../Browse/browse.html">Browse Auction</a></li>
-          <li>Category</li>
-          <li><a href="../Create/create.php">Create Auction</a></li>
-          <li><a href="#Contacts">Contacts</a></li>
-        </ul>
-      </div>
-      <div class="notification">
-        <img src="../../assets/icons/bell.png" alt="">
-      </div>
-      <div class="loginSignup">
-        <button><img src="../../assets/icons/user.png">Username123</button>
-      </div>
+        <div class="logo">
+            <img src="../../assets/logo.png" alt="logo">
+        </div>
+        <div class="nav">
+            <ul class="navList">
+                <li><a href="../Home/home.php">Home</a></li>
+                <li><a href="../browse/browse.html">Browse Auction</a></li>
+                <li class="categoryDD">Category
+                    <div class="dropDownCategory">
+                        <ul>
+                            <li><a href="">Vintage Items & antiques</a></li>
+                            <li><a href="">Automobiles</a></li>
+                            <li><a href="">Decorative items & gifts</a></li>
+                            <li><a href="">Arts</a></li>
+                            <li><a href="">Jewellery</a></li>
+                            <li><a href="">Furnitures</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="../Create/create.php">Create Auction</a></li>
+                <li><a href="#Contacts">Contacts</a></li>
+            </ul>
+        </div>
+        <div class="notification">
+            <img src="../../assets/icons/bell.png" alt="">
+        </div>
+        <div class="loginSignup">
+            <button><img src="../../assets/icons/user.png">Login/Register</button>
+        </div>
     </div>
-  </header>
+</header>
   <div class="main">
     <div class="path">
       <p>Home / Category / Vintage items & antiques / Rare antique Japamese Amida Budddha statue</p>
@@ -137,7 +148,7 @@
         <p>December 15, 10:50 PM</p>
         <p>Tokyo-to, Shibuya-ku, Japan</p>
       </div>
-      <div class="shippingDetails margin">
+      <div class="shippingDetails">
         <h3>Shipping Details</h3>
         <p>Pokhara 8, Kaski, Nepal</p>
         <p>Contact: email@gmail.com</p>
@@ -148,12 +159,12 @@
     <div class="footerMenus">
       <div class="Menu">
         <h1>Menu</h1>
-        <a href="#">Home</a>
-        <a href="../browse/browse.html">Browse Auctions</a>
+        <a href="../Home/home.php">Home</a>
+        <a href="../Browse/browse.html">Browse Auctions</a>
         <a href="#login">Login</a>
         <a href="#register">Register</a>
-        <a href="../Create/create.html">Create an Auction</a>
-      </div>
+        <a href="../Create/create.php">Create an Auction</a>
+    </div>
       <hr>
       <div class="supports">
         <h1>Supports</h1>
