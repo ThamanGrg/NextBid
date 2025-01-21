@@ -45,22 +45,26 @@
             </div>
         </div>
     </header>
-    <div>
-        <div>
-            <h2>100 Auctions</h2>
+    <div class="TopSection">
+        <div class="TotalAuction">
+            <h2>100</h2>
+            <p>Auction</p>
         </div>
-        <input type="text" placeholder="Search for item...">
-        <button>Search</button>
-        <label for="per-page">Per Page:</label>
-        <select id="per-page">
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="30">30</option>
-        </select>
+        <div class="SearchButton">
+            <input type="text" placeholder="Search for item..."><button>Search</button>
+        </div>
+        <div class="PerPageButton">
+            <label for="per-page">Per Page:</label>
+            <select id="per-page">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+            </select>
+        </div>
     </div>
-    <div>
+    <div class="FilterSection">
         <h3>Filter</h3>
-        <div>
+        <div class="Categories">
             <h4>Categories</h4>
             <ul>
                 <li><input type="checkbox"> Vintage Items & Antiques</li>
@@ -71,7 +75,7 @@
                 <li><input type="checkbox"> Furniture</li>
             </ul>
         </div>
-        <div>
+        <div class="dateSection">
             <h4>Dates</h4>
             <ul>
                 <li><input type="checkbox"> All Dates</li>
@@ -81,39 +85,78 @@
                 <li><input type="checkbox"> Next 30 days</li>
             </ul>
         </div>
+        <div class="saleSection">
+            <h5>Sale Location</h5>
+            <ul>
+                <li><input type="checkbox"> United State</li>
+                <li><input type="checkbox"> Australia</li>
+                <li><input type="checkbox"> United Kingdom</li>
+                <li><input type="checkbox"> Canada</li>
+                <li><input type="checkbox"> Nepal</li>
+                <li><input type="checkbox"> Germany</li>
+                <li><input type="checkbox"> France</li>
+            </ul>
+        </div>
+        <div class="startingSection">
+            <h6>Starting Price</h6>
+            <label for="filter Price">Enter Price:</label>
+            <input type="Text">
+        </div>
     </div>
-    <footer>
-        <div class="footerMenus">
-            <div class="Menu">
-                <h1>Menu</h1>
-                <a href="../Home/Home.php">Home</a>
-                <a href="../Browse/browse.html">Browse Auctions</a>
-                <a href="#login">Login</a>
-                <a href="#register">Register</a>
-                <a href="../Create/create.php">Create an Auction</a>
-            </div>
-            <hr>
-            <div class="supports">
-                <h1>Supports</h1>
-                <a href="terms">Terms & conditions</a>
-                <a href="privacy">Privacy Policy</a>
-            </div>
-            <hr>
-            <div class="aboutUs">
-                <h1>About Us</h1>
-                <a href="#">About Us</a>
-                <a href="#">Contact Us</a>
-                <a href="#">Partners</a>
-            </div>
+    <div class="rightSection">
+        <div class="ItemSection">
+            <img src="../../../uploads/Screenshot 2024-12-13 212359.png" alt="">
+            <h3>Macrame Wall Hanging Shelf Wall Decor for Bedroom Woven Rope</h3>
+            <p>Seller: Thaman@123</p>
+            <p>Location: Pokhara, kaski</p>
+            <p>December 13, 2024 | 22:22</p>
+            <p>Est: $15-$25</p>
+            <button>View Item</button>
+            <button>Register to bid</button>
         </div>
-        <div class="socialLinks">
-            <div>
-                <a href="#"><img src="../../assets/icons/facebook.png" alt=""></a>
-                <a href="#"><img src="../../assets/icons/instagram (1).png" alt=""></a>
-                <a href="#"><img src="../../assets/icons/twitter.png" alt=""></a>
-            </div>
+        <div class="ItemSection">
+            <img src="../../../uploads/Screenshot 2024-12-13 212359.png"alt="">
+            <h3>Macrame Wall Hanging Shelf Wall Decor for Bedroom Woven Rope</h3>
+            <p>Seller: Thaman@123</p>
+            <p>Location: Pokhara, kaski</p>
+            <p>December 13, 2024 | 23:23</p>
+            <p>Est: $65-$95</p>
+            <button>View Item</button>
+            <button>Register to bid</button>
         </div>
-    </footer>
-  
+    </div>
+        <footer>
+            <div class="footerMenus">
+                <div class="Menu">
+                    <h1>Menu</h1>
+                    <a href="../Home/Home.php">Home</a>
+                    <a href="../Browse/browse.html">Browse Auctions</a>
+                    <a href="#login">Login</a>
+                    <a href="#register">Register</a>
+                    <a href="../Create/create.php">Create an Auction</a>
+                </div>
+                <hr>
+                <div class="supports">
+                    <h1>Supports</h1>
+                    <a href="terms">Terms & conditions</a>
+                    <a href="privacy">Privacy Policy</a>
+                </div>
+                <hr>
+                <div class="aboutUs">
+                    <h1>About Us</h1>
+                    <a href="#">About Us</a>
+                    <a href="#">Contact Us</a>
+                    <a href="#">Partners</a>
+                </div>
+            </div>
+            <div class="socialLinks">
+                <div>
+                    <a href="#"><img src="../../assets/icons/facebook.png" alt=""></a>
+                    <a href="#"><img src="../../assets/icons/instagram (1).png" alt=""></a>
+                    <a href="#"><img src="../../assets/icons/twitter.png" alt=""></a>
+                </div>
+            </div>
+        </footer>
 </body>
+
 </html>

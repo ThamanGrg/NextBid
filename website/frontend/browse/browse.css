@@ -104,7 +104,38 @@ a:active {
     height: 30px;
     margin-left: 16px;
 }
-
+.TopSection{
+    background-color: #F8F8FA;
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    height: 150px;
+}
+.TotalAuction h2,p{
+    display: inline-block;
+    font-size: 30px;
+}
+.TotalAuction p{
+    color: #655C5C;
+}
+.SearchButton input{
+    height: 80px;
+    width: 500px;
+    border-radius: 40px;
+    padding-left: 15px;
+    outline: none;
+    border: none;
+}
+.SearchButton{
+    position: relative;
+}
+.SearchButton input:focus{
+    border: none;
+}
+.SearchButton button{
+    position:absolute;
+    right: 10px;
+}
 footer{
     width: 100%;
     height: 500px;
