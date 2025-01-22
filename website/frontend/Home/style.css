@@ -501,14 +501,16 @@ a:active {
     width: 200px;
     height: 200px;
     background-color: transparent;
-    border: 0.5px solid #6e6e6e3d;
+    border: 2px solid #6e6e6e3d;
     display: flex;
     align-items: center;
+    justify-content: center;
     border-radius: 20px;
+    overflow: hidden;
 }
 
 .imageContainer img{
-    width: 100%;
+    width: 200px;
     height: 200px;
     object-fit: contain;
 }
