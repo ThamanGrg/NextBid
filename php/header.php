@@ -39,7 +39,6 @@
             <div class="loginSignup">
                 <button><img src="../../assets/icons/user.png">Login/Register</button>
             </div>
-        </div>
     </header>
 </body>
 

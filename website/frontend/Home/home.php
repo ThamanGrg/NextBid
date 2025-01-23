@@ -17,13 +17,38 @@ $result = mysqli_query($conn, $sql);
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?version=1">
+    <link rel="stylesheet" href="style.css?version=1.1">
 </head>
 
 <body>
     <?php
     require_once('../../../php/header.php');
     ?>
+    <div class="wrapper">
+        <div class="from-box login">
+            <h1>Login</h1>
+            <form action="#">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                    <input type="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                    <input type="password" required>
+                    <label>password</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">Remember me </label>
+                    <a href="#">forgot password?</a>
+                </div>
+                <button type="submit" class="btn">login</button>
+                <div class="login-register">
+                    <p>Don't have an account?<a href="#" class="register-link"></a>Register</p>
+                </div>
+            </form>
+        </div>
+    </div>
     <div class="main">
         <div class="hero">
             <div class="leftnright">
@@ -95,24 +120,24 @@ $result = mysqli_query($conn, $sql);
         </div>
         <div class="topItemListContainer">
             <?php
-                while($row = mysqli_fetch_assoc($result)){
+            while ($row = mysqli_fetch_assoc($result)) {
             ?>
                 <div class="topItemsCard">
                     <div class="cardImage">
                         <div class="imageContainer">
-                            <img src="../../../uploads/<?php echo $row['item_image']?>">
+                            <img src="../../../uploads/<?php echo $row['item_image'] ?>">
                         </div>
                     </div>
 
                     <div class="itemDetails">
-                        <h2><?php echo $row['item_title']?></h2>
+                        <h2><?php echo $row['item_title'] ?></h2>
                         <p>Time: 1 hrs</p>
                         <p>Current Bid: </p>
                     </div>
                     <a href="../Itemdetails/itemdetails.php"><button class="bidButton">Bid</button></a>
                 </div>
             <?php
-                }
+            }
             ?>
         </div>
         <div class="moreItems">
@@ -152,5 +177,8 @@ $result = mysqli_query($conn, $sql);
         </div>
     </footer>
 </body>
+<script src="script.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 </html>
