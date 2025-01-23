@@ -1,4 +1,9 @@
-<?php include_once('../../../php/topItems.php')?>
+<?php
+include_once('../../../php/connection.php');
+
+$sql = "SELECT * FROM products";
+$result = mysqli_query($conn, $sql);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,43 +17,13 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?version=1.2">
+    <link rel="stylesheet" href="style.css?version=1">
 </head>
 
 <body>
-    <header>
-        <div class="header">
-            <div class="logo">
-                <img src="../../assets/logo.png" alt="logo">
-            </div>
-            <div class="nav">
-                <ul class="navList">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="../browse/browse.html">Browse Auction</a></li>
-                    <li class="categoryDD">Category
-                        <div class="dropDownCategory">
-                            <ul>
-                                <li><a href="">Vintage Items & antiques</a></li>
-                                <li><a href="">Automobiles</a></li>
-                                <li><a href="">Decorative items & gifts</a></li>
-                                <li><a href="">Arts</a></li>
-                                <li><a href="">Jewellery</a></li>
-                                <li><a href="">Furnitures</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a href="../Create/create.php">Create Auction</a></li>
-                    <li><a href="#Contacts">Contacts</a></li>
-                </ul>
-            </div>
-            <div class="notification">
-                <img src="../../assets/icons/bell.png" alt="">
-            </div>
-            <div class="loginSignup">
-                <button><img src="../../assets/icons/user.png">Login/Register</button>
-            </div>
-        </div>
-    </header>
+    <?php
+    require_once('../../../php/header.php');
+    ?>
     <div class="main">
         <div class="hero">
             <div class="leftnright">
@@ -120,14 +95,24 @@
         </div>
         <div class="topItemListContainer">
             <?php
-                topItems();
-                topItems();
-                topItems();
-                topItems();
-                topItems();
-                topItems();
-                topItems();
-                topItems();
+                while($row = mysqli_fetch_assoc($result)){
+            ?>
+                <div class="topItemsCard">
+                    <div class="cardImage">
+                        <div class="imageContainer">
+                            <img src="../../../uploads/<?php echo $row['item_image']?>">
+                        </div>
+                    </div>
+
+                    <div class="itemDetails">
+                        <h2><?php echo $row['item_title']?></h2>
+                        <p>Time: 1 hrs</p>
+                        <p>Current Bid: </p>
+                    </div>
+                    <a href="../Itemdetails/itemdetails.php"><button class="bidButton">Bid</button></a>
+                </div>
+            <?php
+                }
             ?>
         </div>
         <div class="moreItems">

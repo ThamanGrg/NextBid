@@ -14,39 +14,9 @@
 </head>
 
 <body>
-    <header>
-        <div class="header">
-            <div class="logo">
-                <img src="../../assets/logo.png" alt="logo">
-            </div>
-            <div class="nav">
-                <ul class="navList">
-                    <li><a href="../Home/home.php">Home</a></li>
-                    <li><a href="../browse/browse.html">Browse Auction</a></li>
-                    <li class="categoryDD">Category
-                        <div class="dropDownCategory">
-                            <ul>
-                                <li><a href="">Vintage Items & antiques</a></li>
-                                <li><a href="">Automobiles</a></li>
-                                <li><a href="">Decorative items & gifts</a></li>
-                                <li><a href="">Arts</a></li>
-                                <li><a href="">Jewellery</a></li>
-                                <li><a href="">Furnitures</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a href="../Create/create.php">Create Auction</a></li>
-                    <li><a href="#Contacts">Contacts</a></li>
-                </ul>
-            </div>
-            <div class="notification">
-                <img src="../../assets/icons/bell.png" alt="">
-            </div>
-            <div class="loginSignup">
-                <button><img src="../../assets/icons/user.png">Login/Register</button>
-            </div>
-        </div>
-    </header>
+    <?php
+    require_once('../../../php/header.php');
+    ?>
     <div class="container">
 
         <div class="auctionCreateForm">
@@ -56,8 +26,8 @@
             </div>
             <form action="../../../php/auctionform.php" method="post" enctype="multipart/form-data">
                 <div class="inputField">
-                    <label for="Item Name">Item Name: </label>
-                    <input type="text" name="itemName" id="itemName" maxlength="255" required>
+                    <label for="Item Title">Item Title: </label>
+                    <input type="text" name="itemTitle" id="itemTitle" maxlength="255" required>
                 </div>
                 <div class="inputField">
                     <label for="initial Price">Initial Price($): </label>
