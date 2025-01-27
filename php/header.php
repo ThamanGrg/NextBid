@@ -37,7 +37,7 @@
                 <img src="../../assets/icons/bell.png" alt="">
             </div>
             <div class="loginSignup">
-                <button><img src="../../assets/icons/user.png">Login/Register</button>
+                <button class="btnLogin-popup">Login</button>
             </div>
     </header>
 </body>

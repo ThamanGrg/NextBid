@@ -17,7 +17,7 @@ $result = mysqli_query($conn, $sql);
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?version=1.1">
+    <link rel="stylesheet" href="style.css?version=1">
 </head>
 
 <body>
@@ -25,6 +25,9 @@ $result = mysqli_query($conn, $sql);
     require_once('../../../php/header.php');
     ?>
     <div class="wrapper">
+        <span class="icon-close"><ion-icon name="close-outline"></ion-icon></span>
+
+
         <div class="from-box login">
             <h1>Login</h1>
             <form action="#">
@@ -44,7 +47,35 @@ $result = mysqli_query($conn, $sql);
                 </div>
                 <button type="submit" class="btn">login</button>
                 <div class="login-register">
-                    <p>Don't have an account?<a href="#" class="register-link"></a>Register</p>
+                    <p>Don't have an account?<a href="#" class="register-link">Register</a></p>
+                </div>
+            </form>
+        </div>
+
+        <div class="from-box register">
+            <h1>Registration</h1>
+            <form action="#">
+            <div class="input-box">
+                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                    <input type="text" required>
+                    <label>Username</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                    <input type="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                    <input type="password" required>
+                    <label>password</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">I agree to the trems & conditions</label>
+                </div>
+                <button type="submit" class="btn">Register</button>
+                <div class="login-register">
+                    <p>Already have an account?<a href="#" class="login-link">Login</a></p>
                 </div>
             </form>
         </div>
