@@ -25,6 +25,7 @@
             padding: 40px;
             border-radius: 20px;
             border-top-left-radius: 0;
+            z-index: 10;
         }
 
         .dropDownCategory ul {

@@ -1,7 +1,7 @@
 <?php
 include_once('../../../php/connection.php');
 
-$query = "SELECT p.item_title, i.image_path FROM products LEFT JOIN item_images i ON p.item_ID = i.item_ID WHERE i.is_primary = 1";
+$query = "SELECT * FROM products p LEFT JOIN item_images i ON p.item_ID = i.item_ID WHERE i.is_primary = 1";
 $result = mysqli_query($conn, $query);
 ?>
 
@@ -33,9 +33,9 @@ $result = mysqli_query($conn, $query);
         <div class="PerPageButton">
             <label for="per-page">Per Page:</label>
             <select id="per-page">
-                <option value="10">10</option>
-                <option value="20">20</option>
                 <option value="30">30</option>
+                <option value="50">50</option>
+                <option value="70">70</option>
             </select>
         </div>
     </div>
@@ -139,38 +139,10 @@ $result = mysqli_query($conn, $query);
     </div>
     </div>
 
-    <footer>
-        <div class="footerMenus">
-            <div class="Menu">
-                <h1>Menu</h1>
-                <a href="../Home/Home.php">Home</a>
-                <a href="../Browse/browse.html">Browse Auctions</a>
-                <a href="#login">Login</a>
-                <a href="#register">Register</a>
-                <a href="../Create/create.php">Create an Auction</a>
-            </div>
-            <hr>
-            <div class="supports">
-                <h1>Supports</h1>
-                <a href="terms">Terms & conditions</a>
-                <a href="privacy">Privacy Policy</a>
-            </div>
-            <hr>
-            <div class="aboutUs">
-                <h1>About Us</h1>
-                <a href="#">About Us</a>
-                <a href="#">Contact Us</a>
-                <a href="#">Partners</a>
-            </div>
-        </div>
-        <div class="socialLinks">
-            <div>
-                <a href="#"><img src="../../assets/icons/facebook.png" alt=""></a>
-                <a href="#"><img src="../../assets/icons/instagram (1).png" alt=""></a>
-                <a href="#"><img src="../../assets/icons/twitter.png" alt=""></a>
-            </div>
-        </div>
-    </footer>
+    <?php
+    include_once("../../../php/footer.php")
+
+    ?>
 </body>
 
 </html>
