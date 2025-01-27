@@ -45,42 +45,6 @@ a:active {
     color: #758BFD;
 }
 
-.dropDownCategory{
-    display: none;
-}
-
-.nav ul li:hover .dropDownCategory{
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 100%;
-    width: 400px;
-    height: 300px;
-    background-color: #758BFD;
-    color: white;
-    padding: 40px;
-    border-radius: 20px;
-    border-top-left-radius: 0; 
-}
-.dropDownCategory ul{
-    display: block;
-    list-style: disc;
-}
-
-.dropDownCategory ul li{
-    margin-bottom: 16px;
-    font-weight: 400;
-    font-size: 18px;
-}
-
-.dropDownCategory ul li a{
-    color: white;
-}
-
-.dropDownCategory ul li:hover{
-    font-weight: 600;
-}
-
 .notification img {
     width: 30px;
 }
@@ -105,7 +69,268 @@ a:active {
     margin-left: 16px;
 }
 
-footer{
+.TopSection {
+    background-color: #F8F8FA;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 130px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    margin-top: 10px;
+    border-bottom: 2px solid #D9D9D9;
+}
+
+.TotalAuction {
+    margin-left: 40px;
+}
+
+.TotalAuction h2,
+p {
+    display: inline-block;
+    font-size: 30px;
+}
+
+.TotalAuction p {
+    color: #655C5C;
+}
+
+.searchBox{
+    width: auto;
+    position: relative;
+}
+
+.searchBox input {
+    height: 70px;
+    width: 700px;
+    border-radius: 40px;
+    padding-left: 30px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+}
+
+.searchBox button {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    background-color: #758BFD;
+    height: 50px;
+    width: 150px;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    color: white;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchBox button img{
+    width: 18px;
+    margin-right: 10px;
+}
+
+.PerPageButton {
+    width: auto;
+    font-size: 16px;
+    display: block;
+    margin-right: 30px;
+}
+
+.PerPageButton select {
+    width: 50px;
+    height: 30px;
+    background-color: #758BFD;
+    color: white;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+}
+
+.main {
+    display: flex;
+}
+
+.leftSection {
+    background-color: #F8F8FA;
+    width: 600px;
+    padding-left: 50px;
+    height: 1500px;
+}
+
+.leftSection .title h3 {
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.filterSection h4 {
+    font-size: 22px;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.filterSection .Categories{
+    border-bottom: 10px solid black;
+}
+
+.filterSection ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.filterSection ul input {
+    margin-right: 30px;
+    width: 20px;
+    height: 20px;
+}
+
+.filterSection ul li {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.filterSection hr {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 400px;
+}
+
+.leftSection .title {
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+
+.locationSection label {
+    font-size: 20px;
+    font-weight: 500;
+    margin-right: 15px;
+}
+
+.locationSection select {
+    background-color: #758BFD;
+    width: 200px;
+    height: 45px;
+    font-weight: 500;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    color: white;
+}
+
+.startingSection label {
+    display: inline-block;
+    width: 200px;
+}
+
+.price label{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.startingSection div{
+    margin: 8px auto;
+}
+
+.price input{
+    height: 35px;
+    border-radius: 10px;
+    border: 0.5px solid #655C5C;
+    font-size: 17px;
+    outline: none;
+    padding-left: 10px;
+}
+
+.rightSection {
+    width: 90%;
+    height: auto;
+    min-height: 1500px;
+}
+
+.ItemCard {
+    padding: 50px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.rightSection hr{
+    background-color: #D9D9D9;
+    border: none;
+    outline: none;
+    height: 2px;
+}
+
+.imageCard {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border: 3px solid rgba(122, 122, 122, 0.651);
+}
+
+.item-Bottom {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}
+
+.imageCard img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+}
+
+.itemRight {
+    margin-left: 50px;
+    width: 100%;
+}
+
+.itemRight .itemTitle h3 {
+    font-weight: 400;
+    font-size: 25px;
+}
+
+.itemRight .itemDescription {
+    width: 80%;
+}
+
+.itemRight .itemDescription p {
+    font-size: 18px;
+}
+
+.item-Bottom{
+    width: 100%;
+}
+
+.item-Bottom .itemLinks a{
+    color: #758BFD;
+    font-size: 18px;
+}
+
+.item-Bottom .itemLinks {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.item-Bottom button {
+    width: 180px;
+    height: 45px;
+    margin-top: 20px;
+    background-color: #758BFD;
+    border: none;
+    color: white;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+footer {
     width: 100%;
     height: 500px;
     margin-top: 10%;
@@ -116,7 +341,7 @@ footer{
     position: relative;
 }
 
-.socialLinks{
+.socialLinks {
     background-color: #758BFD;
     width: 80%;
     height: 50px;
@@ -131,36 +356,36 @@ footer{
     justify-content: space-between;
 }
 
-.socialLinks img{
+.socialLinks img {
     width: 30px;
     padding-left: 15px;
     padding-top: 5px;
 }
 
-.footerMenus{
+.footerMenus {
     display: flex;
     justify-content: center;
     margin-top: 100px;
 }
 
-.footerMenus a{
+.footerMenus a {
     font-size: 18px;
     margin: 2px 0;
 }
 
-.footerMenus div{
+.footerMenus div {
     display: flex;
     flex-direction: column;
     margin: 0 100px;
     top: 0;
 }
 
-.footerMenus h1{
+.footerMenus h1 {
     font-size: 50px;
     margin-bottom: 20px;
 }
 
-.footerMenus hr{
+.footerMenus hr {
     transform: rotate(0deg);
     transform-origin: center;
     height: 300px;

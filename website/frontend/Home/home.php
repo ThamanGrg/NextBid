@@ -1,4 +1,9 @@
-<?php include_once('../../../php/topItems.php')?>
+<?php
+include_once('../../../php/connection.php');
+
+$query = "SELECT p.item_title, p.ending_date, p.endTime, i.image_path FROM products p LEFT JOIN item_images i ON p.item_ID = i.item_ID WHERE i.is_primary = 1";
+$result = mysqli_query($conn, $query);
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,39 +21,34 @@
 </head>
 
 <body>
-    <header>
-        <div class="header">
-            <div class="logo">
-                <img src="../../assets/logo.png" alt="logo">
-            </div>
-            <div class="nav">
-                <ul class="navList">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="../browse/browse.html">Browse Auction</a></li>
-                    <li class="categoryDD">Category
-                        <div class="dropDownCategory">
-                            <ul>
-                                <li><a href="">Vintage Items & antiques</a></li>
-                                <li><a href="">Automobiles</a></li>
-                                <li><a href="">Decorative items & gifts</a></li>
-                                <li><a href="">Arts</a></li>
-                                <li><a href="">Jewellery</a></li>
-                                <li><a href="">Furnitures</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a href="../Create/create.php">Create Auction</a></li>
-                    <li><a href="#Contacts">Contacts</a></li>
-                </ul>
-            </div>
-            <div class="notification">
-                <img src="../../assets/icons/bell.png" alt="">
-            </div>
-            <div class="loginSignup">
-                <button><img src="../../assets/icons/user.png">Login/Register</button>
-            </div>
+    <?php
+    require_once('../../../php/header.php');
+    ?>
+    <div class="wrapper">
+        <div class="from-box login">
+            <h1>Login</h1>
+            <form action="#">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                    <input type="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                    <input type="password" required>
+                    <label>password</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">Remember me </label>
+                    <a href="#">forgot password?</a>
+                </div>
+                <button type="submit" class="btn">login</button>
+                <div class="login-register">
+                    <p>Don't have an account?<a href="#" class="register-link"></a>Register</p>
+                </div>
+            </form>
         </div>
-    </header>
+    </div>
     <div class="main">
         <div class="hero">
             <div class="leftnright">
@@ -120,14 +120,23 @@
         </div>
         <div class="topItemListContainer">
             <?php
-                topItems();
-                topItems();
-                topItems();
-                topItems();
-                topItems();
-                topItems();
-                topItems();
-                topItems();
+            while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+                <div class="topItemsCard">
+                    <div class="cardImage">
+                        <div class="imageContainer">
+                            <img src="../../../uploads/<?php echo $row['image_path'] ?>">
+                        </div>
+                    </div>
+                    <div class="itemDetails">
+                        <h2><?php echo $row['item_title'] ?></h2>
+                        <?php echo "<p> Ending Time: " .$row['ending_date']."   ". $row['endTime'] . "</p>"?>
+                        <p>Current Bid: </p>
+                    </div>
+                    <a href="../Itemdetails/itemdetails.php"><button class="bidButton">Bid</button></a>
+                </div>
+            <?php
+            }
             ?>
         </div>
         <div class="moreItems">
@@ -167,5 +176,8 @@
         </div>
     </footer>
 </body>
+<script src="script.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 </html>
