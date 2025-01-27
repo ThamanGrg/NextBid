@@ -45,43 +45,6 @@ a:active {
     color: #758BFD;
 }
 
-.dropDownCategory {
-    display: none;
-}
-
-.nav ul li:hover .dropDownCategory {
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 100%;
-    width: 400px;
-    height: 300px;
-    background-color: #758BFD;
-    color: white;
-    padding: 40px;
-    border-radius: 20px;
-    border-top-left-radius: 0;
-}
-
-.dropDownCategory ul {
-    display: block;
-    list-style: disc;
-}
-
-.dropDownCategory ul li {
-    margin-bottom: 16px;
-    font-weight: 400;
-    font-size: 18px;
-}
-
-.dropDownCategory ul li a {
-    color: white;
-}
-
-.dropDownCategory ul li:hover {
-    font-weight: 600;
-}
-
 .notification img {
     width: 30px;
 }
@@ -132,7 +95,12 @@ p {
     color: #655C5C;
 }
 
-.SearchButton input {
+.searchBox{
+    width: auto;
+    position: relative;
+}
+
+.searchBox input {
     height: 70px;
     width: 700px;
     border-radius: 40px;
@@ -140,18 +108,11 @@ p {
     outline: none;
     border: none;
     font-size: 18px;
+    
 
 }
 
-.SearchButton {
-    position: relative;
-}
-
-.SearchButton input:focus {
-    border: none;
-}
-
-.SearchButton button {
+.searchBox button {
     position: absolute;
     top: 50%;
     right: 20px;
@@ -165,6 +126,14 @@ p {
     font-size: 18px;
     color: white;
     font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchBox button img{
+    width: 18px;
+    margin-right: 10px;
 }
 
 .PerPageButton {
@@ -296,17 +265,25 @@ p {
 }
 
 .ItemCard {
-    padding: 20px 40px;
+    padding: 50px 40px;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #655C5C;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.rightSection hr{
+    background-color: #D9D9D9;
+    border: none;
+    outline: none;
+    height: 2px;
 }
 
 .imageCard {
     width: 150px;
     height: 150px;
     overflow: hidden;
-    border: 1px solid black;
+    border: 3px solid rgba(122, 122, 122, 0.651);
 }
 
 .item-Bottom {
@@ -323,6 +300,7 @@ p {
 
 .itemRight {
     margin-left: 50px;
+    width: 100%;
 }
 
 .itemRight .itemTitle h3 {
@@ -336,6 +314,10 @@ p {
 
 .itemRight .itemDescription p {
     font-size: 18px;
+}
+
+.item-Bottom{
+    width: 100%;
 }
 
 .item-Bottom .itemLinks a{

@@ -3,6 +3,10 @@ include_once('../../../php/connection.php');
 
 $sql = "SELECT * FROM products";
 $result = mysqli_query($conn, $sql);
+
+$imageSql= "SELECT * FROM item_images";
+$imageResult = mysqli_query($conn, $imageSql);
+
 ?>
 
 <!DOCTYPE html>
@@ -125,7 +129,11 @@ $result = mysqli_query($conn, $sql);
                 <div class="topItemsCard">
                     <div class="cardImage">
                         <div class="imageContainer">
+<<<<<<< HEAD
                             <img src="../../../uploads/<?php echo $row['item_image'] ?>">
+=======
+                            <img src="../../../uploads/<?php echo $row['item_path']?>">
+>>>>>>> 4cfc09d (php)
                         </div>
                     </div>
 

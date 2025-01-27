@@ -1,3 +1,10 @@
+<?php
+include_once('../../../php/connection.php');
+
+$sql = "SELECT * FROM products";
+$result = mysqli_query($conn, $sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,46 +19,16 @@
 </head>
 
 <body>
-    <header>
-        <div class="header">
-            <div class="logo">
-                <img src="../../assets/logo.png" alt="logo">
-            </div>
-            <div class="nav">
-                <ul class="navList">
-                    <li><a href="../Home/home.php">Home</a></li>
-                    <li><a href="../Browse/browse.html">Browse Auction</a></li>
-                    <li class="categoryDD">Category
-                        <div class="dropDownCategory">
-                            <ul>
-                                <li><a href="">Vintage Items & antiques</a></li>
-                                <li><a href="">Automobiles</a></li>
-                                <li><a href="">Decorative items & gifts</a></li>
-                                <li><a href="">Arts</a></li>
-                                <li><a href="">Jewellery</a></li>
-                                <li><a href="">Furnitures</a></li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li><a href="../Create/create.php">Create Auction</a></li>
-                    <li><a href="#Contacts">Contacts</a></li>
-                </ul>
-            </div>
-            <div class="notification">
-                <img src="../../assets/icons/bell.png" alt="">
-            </div>
-            <div class="loginSignup">
-                <button><img src="../../assets/icons/user.png">Login/Register</button>
-            </div>
-        </div>
-    </header>
+    <?php
+    require_once('../../../php/header.php');
+    ?>
     <div class="TopSection">
         <div class="TotalAuction">
             <h2>100</h2>
             <p>Auction</p>
         </div>
-        <div class="SearchButton">
-            <input type="text" placeholder="Search for item..." maxlength="50"> <button>Search</button>
+        <div class="searchBox">
+            <input type="text" placeholder="Search for item..." maxlength="50" class="SearchButton"><button><img src="../../assets/icons/magnifying-glass.png" alt="">Search</button>
         </div>
         <div class="PerPageButton">
             <label for="per-page">Per Page:</label>
@@ -121,67 +98,45 @@
             </div>
         </div>
         <div class="rightSection">
-            <div class="ItemCard">
-                <div class="itemImage">
-                    <div class="imageCard">
-                        <img src="../../../uploads/1737522457.png" alt="">
-                    </div>
-                </div>
-                <div class="itemRight">
-                    <div class="itemDetails">
-                        <div class="itemTitle">
-                            <h3>Macrame Wall Hanging Shelf Wall Decor for Bedroom Woven Rope</h3>
+            <?php
+            while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+                <div class="ItemCard">
+                    <div class="itemImage">
+                        <div class="imageCard">
+                            <img src="../../../uploads/<?php echo $row['item_image']; ?>">
                         </div>
-                        <div class="item-Bottom">
-                            <div class="itemDescription">
-                                <p>Seller: Thaman@123</p><br>
-                                <p>Location: Pokhara, kaski</p><br>
-                                <p>December 13, 2024 | 22:22</p><br>
-                                <p>Est: $15-$25</p><br>
-                            </div>
-                            <div class="itemLinks">
-                                <a href="">View item</a>
-                                <a href="../Register/bidRegister"><button>Register to bid</button></a>
-                            </div>
-                        </div>
-
                     </div>
-
-                </div>
-
-
-            </div>
-            <div class="ItemCard">
-                <div class="itemImage">
-                    <div class="imageCard">
-                        <img src="../../../uploads/1737522457.png" alt="">
-                    </div>
-                </div>
-                <div class="itemRight">
-                    <div class="itemDetails">
-                        <div class="itemTitle">
-                            <h3>Macrame Wall Hanging Shelf Wall Decor for Bedroom Woven Rope</h3>
-                        </div>
-                        <div class="item-Bottom">
-                            <div class="itemDescription">
-                                <p>Seller: Thaman@123</p><br>
-                                <p>Location: Pokhara, kaski</p><br>
-                                <p>December 13, 2024 | 22:22</p><br>
-                                <p>Est: $15-$25</p><br>
+                    <div class="itemRight">
+                        <div class="itemDetails">
+                            <div class="itemTitle">
+                                <h3><?php echo $row['item_title']; ?></h3>
                             </div>
-                            <div class="itemLinks">
-                                <a href="">View item</a>
-                                <a href="../Register/bidRegister"><button>Register to bid</button></a>
+                            <div class="item-Bottom">
+                                <div class="itemDescription">
+                                    <p>Seller: Thaman@123</p><br>
+                                    <p>Location: Pokhara, kaski</p><br>
+                                    <p>December 13, 2024 | 22:22</p><br>
+                                    <p>Est: $15-$25</p><br>
+                                </div>
+                                <div class="itemLinks">
+                                    <a href="">View item</a>
+                                    <a href="../Register/bidRegister"><button>Register to bid</button></a>
+                                </div>
                             </div>
+
                         </div>
 
                     </div>
-
                 </div>
+                <hr>
+                <?php
+            }
+                ?>
 
-
-            </div>
+                
         </div>
+    </div>
     </div>
 
     <footer>

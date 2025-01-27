@@ -2,6 +2,7 @@
 include_once('../php/connection.php');
 
 if (isset($_POST['submit'])) {
+    
     $itemTitle = $_POST['itemTitle'];
     $initialPrice = $_POST['initialPrice'];
     $maximumPrice = $_POST['maximumPrice'];
@@ -12,16 +13,37 @@ if (isset($_POST['submit'])) {
     $endTime = $_POST['endTime'];
     $itemDescription = $_POST['itemDescription'];
 
-    $image_name = $_FILES['itemImage']['name'];
-    $tmp = explode('.', $image_name);
-    $newFileName = round(microtime(true)) . '.' . end($tmp);
-    $uploadPath = "../uploads/" . $newFileName;
-    move_uploaded_file($_FILES['itemImage']['tmp_name'], $uploadPath);
-
-    $sql = "INSERT INTO products (item_title, initial_price, maximum_price, post_date, starting_date, startTime, ending_date, endTime, item_description, item_image) VALUES ('$itemTitle', '$initialPrice', '$maximumPrice', '$postDate', '$startDate', '$startTime', '$endDate', '$endTime', '$itemDescription', '$uploadPath')";
+    $sql = "INSERT INTO products (item_title, initial_price, maximum_price, post_date, starting_date, startTime, ending_date, endTime, item_description) VALUES ('$itemTitle', '$initialPrice', '$maximumPrice', '$postDate', '$startDate', '$startTime', '$endDate', '$endTime', '$itemDescription')";
 
     $data = mysqli_query($conn, $sql);
-    if ($data){
+
+
+    $item_id = $conn->insert_id;
+    foreach ($_FILES['itemImages']['tmp_name'] as $key => $tmp_name) {
+        $fileName = $_FILES['itemImages']['name'][$key];
+        $filePath = "../uploads/" . $fileName;
+
+        if (move_uploaded_file($tmp_name, $filePath)) {
+            if ($key === 0) {
+                $isPrimary = 1;
+            } else {
+                $isPrimary = 0;
+            }
+            $uploadResult = ($conn->query("INSERT INTO item_images (item_ID, image_path, is_primary) VALUES ($item_id, '$filePath', $isPrimary)"));
+            if($uploadResult){
+                echo "<script>alert('Image uploaded Successfully');</script>";
+            }
+        }
+
+        $allowedTypes = ['image/jpeg', 'image/png'];
+
+        if (!in_array($_FILES['itemImages']['type'][$key], $allowedTypes)) {
+            continue;
+        }
+    }
+    if ($data) {
+        echo "<script>alert('Image uploaded Successfully');</script>";
         header('location:../website/frontend/Create/create.php');
     }
+    
 }

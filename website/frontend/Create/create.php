@@ -58,7 +58,7 @@
 
                 <div class="inputField">
                     <label for="Item Image">Item image:</label>
-                    <input type="file" name="itemImage" id="itemImage" multiple>
+                    <input type="file" name="itemImages[]" id="itemImage" multiple>
                 </div>
                 <div class="submit">
                     <input type="submit" class="submitButton" name="submit">
