@@ -1,12 +1,8 @@
 <?php
 include_once('../../../php/connection.php');
 
-$sql = "SELECT * FROM products";
-$result = mysqli_query($conn, $sql);
-
-$imageSql= "SELECT * FROM item_images";
-$imageResult = mysqli_query($conn, $imageSql);
-
+$query = "SELECT p.item_title, p.ending_date, p.endTime, i.image_path FROM products p LEFT JOIN item_images i ON p.item_ID = i.item_ID WHERE i.is_primary = 1";
+$result = mysqli_query($conn, $query);
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +17,7 @@ $imageResult = mysqli_query($conn, $imageSql);
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?version=1.1">
+    <link rel="stylesheet" href="style.css?version=1.2">
 </head>
 
 <body>
@@ -129,17 +125,12 @@ $imageResult = mysqli_query($conn, $imageSql);
                 <div class="topItemsCard">
                     <div class="cardImage">
                         <div class="imageContainer">
-<<<<<<< HEAD
-                            <img src="../../../uploads/<?php echo $row['item_image'] ?>">
-=======
-                            <img src="../../../uploads/<?php echo $row['item_path']?>">
->>>>>>> 4cfc09d (php)
+                            <img src="../../../uploads/<?php echo $row['image_path'] ?>">
                         </div>
                     </div>
-
                     <div class="itemDetails">
                         <h2><?php echo $row['item_title'] ?></h2>
-                        <p>Time: 1 hrs</p>
+                        <?php echo "<p> Ending Time: " .$row['ending_date']."   ". $row['endTime'] . "</p>"?>
                         <p>Current Bid: </p>
                     </div>
                     <a href="../Itemdetails/itemdetails.php"><button class="bidButton">Bid</button></a>

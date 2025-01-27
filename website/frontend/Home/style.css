@@ -445,8 +445,8 @@ a:active {
 
 .topItemsCard {
     background-color: white;
-    width: 350px;
-    height: 480px;
+    width: 400px;
+    height: 530px;
     margin: 30px;
     border-radius: 20px;
     position: relative;
@@ -480,12 +480,16 @@ a:active {
 
 .itemDetails {
     text-align: justify;
-    margin-left: 40px;
+    margin: auto 40px;
     margin-top: 20px;
+    width: 300px;
 }
 
 .itemDetails h2{
      margin-bottom: 15px;
+     font-size: 18px;
+     height: 60px;
+     line-height: 20px
 }
 
 .bidButton {

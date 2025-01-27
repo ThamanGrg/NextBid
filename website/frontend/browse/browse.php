@@ -1,8 +1,8 @@
 <?php
 include_once('../../../php/connection.php');
 
-$sql = "SELECT * FROM products";
-$result = mysqli_query($conn, $sql);
+$query = "SELECT p.item_title, i.image_path FROM products LEFT JOIN item_images i ON p.item_ID = i.item_ID WHERE i.is_primary = 1";
+$result = mysqli_query($conn, $query);
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +15,7 @@ $result = mysqli_query($conn, $sql);
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="browse.css?version=1.1">
+    <link rel="stylesheet" href="browse.css?version=1">
 </head>
 
 <body>
@@ -104,7 +104,7 @@ $result = mysqli_query($conn, $sql);
                 <div class="ItemCard">
                     <div class="itemImage">
                         <div class="imageCard">
-                            <img src="../../../uploads/<?php echo $row['item_image']; ?>">
+                            <img src="../../../uploads/<?php echo $row['image_path']; ?>">
                         </div>
                     </div>
                     <div class="itemRight">
@@ -130,11 +130,11 @@ $result = mysqli_query($conn, $sql);
                     </div>
                 </div>
                 <hr>
-                <?php
+            <?php
             }
-                ?>
+            ?>
 
-                
+
         </div>
     </div>
     </div>

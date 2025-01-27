@@ -108,8 +108,6 @@ p {
     outline: none;
     border: none;
     font-size: 18px;
-    
-
 }
 
 .searchBox button {
@@ -141,16 +139,6 @@ p {
     font-size: 16px;
     display: block;
     margin-right: 30px;
-}
-<<<<<<< HEAD
-.FilterSection{
-    
-=======
-
-.PerPageButton label {
-    margin-right: 20px;
-    font-size: 20px;
->>>>>>> dfdb6d5e2301f85ce154bb624e05096512d76afa
 }
 
 .PerPageButton select {

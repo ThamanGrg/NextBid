@@ -29,10 +29,7 @@ if (isset($_POST['submit'])) {
             } else {
                 $isPrimary = 0;
             }
-            $uploadResult = ($conn->query("INSERT INTO item_images (item_ID, image_path, is_primary) VALUES ($item_id, '$filePath', $isPrimary)"));
-            if($uploadResult){
-                echo "<script>alert('Image uploaded Successfully');</script>";
-            }
+            ($conn->query("INSERT INTO item_images (item_ID, image_path, is_primary) VALUES ($item_id, '$filePath', $isPrimary)"));
         }
 
         $allowedTypes = ['image/jpeg', 'image/png'];
@@ -42,7 +39,6 @@ if (isset($_POST['submit'])) {
         }
     }
     if ($data) {
-        echo "<script>alert('Image uploaded Successfully');</script>";
         header('location:../website/frontend/Create/create.php');
     }
     
