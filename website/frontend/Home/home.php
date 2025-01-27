@@ -1,8 +1,8 @@
 <?php
 include_once('../../../php/connection.php');
 
-$sql = "SELECT * FROM products";
-$result = mysqli_query($conn, $sql);
+$query = "SELECT p.item_title, p.ending_date, p.endTime, i.image_path FROM products p LEFT JOIN item_images i ON p.item_ID = i.item_ID WHERE i.is_primary = 1";
+$result = mysqli_query($conn, $query);
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +17,7 @@ $result = mysqli_query($conn, $sql);
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?version=1">
+    <link rel="stylesheet" href="style.css?version=1.1">
 </head>
 
 <body>
@@ -156,13 +156,12 @@ $result = mysqli_query($conn, $sql);
                 <div class="topItemsCard">
                     <div class="cardImage">
                         <div class="imageContainer">
-                            <img src="../../../uploads/<?php echo $row['item_image'] ?>">
+                            <img src="../../../uploads/<?php echo $row['image_path'] ?>">
                         </div>
                     </div>
-
                     <div class="itemDetails">
                         <h2><?php echo $row['item_title'] ?></h2>
-                        <p>Time: 1 hrs</p>
+                        <?php echo "<p> Ending Time: " .$row['ending_date']."   ". $row['endTime'] . "</p>"?>
                         <p>Current Bid: </p>
                     </div>
                     <a href="../Itemdetails/itemdetails.php"><button class="bidButton">Bid</button></a>
@@ -175,38 +174,9 @@ $result = mysqli_query($conn, $sql);
             <a href="../browse/browse.html"><button>View more items</button></a>
         </div>
     </div>
-    <footer>
-        <div class="footerMenus">
-            <div class="Menu">
-                <h1>Menu</h1>
-                <a href="#">Home</a>
-                <a href="../Browse/browse.html">Browse Auctions</a>
-                <a href="#login">Login</a>
-                <a href="#register">Register</a>
-                <a href="../Create/create.php">Create an Auction</a>
-            </div>
-            <hr>
-            <div class="supports">
-                <h1>Supports</h1>
-                <a href="#terms">Terms & conditions</a>
-                <a href="#privacy">Privacy Policy</a>
-            </div>
-            <hr>
-            <div class="aboutUs">
-                <h1>About Us</h1>
-                <a href="#">About Us</a>
-                <a href="#">Contact Us</a>
-                <a href="#">Partners</a>
-            </div>
-        </div>
-        <div class="socialLinks">
-            <div>
-                <a href="#"><img src="../../assets/icons/facebook.png" alt=""></a>
-                <a href="#"><img src="../../assets/icons/instagram (1).png" alt=""></a>
-                <a href="#"><img src="../../assets/icons/twitter.png" alt=""></a>
-            </div>
-        </div>
-    </footer>
+    <?php
+    include_once("../../../php/footer.php")
+    ?>
 </body>
 <script src="script.js"></script>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

@@ -8,6 +8,45 @@
 </head>
 
 <body>
+    <style>
+        .dropDownCategory {
+            display: none;
+        }
+
+        .nav ul li:hover .dropDownCategory {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            width: 400px;
+            height: 300px;
+            background-color: #758BFD;
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            border-top-left-radius: 0;
+            z-index: 10;
+        }
+
+        .dropDownCategory ul {
+            display: block;
+            list-style: none;
+        }
+
+        .dropDownCategory ul li {
+            margin-bottom: 16px;
+            font-weight: 400;
+            font-size: 18px;
+        }
+
+        .dropDownCategory ul li a {
+            color: white;
+        }
+
+        .dropDownCategory ul li:hover {
+            font-weight: 600;
+        }
+    </style>
     <header>
         <div class="header">
             <div class="logo">
@@ -16,7 +55,7 @@
             <div class="nav">
                 <ul class="navList">
                     <li><a href="../Home/home.php">Home</a></li>
-                    <li><a href="../browse/browse.html">Browse Auction</a></li>
+                    <li><a href="../browse/browse.php">Browse Auction</a></li>
                     <li class="categoryDD">Category
                         <div class="dropDownCategory">
                             <ul>
