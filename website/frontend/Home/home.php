@@ -30,7 +30,7 @@ $result = mysqli_query($conn, $query);
 
         <div class="from-box login">
             <h1>Login</h1>
-            <form action="#">
+            <form action="loginRegister.php">
                 <div class="input-box">
                     <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
                     <input type="email" required>
@@ -45,7 +45,7 @@ $result = mysqli_query($conn, $query);
                     <label><input type="checkbox">Remember me </label>
                     <a href="#">forgot password?</a>
                 </div>
-                <button type="submit" class="btn">login</button>
+                <button type="submit"  name="login" class="btn">login</button>
                 <div class="login-register">
                     <p>Don't have an account?<a href="#" class="register-link">Register</a></p>
                 </div>
@@ -54,7 +54,7 @@ $result = mysqli_query($conn, $query);
 
         <div class="from-box register">
             <h1>Registration</h1>
-            <form action="#">
+            <form action="loginRegister.php">
                 <div class="input-box">
                     <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
                     <input type="text" required>
@@ -73,7 +73,7 @@ $result = mysqli_query($conn, $query);
                 <div class="remember-forgot">
                     <label><input type="checkbox">I agree to the trems & conditions</label>
                 </div>
-                <button type="submit" class="btn">Register</button>
+                <button type="submit" name="register" class="btn">Register</button>
                 <div class="login-register">
                     <p>Already have an account?<a href="#" class="login-link">Login</a></p>
                 </div>

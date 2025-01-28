@@ -4,6 +4,7 @@ include_once('../php/connection.php');
 if (isset($_POST['submit'])) {
     
     $itemTitle = $_POST['itemTitle'];
+    $productCategory = $_POST['category'];
     $initialPrice = $_POST['initialPrice'];
     $maximumPrice = $_POST['maximumPrice'];
     $postDate = date("y/m/d");
@@ -13,7 +14,7 @@ if (isset($_POST['submit'])) {
     $endTime = $_POST['endTime'];
     $itemDescription = $_POST['itemDescription'];
 
-    $sql = "INSERT INTO products (item_title, initial_price, maximum_price, post_date, starting_date, startTime, ending_date, endTime, item_description) VALUES ('$itemTitle', '$initialPrice', '$maximumPrice', '$postDate', '$startDate', '$startTime', '$endDate', '$endTime', '$itemDescription')";
+    $sql = "INSERT INTO products (item_title, product_category, initial_price, maximum_price, post_date, starting_date, startTime, ending_date, endTime, item_description) VALUES ('$itemTitle', '$productCategory', '$initialPrice', '$maximumPrice', '$postDate', '$startDate', '$startTime', '$endDate', '$endTime', '$itemDescription')";
 
     $data = mysqli_query($conn, $sql);
 
