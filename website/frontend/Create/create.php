@@ -52,6 +52,14 @@
                 </div>
 
                 <div class="inputField">
+                    <label for="category">Category: </label>
+                    <select name="category" id="category">
+                        <option value=""></option>
+                        <option value="Vintage items and Antiques">Vintage items and Antiques</option>
+                    </select>
+                </div>
+
+                <div class="inputField">
                     <label for="Description">Item description: </label>
                     <textarea name="itemDescription" id="itemDescription" maxlength="255"></textarea required>
                 </div>
