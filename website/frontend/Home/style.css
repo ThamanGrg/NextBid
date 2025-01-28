@@ -435,7 +435,7 @@ a:active {
     border-radius: 30px;
 }
 
-.topItemListContainer{
+.topItemListContainer {
     width: 100%;
     height: 1150px;
     display: flex;
@@ -461,7 +461,7 @@ a:active {
     justify-content: center;
 }
 
-.imageContainer{
+.imageContainer {
     width: 200px;
     height: 200px;
     background-color: transparent;
@@ -473,7 +473,7 @@ a:active {
     overflow: hidden;
 }
 
-.imageContainer img{
+.imageContainer img {
     width: 200px;
     height: 200px;
     object-fit: contain;
@@ -486,11 +486,11 @@ a:active {
     width: 300px;
 }
 
-.itemDetails h2{
-     margin-bottom: 15px;
-     font-size: 18px;
-     height: 60px;
-     line-height: 20px
+.itemDetails h2 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    height: 60px;
+    line-height: 20px
 }
 
 .bidButton {
@@ -514,7 +514,7 @@ a:active {
     margin-top: 90px;
 }
 
-.moreItems button{
+.moreItems button {
     width: 180px;
     height: 50px;
     background-color: #758BFD;
@@ -523,68 +523,6 @@ a:active {
     border-radius: 25px;
     font-size: 16px;
 
-}
-
-footer{
-    width: 100%;
-    height: 500px;
-    margin-top: 10%;
-    background-color: #F8F8FA;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    position: relative;
-}
-
-.socialLinks{
-    background-color: #758BFD;
-    width: 80%;
-    height: 50px;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, 50%);
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.socialLinks img{
-    width: 30px;
-    padding-left: 15px;
-    padding-top: 5px;
-}
-
-.footerMenus{
-    display: flex;
-    justify-content: center;
-    margin-top: 100px;
-}
-
-.footerMenus a{
-    font-size: 18px;
-    margin: 2px 0;
-}
-
-.footerMenus div{
-    display: flex;
-    flex-direction: column;
-    margin: 0 100px;
-    top: 0;
-}
-
-.footerMenus h1{
-    font-size: 50px;
-    margin-bottom: 20px;
-}
-
-.footerMenus hr{
-    transform: rotate(0deg);
-    transform-origin: center;
-    height: 300px;
-    background-color: #D9D9D9;
 }
 
 .navigation a {
@@ -596,8 +534,8 @@ footer{
     transition: .5s;
 }
 
-.navigation a::after{
-    content:'';
+.navigation a::after {
+    content: '';
     position: absolute;
     width: 100%;
     height: 3px;
@@ -605,12 +543,12 @@ footer{
     border-radius: 5px;
 }
 
-.navigation .btnLogin-popup:hover{
+.navigation .btnLogin-popup:hover {
     background: #ffffff;
     color: #758BFD;
 }
 
-.navigation .btnLogin-popup{
+.navigation .btnLogin-popup {
     width: 130px;
     height: 50px;
     background: transparent;
@@ -622,11 +560,12 @@ footer{
     font-weight: 500;
     margin-left: 40px;
 }
-.wrapper{
+
+.wrapper {
     position: relative;
     width: 400px;
     height: 440px;
-    background-color:#ffffff;
+    background-color: #ffffff;
     border: 2px solid rgba(255, 255, 255, .5);
     border-radius: 20px;
     backdrop-filter: blur(20px);
@@ -636,14 +575,14 @@ footer{
     align-items: center;
     overflow: hidden;
     transform: scale(0);
-   transition:  transfrom .5s ease, height .2s ease;
+    transition: transfrom .5s ease, height .2s ease;
 }
 
-.wrapper.active-popup{
+.wrapper.active-popup {
     transform: scale(1);
 }
 
-.wrapper.active{
+.wrapper.active {
     height: 520px;
 }
 
@@ -653,26 +592,28 @@ footer{
 }
 
 .wrapper .from-box.login {
-   transition:  transfrom .18s ease;
-   transform: translateX(0);
+    transition: transfrom .18s ease;
+    transform: translateX(0);
 }
-.wrapper.active .from-box.login{
+
+.wrapper.active .from-box.login {
     transition: none;
     transform: translateX(-400px);
 }
 
-.wrapper .from-box.register{
+.wrapper .from-box.register {
     position: absolute;
     transition: none;
     transform: translateX(400px);
 }
 
 .wrapper.active .from-box.register {
-    transition:  transfrom .18s ease;
+    transition: transfrom .18s ease;
     transform: translateX(0);
- }
+    width: 320px;
+}
 
-.wrapper .icon-close{
+.wrapper .icon-close {
     position: absolute;
     top: 0;
     right: 0;
@@ -691,21 +632,22 @@ footer{
 
 
 
-.from-box h1{
+.from-box h1 {
     font-size: 2em;
     color: #3f1ac4;
     text-align: center;
     font-weight: 600;
 }
 
-.input-box{
+.input-box {
     position: relative;
     width: 100%;
     height: 50px;
     border-bottom: 2px solid #162938;
     margin: 30px 0;
 }
-.input-box label{
+
+.input-box label {
     position: absolute;
     top: 50%;
     left: 5px;
@@ -723,7 +665,7 @@ footer{
 }
 
 
-.input-box input{
+.input-box input {
     width: 100%;
     height: 100%;
     background: transparent;
@@ -743,7 +685,7 @@ footer{
     line-height: 57px;
 }
 
-.remember-forgot{
+.remember-forgot {
     font-size: .9em;
     color: #1f0bd4aa;
     font-weight: 500;
@@ -752,12 +694,12 @@ footer{
     justify-content: space-between;
 }
 
-.remember-forgot label input{
+.remember-forgot label input {
     accent-color: #d512b8e2;
     margin-right: 3px;
 }
 
-.remember-forgot  {
+.remember-forgot {
     color: #674848;
     text-decoration: none;
 }
@@ -766,7 +708,7 @@ footer{
     text-decoration: underline;
 }
 
-.btn{
+.btn {
     width: 100%;
     height: 45px;
     background: #758BFD;
@@ -779,7 +721,7 @@ footer{
     font-weight: 500;
 }
 
-.login-register{
+.login-register {
     font-size: .9em;
     color: #758BFD;
     text-align: center;
@@ -787,12 +729,12 @@ footer{
     margin: 25px 0 10px;
 }
 
-.login-register p a{
+.login-register p a {
     color: #758BFD;
     text-decoration: none;
     font-weight: 600;
 }
+
 .login-register a:hover {
     text-decoration: underline;
 }
-

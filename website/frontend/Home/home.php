@@ -55,7 +55,7 @@ $result = mysqli_query($conn, $query);
         <div class="from-box register">
             <h1>Registration</h1>
             <form action="#">
-            <div class="input-box">
+                <div class="input-box">
                     <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
                     <input type="text" required>
                     <label>Username</label>
