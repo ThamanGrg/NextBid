@@ -76,7 +76,7 @@
                 <img src="../../assets/icons/bell.png" alt="">
             </div>
             <div class="loginSignup">
-                <button class="btnLogin-popup">Login</button>
+                <button class="btnLogin-popup" onclick="loginForm();">Login</button>
             </div>
     </header>
 </body>

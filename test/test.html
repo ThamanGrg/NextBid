@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Filter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    .category-btn {
+      padding: 10px 15px;
+      margin: 5px;
+      border: 1px solid #ddd;
+      background-color: #f9f9f9;
+      cursor: pointer;
+    }
+
+    .category-btn.active {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .product {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Product Filter</h1>
+  <div id="categories">
+    <!-- Category buttons will be rendered here -->
+  </div>
+
+  <div id="products">
+    <!-- Filtered products will be displayed here -->
+  </div>
+
+  <script>
+    // Categories and products data
+    const categories = ["All", "Electronics", "Clothing", "Home"];
+    const products = [
+      { id: 1, name: "Laptop", category: "Electronics" },
+      { id: 2, name: "T-Shirt", category: "Clothing" },
+      { id: 3, name: "Sofa", category: "Home" },
+      { id: 4, name: "Headphones", category: "Electronics" },
+      { id: 5, name: "Jacket", category: "Clothing" },
+    ];
+
+    // DOM elements
+    const categoriesDiv = document.getElementById("categories");
+    const productsDiv = document.getElementById("products");
+
+    // Function to display categories as buttons
+    function renderCategories() {
+      categoriesDiv.innerHTML = ""; // Clear existing buttons
+      categories.forEach((category) => {
+        const button = document.createElement("button");
+        button.textContent = category;
+        button.className = "category-btn";
+        button.onclick = () => filterProducts(category);
+
+        categoriesDiv.appendChild(button);
+      });
+    }
+
+    // Function to display products
+    function renderProducts(filteredProducts) {
+      productsDiv.innerHTML = ""; // Clear existing products
+      filteredProducts.forEach((product) => {
+        const productDiv = document.createElement("div");
+        productDiv.className = "product";
+        productDiv.textContent = product.name;
+
+        productsDiv.appendChild(productDiv);
+      });
+    }
+
+    // Function to filter products by category
+    function filterProducts(category) {
+      const buttons = document.querySelectorAll(".category-btn");
+      buttons.forEach((btn) => btn.classList.remove("active"));
+
+      const activeButton = Array.from(buttons).find(
+        (btn) => btn.textContent === category
+      );
+      if (activeButton) activeButton.classList.add("active");
+
+      const filteredProducts =
+        category === "All"
+          ? products
+          : products.filter((product) => product.category === category);
+
+      renderProducts(filteredProducts);
+    }
+
+    // Initialize
+    renderCategories();
+    filterProducts("All"); // Default to showing all products
+  </script>
+</body>
+</html>

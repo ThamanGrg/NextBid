@@ -17,69 +17,77 @@ $result = mysqli_query($conn, $query);
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?version=1.1">
+    <link rel="stylesheet" href="style.css?version=1">
 </head>
 
 <body>
     <?php
     require_once('../../../php/header.php');
     ?>
-    <div class="wrapper">
-        <span class="icon-close"><ion-icon name="close-outline"></ion-icon></span>
+    <div class="loginBg">
+        <div class="loginForm">
+            <div class="wrapper">
+                <span class="icon-close"><ion-icon name="close-outline"></ion-icon></span>
+                <div class="from-box login">
+                    <h1>Login</h1>
+                    <form action="../../../php/loginRegister.php" method="POST">
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                            <input type="email" required>
+                            <label>Email</label>
+                        </div>
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                            <input type="password" required>
+                            <label>password</label>
+                        </div>
+                        <div class="remember-forgot">
+                            <label><input type="checkbox">Remember me </label>
+                            <a href="#">forgot password?</a>
+                        </div>
+                        <button type="submit" name="login" class="btn">login</button>
+                        <div class="login-register">
+                            <p>Don't have an account?<a href="#" class="register-link">Register</a></p>
+                        </div>
+                    </form>
+                </div>
 
-
-        <div class="from-box login">
-            <h1>Login</h1>
-            <form action="loginRegister.php">
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                    <input type="email" required>
-                    <label>Email</label>
+                <div class="from-box register" id="register">
+                    <h1>Registration</h1>
+                    <form action="" method="POST">
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                            <input type="text" name="username" required>
+                            <label>Username</label>
+                        </div>
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                            <input type="email" name="email" required>
+                            <label>Email</label>
+                        </div>
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                            <input type="text" name="password" id="password" required>
+                            <label>password</label>
+                        </div>
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                            <input type="text" name="re-password" id="re-Password" required>
+                            <label>Confirm password</label>
+                        </div>
+                        <div class="remember-forgot">
+                            <label><input type="checkbox">I agree to the trems & conditions</label>
+                        </div>
+                        <button type="submit" class="btn" name="register">Register</button>
+                        <div class="login-register">
+                            <p>Already have an account?<a href="#" class="login-link">Login</a></p>
+                        </div>
+                    </form>
                 </div>
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <input type="password" required>
-                    <label>password</label>
-                </div>
-                <div class="remember-forgot">
-                    <label><input type="checkbox">Remember me </label>
-                    <a href="#">forgot password?</a>
-                </div>
-                <button type="submit"  name="login" class="btn">login</button>
-                <div class="login-register">
-                    <p>Don't have an account?<a href="#" class="register-link">Register</a></p>
-                </div>
-            </form>
-        </div>
-
-        <div class="from-box register">
-            <h1>Registration</h1>
-            <form action="loginRegister.php">
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
-                    <input type="text" required>
-                    <label>Username</label>
-                </div>
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                    <input type="email" required>
-                    <label>Email</label>
-                </div>
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                    <input type="password" required>
-                    <label>password</label>
-                </div>
-                <div class="remember-forgot">
-                    <label><input type="checkbox">I agree to the trems & conditions</label>
-                </div>
-                <button type="submit" name="register" class="btn">Register</button>
-                <div class="login-register">
-                    <p>Already have an account?<a href="#" class="login-link">Login</a></p>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
+
     <div class="main">
         <div class="hero">
             <div class="leftnright">
@@ -161,7 +169,7 @@ $result = mysqli_query($conn, $query);
                     </div>
                     <div class="itemDetails">
                         <h2><?php echo $row['item_title'] ?></h2>
-                        <?php echo "<p> Ending Time: " .$row['ending_date']."   ". $row['endTime'] . "</p>"?>
+                        <?php echo "<p> Ending Time: " . $row['ending_date'] . "   " . $row['endTime'] . "</p>" ?>
                         <p>Current Bid: </p>
                     </div>
                     <a href="../Itemdetails/itemdetails.php"><button class="bidButton">Bid</button></a>
