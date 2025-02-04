@@ -1,12 +1,12 @@
 * {
-    font-family: "Poppins";
     margin: 0;
     padding: 0;
 }
 
+
 body {
+    font-family: "Poppins";
     margin: 0 120px;
-    position: relative;
 }
 
 .header {
@@ -16,26 +16,29 @@ body {
     margin-top: 5px;
 }
 
+.logo {
+    width: 150px;
+}
+
 .logo img {
-    width: 180px;
+    width: 100%;
 }
 
 .nav {
-    font-size: 20px;
+    font-size: 18px;
     color: #655C5C;
     display: flex;
     position: relative;
 }
 
-.nav ul {
+.nav .navList {
     display: flex;
     list-style: none;
 }
 
 .nav .navList li {
-    padding-right: 60px;
+    padding: 0 20px;
     font-weight: 700;
-    position: relative;
 }
 
 a {
@@ -55,20 +58,68 @@ a:active {
     background-color: #758BFD;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    height: 52px;
-    width: 250px;
-    font-size: 16px;
+    justify-content: center;
+    height: 50px;
+    width: 230px;
     border: none;
     border-radius: 40px;
     padding-right: 10px;
     color: white;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .loginSignup button img {
-    height: 30px;
+    height: 50%;
     margin-left: 16px;
+    margin-right: 20px;
+}
+
+.dropDownCategory {
+    display: none;
+}
+
+.nav ul li:hover .dropDownCategory {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 400px;
+    height: 300px;
+    background-color: #758BFD;
+    color: white;
+    padding: 40px;
+    border-radius: 20px;
+    border-top-left-radius: 0;
+    z-index: 10;
+}
+
+.dropDownCategory ul {
+    display: block;
+    list-style: none;
+}
+
+.dropDownCategory ul li {
+    margin-bottom: 16px;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.dropDownCategory ul li a {
+    color: white;
+}
+
+.dropDownCategory ul li:hover {
+    font-weight: 600;
+}
+
+section {
+    display: block;
+    position: relative;
+    max-width: 1800px;
+    min-width: 200px;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero {
@@ -290,10 +341,10 @@ a:active {
 }
 
 .vintageItems .vintageImage {
-    width: 330px;
+    width: 40%;
     position: absolute;
     top: 32px;
-    left: 450px;
+    right: 30px;
 }
 
 .vintageItems button {
@@ -358,9 +409,9 @@ a:active {
 
 .artsImage {
     position: relative;
-    width: 350px;
+    width: 90%;
     top: 60px;
-    left: 40px;
+    left: 10%;
 }
 
 .viewCategory {
@@ -566,10 +617,11 @@ a:active {
     display: none;
     position: absolute;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     z-index: 20;
     background-color: rgba(73, 73, 73, 0.24);
     backdrop-filter: blur(10px);
+    margin: 0;
 }
 
 .loginForm {
@@ -579,7 +631,7 @@ a:active {
 }
 
 .wrapper {
-    position: absolute;
+    position: sticky;
     width: 400px;
     height: 500px;
     background-color: #ffffff;
@@ -684,7 +736,6 @@ a:active {
     top: -5px;
 }
 
-
 .input-box input {
     width: 100%;
     height: 100%;
@@ -757,4 +808,66 @@ a:active {
 
 .login-register a:hover {
     text-decoration: underline;
+}
+
+footer {
+    width: 100%;
+    height: 500px;
+    margin-top: 10%;
+    background-color: #F8F8FA;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.socialLinks {
+    background-color: #758BFD;
+    width: 80%;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.socialLinks img {
+    width: 30px;
+    padding-left: 15px;
+    padding-top: 5px;
+}
+
+.footerMenus {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.footerMenus a {
+    font-size: 18px;
+    margin: 2px 0;
+}
+
+.footerMenus div {
+    display: flex;
+    flex-direction: column;
+    margin: 0 100px;
+    top: 0;
+}
+
+.footerMenus h1 {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.footerMenus hr {
+    transform: rotate(0deg);
+    transform-origin: center;
+    height: 300px;
+    background-color: #D9D9D9;
 }

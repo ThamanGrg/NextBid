@@ -8,6 +8,15 @@ body {
     margin: 0 120px;
 }
 
+section{
+    max-width: 1800px;
+    min-width: 200px;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
 .header {
     display: flex;
     align-items: center;
