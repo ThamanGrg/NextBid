@@ -1,3 +1,10 @@
+<?php
+
+include_once("../php/connection.php");
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +22,7 @@
 
 <body>
   <?php
-  require_once('../../../php/header.php');
+  require_once('../php/header.php');
   ?>
   <section>
     <div class="main">
@@ -30,23 +37,23 @@
           <div class="itemImages">
             <div class="imageList">
               <div class="imageContainer">
-                <img src="../../../uploads/special_original_Buddha_statues_Japanese_buddha-1.jpg" alt="">
+                <img src="../uploads/special_original_Buddha_statues_Japanese_buddha-1.jpg" alt="">
               </div>
               <div class="imageContainer">
-                <img src="../../../uploads/special_original_Buddha_statues_Japanese_buddha-1.jpg" alt="">
+                <img src="../uploads/special_original_Buddha_statues_Japanese_buddha-1.jpg" alt="">
               </div>
               <div class="imageContainer">
-                <img src="../../../uploads/special_original_Buddha_statues_Japanese_buddha-1.jpg" alt="">
+                <img src="../uploads/special_original_Buddha_statues_Japanese_buddha-1.jpg" alt="">
               </div>
               <div class="imageContainer">
-                <img src="../../../uploads/special_original_Buddha_statues_Japanese_buddha-1.jpg" alt="">
+                <img src="../uploads/special_original_Buddha_statues_Japanese_buddha-1.jpg" alt="">
               </div>
               <div class="imageContainer">
-                <img src="../../../uploads/special_original_Buddha_statues_Japanese_buddha-1.jpg" alt="">
+                <img src="../uploads/special_original_Buddha_statues_Japanese_buddha-1.jpg" alt="">
               </div>
             </div>
             <div class="selectedImage">
-              <img src="../../../uploads/special_original_Buddha_statues_Japanese_buddha-1.jpg" alt="">
+              <img src="../uploads/special_original_Buddha_statues_Japanese_buddha-1.jpg" alt="">
             </div>
           </div>
         </div>
@@ -91,7 +98,7 @@
                   <td>$1550</td>
                 </tr>
               </table>
-              <p>See all bids <button><img src="../../assets/icons/chevron.png" alt=""></button></p>
+              <p>See all bids <button><img src="../assets/icons/chevron.png" alt=""></button></p>
             </div>
           </div>
         </div>
@@ -129,7 +136,7 @@
   </section>
 
   <?php
-  include_once("../../../php/footer.php");
+  include_once("../php/footer.php");
   ?>
 </body>
 

@@ -17,7 +17,7 @@ $result = mysqli_query($conn, $query);
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?version=1">
 </head>
 
 <body>
@@ -42,6 +42,7 @@ $result = mysqli_query($conn, $query);
                             </ul>
                         </div>
                     </li>
+
                     <li><a href="Create/create.php">Create Auction</a></li>
                     <li><a href="#Contacts">Contacts</a></li>
                 </ul>
@@ -52,8 +53,9 @@ $result = mysqli_query($conn, $query);
             <div class="loginSignup">
                 <button class="btnLogin-popup" onclick="loginForm();"><img src="assets/icons/user.png" alt="user">Login</button>
             </div>
+        </div>
     </header>
-    <section class="main">
+    <section>
 
         <div class="loginBg">
             <div class="loginForm">
@@ -61,7 +63,7 @@ $result = mysqli_query($conn, $query);
                     <span class="icon-close"><ion-icon name="close-outline"></ion-icon></span>
                     <div class="from-box login">
                         <h1>Login</h1>
-                        <form action="../NextBid/php/loginRegister.php" method="POST" id="loginForm">
+                        <form action="php/loginRegister.php" method="POST" id="loginForm">
                             <div class="input-box">
                                 <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
                                 <input type="email" required>
@@ -85,17 +87,19 @@ $result = mysqli_query($conn, $query);
 
                     <div class="from-box register" id="registerForm">
                         <h1>Registration</h1>
-                        <form action="../NextBid/php/loginRegister.php" method="POST" id="registerForm">
+                        <form action="php/loginRegister.php" method="POST" id="registerForm">
                             <div class="input-box">
                                 <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
                                 <input type="text" name="username" required>
                                 <label>Username</label>
                             </div>
+                            <div id="result"></div>
                             <div class="input-box">
                                 <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
                                 <input type="email" name="email" required>
                                 <label>Email</label>
                             </div>
+                            <div id="result"></div>
                             <div class="input-box">
                                 <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
                                 <input type="text" name="password" id="password" required>
@@ -138,7 +142,7 @@ $result = mysqli_query($conn, $query);
                         </div>
                     </div>
                     <div class="right">
-                        <img src="../NextBid/website/assets/images/herosection.png" alt="">
+                        <img src="assets/images/herosection.png" alt="herosection">
                     </div>
                 </div>
 
@@ -252,18 +256,31 @@ $result = mysqli_query($conn, $query);
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script>
-    document.getElementById('registerForm').addEventListener("submit", function(e) {
-        var password = document.getElementById('password').value;
-        var confirmPassword = document.getElementById('confirm_password').value;
+    document.getElementById('registerForm').addEventListener("submit"),
+        function(e) {
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirm_password').value;
+            var resultDiv = document.getElementById("result");
+            e.preventDefault();
 
-        if (password.length < 6) {
-            alert('Password must be length of 8')
-            e.preventDefault();
-        } else if (password !== confirmPassword) {
-            alert('Password donot Match!!')
-            e.preventDefault();
+            if (password.length < 6) {
+                alert('Password must be length of 8')
+            } else if (password !== confirmPassword) {
+                alert('Password do not Match!!')
+            }
+
+
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "php/loginRegister.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    alert(xhr.responseText);
+                }
+            };
+            xhr.send("username=" + username + "&email=" + email);
         }
-    });
 </script>
 
 </html>

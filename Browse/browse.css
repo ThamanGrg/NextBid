@@ -9,15 +9,6 @@ body {
     position: relative;
 }
 
-section{
-    max-width: 1800px;
-    min-width: 200px;
-    float: none;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-}
-
 .header {
     display: flex;
     align-items: center;
@@ -25,26 +16,29 @@ section{
     margin-top: 5px;
 }
 
+.logo {
+    width: 150px;
+}
+
 .logo img {
-    width: 180px;
+    width: 100%;
 }
 
 .nav {
-    font-size: 20px;
+    font-size: 18px;
     color: #655C5C;
     display: flex;
     position: relative;
 }
 
-.nav ul {
+.nav .navList {
     display: flex;
     list-style: none;
 }
 
 .nav .navList li {
-    padding-right: 60px;
+    padding: 0 20px;
     font-weight: 700;
-    position: relative;
 }
 
 a {
@@ -64,20 +58,72 @@ a:active {
     background-color: #758BFD;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
-    height: 52px;
-    width: 250px;
-    font-size: 16px;
+    justify-content: center;
+    height: 50px;
+    width: 230px;
     border: none;
     border-radius: 40px;
     padding-right: 10px;
     color: white;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .loginSignup button img {
-    height: 30px;
+    height: 50%;
     margin-left: 16px;
+    margin-right: 20px;
+}
+
+.dropDownCategory{
+    display: none;
+}
+
+.navList li:hover .dropDownCategory{
+    position: absolute;
+    display: flex;
+    width: 400px;
+    height: 300px;
+    padding: 40px;
+    background-color: #758BFD;
+    z-index: 20;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.dropDownCategory ul {
+    display: block;
+    list-style: none;
+}
+
+.dropDownCategory ul li {
+    margin-bottom: 16px;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.dropDownCategory ul li:hover {
+    font-weight: 600;
+}
+
+.dropDownCategory a{
+    color: white;
+    font-size: 19px;
+    font-weight: 600;
+    transition: font-size 0.2s, transform 0.2s;
+}
+
+.dropDownCategory a:hover{
+    font-size: 20px;
+}
+
+section{
+    max-width: 1800px;
+    min-width: 200px;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 
 .TopSection {
