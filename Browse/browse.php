@@ -1,8 +1,11 @@
 <?php
 include_once('../php/connection.php');
 
-$query = "SELECT * FROM products p LEFT JOIN item_images i ON p.item_ID = i.item_ID WHERE i.is_primary = 1";
+$query = "SELECT p.*, i.* FROM products p LEFT JOIN item_images i ON p.item_ID = i.item_ID AND i.is_primary = 1";
 $result = mysqli_query($conn, $query);
+if (!$result) {
+    die("Query Failed: " . mysqli_error($conn));
+}
 ?>
 
 <!DOCTYPE html>
@@ -186,7 +189,7 @@ $result = mysqli_query($conn, $query);
                                         <p>Est: $15-$25</p><br>
                                     </div>
                                     <div class="itemLinks">
-                                        <a href="">View item</a>
+                                        <a href="../Itemdetails/itemdetails.php?itemId=<?php echo $row['item_ID']; ?>">View item</a>
                                         <a href="../registerbid/registerbid.php"><button>Register to bid</button></a>
                                     </div>
                                 </div>

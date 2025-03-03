@@ -1,4 +1,4 @@
-<footer>
+<div class="footer">
     <div class="footerMenus">
         <div class="Menu">
             <h1>Menu</h1>
@@ -29,9 +29,9 @@
             <a href="#"><img src="../assets/icons/twitter.png" alt=""></a>
         </div>
     </div>
-</footer>
+</div>
 <style>
-    footer {
+    .footer {
         width: 100%;
         height: 500px;
         margin-top: 10%;
