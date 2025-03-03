@@ -167,7 +167,7 @@ $result = mysqli_query($conn, $query);
                 <?php
                 while ($row = mysqli_fetch_assoc($result)) {
                 ?>
-                    <div class="ItemCard">
+                    <div class="ItemCard" data-category="<?php echo $row["product_category"]?>">
                         <div class="itemImage">
                             <div class="imageCard">
                                 <img src="../uploads/<?php echo $row['image_path']; ?>">
@@ -258,5 +258,66 @@ $result = mysqli_query($conn, $query);
         }
     });
 </script>
+<script>
+document.querySelectorAll('.categories input[type="checkbox"]').forEach(checkbox => {
+    checkbox.addEventListener('change', filterProducts);
+});
 
+function filterProducts() {
+    let selectedCategories = [];
+    document.querySelectorAll('.categories input[type="checkbox"]:checked').forEach(checkbox => {
+        selectedCategories.push(checkbox.parentElement.textContent.trim());
+    });
+
+    const products = document.querySelectorAll('.ItemCard');
+    
+    products.forEach(product => {
+        const productCategory = product.querySelector('.itemCategory').textContent.trim();
+        if (selectedCategories.length === 0 || selectedCategories.includes(productCategory)) {
+            product.style.display = 'block';
+        } else {
+            product.style.display = 'none';
+        }
+    });
+}
+</script>
+<script>
+    const categoryCheckboxes = document.querySelectorAll('.categories input[type="checkbox"]');
+    const products = document.querySelectorAll('.ItemCard');
+
+    // Function to filter products based on selected criteria
+    function filterProducts() {
+        let selectedCategories = [];
+
+        // Get selected categories
+        categoryCheckboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                selectedCategories.push(checkbox.parentNode.textContent.trim());
+            }
+        });
+
+
+        // Filter products
+        products.forEach(product => {
+            let productCategory = product.getAttribute('data-category');
+
+            // Check category filter
+            let categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(productCategory);
+
+            // Show or hide product based on filters
+            if (categoryMatch) {
+                product.style.display = 'flex';
+            } else {
+                product.style.display = 'none';
+            }
+        });
+    }
+
+    // Attach event listeners to filter elements
+    categoryCheckboxes.forEach(checkbox => checkbox.addEventListener('change', filterProducts));
+
+
+    // Initial filter call to load products
+    filterProducts();
+</script>
 </html>
