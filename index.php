@@ -1,7 +1,7 @@
 <?php
 include_once("php/connection.php");
 
-$query = "SELECT p.item_title, p.ending_date, p.endTime, i.image_path FROM products p LEFT JOIN item_images i ON p.item_ID = i.item_ID WHERE i.is_primary = 1";
+$query = "SELECT p.item_ID, p.item_title, p.ending_date, p.endTime, i.image_path FROM products p LEFT JOIN item_images i ON p.item_ID = i.item_ID WHERE i.is_primary = 1";
 $result = mysqli_query($conn, $query);
 ?>
 
@@ -207,7 +207,7 @@ $result = mysqli_query($conn, $query);
                             <?php echo "<p> Ending Time: " . $row['ending_date'] . "   " . $row['endTime'] . "</p>" ?>
                             <p>Current Bid: </p>
                         </div>
-                        <a href="Itemdetails/itemdetails.php"><button class="bidButton">Bid</button></a>
+                        <a href="Itemdetails/itemdetails.php?itemId=<?php echo $row["item_ID"] ?>"><button class="bidButton">Bid</button></a>
                     </div>
                 <?php
                 }
