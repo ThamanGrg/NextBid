@@ -41,8 +41,9 @@ section{
     font-size: 60px;
 }
 
-form{
+.form{
     margin-top: 60px;
+    border: 2px solid black;
 }
 
 .inputField{

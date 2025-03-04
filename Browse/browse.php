@@ -20,7 +20,7 @@ if (!$result) {
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="browse.css?version=1.2">
+    <link rel="stylesheet" href="browse.css?version=1.3">
 </head>
 
 <body>
@@ -97,7 +97,7 @@ if (!$result) {
                 <p>Auction</p>
             </div>
             <div class="searchBox">
-                <input type="text" placeholder="Search for item..." maxlength="50" class="SearchButton"><button><img src="../../assets/icons/magnifying-glass.png" alt="">Search</button>
+                <input type="text" placeholder="Search for item..." maxlength="50" class="SearchButton"><button><img src="../assets/icons/magnifying-glass.png" alt="">Search</button>
             </div>
             <div class="PerPageButton">
                 <label for="per-page">Per Page:</label>
@@ -288,11 +288,9 @@ function filterProducts() {
     const categoryCheckboxes = document.querySelectorAll('.categories input[type="checkbox"]');
     const products = document.querySelectorAll('.ItemCard');
 
-    // Function to filter products based on selected criteria
     function filterProducts() {
         let selectedCategories = [];
 
-        // Get selected categories
         categoryCheckboxes.forEach(checkbox => {
             if (checkbox.checked) {
                 selectedCategories.push(checkbox.parentNode.textContent.trim());
@@ -300,14 +298,10 @@ function filterProducts() {
         });
 
 
-        // Filter products
         products.forEach(product => {
             let productCategory = product.getAttribute('data-category');
 
-            // Check category filter
             let categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(productCategory);
-
-            // Show or hide product based on filters
             if (categoryMatch) {
                 product.style.display = 'flex';
             } else {
@@ -316,11 +310,8 @@ function filterProducts() {
         });
     }
 
-    // Attach event listeners to filter elements
     categoryCheckboxes.forEach(checkbox => checkbox.addEventListener('change', filterProducts));
 
-
-    // Initial filter call to load products
     filterProducts();
 </script>
 </html>

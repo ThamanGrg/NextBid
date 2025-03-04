@@ -10,7 +10,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="create.css?version=1.1">
+    <link rel="stylesheet" href="create.css?version=1.2">
 </head>
 
 <body>
@@ -25,7 +25,7 @@
                     <h1>Create an Auction</h1>
                     <h3>Fill the below form to apply for creation of auction.</h3>
                 </div>
-                <form action="../php/auctionform.php" method="post" enctype="multipart/form-data">
+                <form action="../php/auctionform.php" method="post" enctype="multipart/form-data" class="form">
                     <div class="inputField">
                         <label for="Item Title">Item Title: </label>
                         <input type="text" name="itemTitle" id="itemTitle" maxlength="255" required>
@@ -56,7 +56,7 @@
                         <label for="category">Category: </label>
                         <select name="category" id="category">
                             <option value="" class="none"></option>
-                            <option value="Vintage items and Antiques">Vintage items and Antiques</option>
+                            <option value="Vintage Items & Antiques">Vintage Items & Antiques</option>
                             <option value="Automobiles">Automobiles</option>
                             <option value="Arts">Arts</option>
                             <option value="Jewellery">Jewellery</option>
@@ -68,19 +68,19 @@
                     <div class="inputField">
                         <label for="Description">Item description: </label>
                         <textarea name="itemDescription" id="itemDescription" maxlength="255"></textarea required>
-        </div>
+                    </div>
 
-        <div class="inputField">
-            <label for="Item Image">Item image:</label>
-            <input type="file" name="itemImages[]" id="itemImage" multiple>
-        </div>
-        <div class="submit">
-            <input type="submit" class="submitButton" name="submit">
-        </div>
-    </form>
-</div>
+                    <div class="inputField">
+                        <label for="Item Image">Item image:</label>
+                        <input type="file" name="itemImages[]" id="itemImage" multiple>
+                    </div>
+                    <div class="submit">
+                        <input type="submit" class="submitButton" name="submit">
+                    </div>
+                </form>
+            </div>
 
-</div>
+        </div>
     </section>
     
     <?php
