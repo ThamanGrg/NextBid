@@ -298,10 +298,14 @@ function filterProducts() {
         });
 
 
+        // Filter products
         products.forEach(product => {
             let productCategory = product.getAttribute('data-category');
 
+            // Check category filter
             let categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(productCategory);
+
+            // Show or hide product based on filters
             if (categoryMatch) {
                 product.style.display = 'flex';
             } else {
@@ -310,8 +314,11 @@ function filterProducts() {
         });
     }
 
+    // Attach event listeners to filter elements
     categoryCheckboxes.forEach(checkbox => checkbox.addEventListener('change', filterProducts));
 
+
+    // Initial filter call to load products
     filterProducts();
 </script>
 </html>
