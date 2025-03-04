@@ -288,26 +288,22 @@ function filterProducts() {
     const categoryCheckboxes = document.querySelectorAll('.categories input[type="checkbox"]');
     const products = document.querySelectorAll('.ItemCard');
 
-    // Function to filter products based on selected criteria
     function filterProducts() {
         let selectedCategories = [];
 
-        // Get selected categories
+
         categoryCheckboxes.forEach(checkbox => {
             if (checkbox.checked) {
                 selectedCategories.push(checkbox.parentNode.textContent.trim());
             }
         });
 
-
-        // Filter products
         products.forEach(product => {
             let productCategory = product.getAttribute('data-category');
 
-            // Check category filter
+            
             let categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(productCategory);
 
-            // Show or hide product based on filters
             if (categoryMatch) {
                 product.style.display = 'flex';
             } else {
@@ -316,11 +312,10 @@ function filterProducts() {
         });
     }
 
-    // Attach event listeners to filter elements
+
     categoryCheckboxes.forEach(checkbox => checkbox.addEventListener('change', filterProducts));
 
 
-    // Initial filter call to load products
     filterProducts();
 </script>
 </html>
