@@ -1,8 +1,11 @@
 <?php
 include_once('../php/connection.php');
 
-$query = "SELECT * FROM products p LEFT JOIN item_images i ON p.item_ID = i.item_ID WHERE i.is_primary = 1";
+$query = "SELECT p.*, i.* FROM products p LEFT JOIN item_images i ON p.item_ID = i.item_ID AND i.is_primary = 1";
 $result = mysqli_query($conn, $query);
+if (!$result) {
+    die("Query Failed: " . mysqli_error($conn));
+}
 ?>
 
 <!DOCTYPE html>
@@ -167,7 +170,7 @@ $result = mysqli_query($conn, $query);
                 <?php
                 while ($row = mysqli_fetch_assoc($result)) {
                 ?>
-                    <div class="ItemCard">
+                    <div class="ItemCard" data-category="<?php echo $row["product_category"]?>">
                         <div class="itemImage">
                             <div class="imageCard">
                                 <img src="../uploads/<?php echo $row['image_path']; ?>">
@@ -186,7 +189,7 @@ $result = mysqli_query($conn, $query);
                                         <p>Est: $15-$25</p><br>
                                     </div>
                                     <div class="itemLinks">
-                                        <a href="">View item</a>
+                                        <a href="../Itemdetails/itemdetails.php?itemId=<?php echo $row['item_ID']; ?>">View item</a>
                                         <a href="../registerbid/registerbid.php"><button>Register to bid</button></a>
                                     </div>
                                 </div>
@@ -258,5 +261,61 @@ $result = mysqli_query($conn, $query);
         }
     });
 </script>
+<script>
+document.querySelectorAll('.categories input[type="checkbox"]').forEach(checkbox => {
+    checkbox.addEventListener('change', filterProducts);
+});
 
+function filterProducts() {
+    let selectedCategories = [];
+    document.querySelectorAll('.categories input[type="checkbox"]:checked').forEach(checkbox => {
+        selectedCategories.push(checkbox.parentElement.textContent.trim());
+    });
+
+    const products = document.querySelectorAll('.ItemCard');
+    
+    products.forEach(product => {
+        const productCategory = product.querySelector('.itemCategory').textContent.trim();
+        if (selectedCategories.length === 0 || selectedCategories.includes(productCategory)) {
+            product.style.display = 'block';
+        } else {
+            product.style.display = 'none';
+        }
+    });
+}
+</script>
+<script>
+    const categoryCheckboxes = document.querySelectorAll('.categories input[type="checkbox"]');
+    const products = document.querySelectorAll('.ItemCard');
+
+    function filterProducts() {
+        let selectedCategories = [];
+
+
+        categoryCheckboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                selectedCategories.push(checkbox.parentNode.textContent.trim());
+            }
+        });
+
+        products.forEach(product => {
+            let productCategory = product.getAttribute('data-category');
+
+            
+            let categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(productCategory);
+
+            if (categoryMatch) {
+                product.style.display = 'flex';
+            } else {
+                product.style.display = 'none';
+            }
+        });
+    }
+
+
+    categoryCheckboxes.forEach(checkbox => checkbox.addEventListener('change', filterProducts));
+
+
+    filterProducts();
+</script>
 </html>
