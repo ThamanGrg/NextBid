@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once("php/connection.php");
 
 $query = "SELECT p.item_ID, p.item_title, p.ending_date, p.endTime, i.image_path FROM products p LEFT JOIN item_images i ON p.item_ID = i.item_ID WHERE i.is_primary = 1";
@@ -51,7 +52,14 @@ $result = mysqli_query($conn, $query);
                 <img src="assets/icons/bell.png" alt="">
             </div>
             <div class="loginSignup">
-                <button class="btnLogin-popup" onclick="loginForm();"><img src="assets/icons/user.png" alt="user">Login</button>
+                <?php
+                if(isset($_SESSION['username'])){
+                    echo "<button><img src='assets/icons/user.png' alt='user' class='userDropDown'>" . $_SESSION['username'] . "</button>";
+                } else {
+                    echo "<button class='btnLogin-popup' onclick='loginForm();'><img src='assets/icons/user.png' alt='user'>Login</button>";
+                }
+                    
+                ?>
             </div>
         </div>
     </header>
@@ -66,23 +74,23 @@ $result = mysqli_query($conn, $query);
                         <form action="php/loginRegister.php" method="POST" id="loginForm">
                             <div class="input-box">
                                 <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                                <input type="email" required>
+                                <input type="email" name="email" required>
                                 <label>Email</label>
                             </div>
                             <div class="input-box">
                                 <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                                <input type="password" required>
+                                <input type="password" name="password" required>
                                 <label>password</label>
                             </div>
                             <div class="remember-forgot">
                                 <label><input type="checkbox">Remember me </label>
-                                <a href="#">forgot password?</a>
+                                <a href="">forgot password?</a>
                             </div>
                             <button type="submit" name="login" class="btn">login</button>
-                            <div class="login-register">
-                                <p>Don't have an account?<a href="#" class="register-link">Register</a></p>
-                            </div>
                         </form>
+                        <div class="login-register">
+                            <p>Don't have an account?<a href="#" class="register-link">Register</a></p>
+                        </div>
                     </div>
 
                     <div class="from-box register" id="registerForm">

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once('connection.php');
 
 if (isset($_POST['register'])) {
@@ -30,7 +31,32 @@ if (isset($_POST['register'])) {
         echo $response;
     } else {
         $submitQuery = "INSERT INTO users (username, email, password) VALUES ('$uname', '$email', '$password')";
-        $conn->query($submitQuery);
+        $success = $conn->query($submitQuery);
+
+        if($success){
+            header("Location: ../index.php");
+            $response .= "Registered";
+        } else {
+            header("Location: ../index.php");
+            $response .= "Register unsuccessful try again!!";
+        }
+    }
+}
+
+if (isset($_POST['login'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $query = "SELECT * FROM users WHERE email='$email' AND password='$password'";
+    $res = mysqli_query($conn, $query);
+
+    if (mysqli_num_rows($res) == 1) {
+        $row = mysqli_fetch_assoc($res);
+        $_SESSION['username'] = $row['username'];
+        header("Location: ../index.php");
+        exit();
+    } else {
+        echo "Invalid Username or Password!";
     }
 }
 

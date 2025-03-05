@@ -1,5 +1,5 @@
 <?php
-
+  session_start();
   include("../php/connection.php");
     
   if (isset($_GET['itemId'])){
@@ -130,9 +130,9 @@
               <div class="auctionDetails margin">
                 <h3>Auction Details</h3>
                 <p><b>Rare antique Japanese Amida Buddha statue</b></p>
-                <p>By <b>Username234</b></p>
-                <p>December 15, 10:50 PM</p>
-                <p>Tokyo-to, Shibuya-ku, Japan</p>
+                <p>Auction By: <b>Username234</b></p>
+                <p>Added Date: December 15, 10:50 PM</p>
+                <p>Location: Tokyo-to, Shibuya-ku, Japan</p>
               </div>
               <div class="shippingDetails">
                 <h3>Shipping Details</h3>

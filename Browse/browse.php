@@ -108,104 +108,104 @@ if (!$result) {
                 </select>
             </div>
         </div>
-        <div class="main">
-            <div class="leftSection">
-                <div class="filterSection">
-                    <div class="title">
-                        <h3>Filter</h3>
-                    </div>
-                    <div class="categories">
-                        <h4>Categories</h4>
-                        <ul>
-                            <li><input type="checkbox"> Vintage Items & Antiques</li>
-                            <li><input type="checkbox"> Automobiles</li>
-                            <li><input type="checkbox"> Decorative items & Gifts</li>
-                            <li><input type="checkbox"> Arts</li>
-                            <li><input type="checkbox"> Jewellery</li>
-                            <li><input type="checkbox"> Furniture</li>
-                        </ul>
-                    </div>
-                    <hr>
-                    <div class="dateSection">
-                        <h4>Dates</h4>
-                        <ul>
-                            <li><input type="checkbox"> All Dates</li>
-                            <li><input type="checkbox"> Next 5 days</li>
-                            <li><input type="checkbox"> Next 10 days</li>
-                            <li><input type="checkbox"> Next 15 days</li>
-                            <li><input type="checkbox"> Next 30 days</li>
-                        </ul>
-                    </div>
-                    <hr>
-                    <div class="locationSection">
-                        <h4>Sale Location</h4>
-                        <label for="Location">Select Location:</label>
-                        <select name="saleLocation" id="">
-                            <option>none</option>
-                            <option value="">United State</option>
-                            <option value="">Australia</option>
-                            <option value="">United Kingdom</option>
-                            <option value="">Canada</option>
-                            <option value="">Nepal</option>
-                            <option value="">Germany</option>
-                            <option value="">France</option>
-                        </select>
-                    </div>
-                    <hr>
-                    <div class="startingSection">
-                        <h4>Price range</h4>
-                        <div class="price">
-                            <label for="filter Price">Minimum Price:</label>
-                            <input type="text" min="0" maxlength="10">
+            <div class="main">
+                <div class="leftSection">
+                    <div class="filterSection">
+                        <div class="title">
+                            <h3>Filter</h3>
                         </div>
-                        <div class="price">
-                            <label for="filter Price">Maximum Price:</label>
-                            <input type="text" min="0" maxlength="10">
+                        <div class="categories">
+                            <h4>Categories</h4>
+                            <ul>
+                                <li><input type="checkbox"> Vintage Items & Antiques</li>
+                                <li><input type="checkbox"> Automobiles</li>
+                                <li><input type="checkbox"> Decorative items & Gifts</li>
+                                <li><input type="checkbox"> Arts</li>
+                                <li><input type="checkbox"> Jewellery</li>
+                                <li><input type="checkbox"> Furniture</li>
+                            </ul>
                         </div>
+                        <hr>
+                        <div class="dateSection">
+                            <h4>Dates</h4>
+                            <ul>
+                                <li><input type="checkbox"> All Dates</li>
+                                <li><input type="checkbox"> Next 5 days</li>
+                                <li><input type="checkbox"> Next 10 days</li>
+                                <li><input type="checkbox"> Next 15 days</li>
+                                <li><input type="checkbox"> Next 30 days</li>
+                            </ul>
+                        </div>
+                        <hr>
+                        <div class="locationSection">
+                            <h4>Sale Location</h4>
+                            <label for="Location">Select Location:</label>
+                            <select name="saleLocation" id="">
+                                <option>none</option>
+                                <option value="">United State</option>
+                                <option value="">Australia</option>
+                                <option value="">United Kingdom</option>
+                                <option value="">Canada</option>
+                                <option value="">Nepal</option>
+                                <option value="">Germany</option>
+                                <option value="">France</option>
+                            </select>
+                        </div>
+                        <hr>
+                        <div class="startingSection">
+                            <h4>Price range</h4>
+                            <div class="price">
+                                <label for="filter Price">Minimum Price:</label>
+                                <input type="text" min="0" maxlength="10">
+                            </div>
+                            <div class="price">
+                                <label for="filter Price">Maximum Price:</label>
+                                <input type="text" min="0" maxlength="10">
+                            </div>
 
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="rightSection">
-                <?php
-                while ($row = mysqli_fetch_assoc($result)) {
-                ?>
-                    <div class="ItemCard" data-category="<?php echo $row["product_category"]?>">
-                        <div class="itemImage">
-                            <div class="imageCard">
-                                <img src="../uploads/<?php echo $row['image_path']; ?>">
+                <div class="rightSection">
+                    <?php
+                    while ($row = mysqli_fetch_assoc($result)) {
+                    ?>
+                        <div class="ItemCard" data-category="<?php echo $row["product_category"]?>">
+                            <div class="itemImage">
+                                <div class="imageCard">
+                                    <img src="../uploads/<?php echo $row['image_path']; ?>">
+                                </div>
+                            </div>
+                            <div class="itemRight">
+                                <div class="itemDetails">
+                                    <div class="itemTitle">
+                                        <h3><?php echo $row['item_title']; ?></h3>
+                                    </div>
+                                    <div class="item-Bottom">
+                                        <div class="itemDescription">
+                                            <p>Seller: Thaman@123</p><br>
+                                            <p>Location: Pokhara, kaski</p><br>
+                                            <p>December 13, 2024 | 22:22</p><br>
+                                            <p>Est: $15-$25</p><br>
+                                        </div>
+                                        <div class="itemLinks">
+                                            <a href="../Itemdetails/itemdetails.php?itemId=<?php echo $row['item_ID']; ?>">View item</a>
+                                            <a href="../registerbid/registerbid.php"><button>Register to bid</button></a>
+                                        </div>
+                                    </div>
+
+                                </div>
+
                             </div>
                         </div>
-                        <div class="itemRight">
-                            <div class="itemDetails">
-                                <div class="itemTitle">
-                                    <h3><?php echo $row['item_title']; ?></h3>
-                                </div>
-                                <div class="item-Bottom">
-                                    <div class="itemDescription">
-                                        <p>Seller: Thaman@123</p><br>
-                                        <p>Location: Pokhara, kaski</p><br>
-                                        <p>December 13, 2024 | 22:22</p><br>
-                                        <p>Est: $15-$25</p><br>
-                                    </div>
-                                    <div class="itemLinks">
-                                        <a href="../Itemdetails/itemdetails.php?itemId=<?php echo $row['item_ID']; ?>">View item</a>
-                                        <a href="../registerbid/registerbid.php"><button>Register to bid</button></a>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                    <hr>
-                <?php
-                }
-                ?>
+                        <hr>
+                    <?php
+                    }
+                    ?>
 
 
+                </div>
             </div>
-        </div>
         </div>
     </section>
 
@@ -297,15 +297,9 @@ function filterProducts() {
             }
         });
 
-
-        // Filter products
         products.forEach(product => {
             let productCategory = product.getAttribute('data-category');
-
-            // Check category filter
             let categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(productCategory);
-
-            // Show or hide product based on filters
             if (categoryMatch) {
                 product.style.display = 'flex';
             } else {
@@ -314,11 +308,7 @@ function filterProducts() {
         });
     }
 
-    // Attach event listeners to filter elements
     categoryCheckboxes.forEach(checkbox => checkbox.addEventListener('change', filterProducts));
-
-
-    // Initial filter call to load products
     filterProducts();
 </script>
 </html>

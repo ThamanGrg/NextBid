@@ -1,4 +1,5 @@
 <?php
+session_start();
 include('../php/connection.php');
 
 if (isset($_POST['submit'])) {
@@ -14,7 +15,12 @@ if (isset($_POST['submit'])) {
     $endTime = $_POST['endTime'];
     $itemDescription = mysqli_real_escape_string($conn, $_POST['itemDescription']);
 
+    $itemCond = $_POST['item_Condition'];
+    $noOfItem = $_POST['no_Item'];
+    $location = $_POST['location'];
+
     $sql = "INSERT INTO products (item_title, product_category, initial_price, maximum_price, post_date, starting_date, startTime, ending_date, endTime, item_description) VALUES ('$itemTitle', '$productCategory', '$initialPrice', '$maximumPrice', '$postDate', '$startDate', '$startTime', '$endDate', '$endTime', '$itemDescription')";
+    
 
     $data = mysqli_query($conn, $sql);
 
@@ -23,6 +29,7 @@ if (isset($_POST['submit'])) {
     }
 
     $item_id = $conn->insert_id;
+    
     foreach ($_FILES['itemImages']['tmp_name'] as $key => $tmp_name) {
         $fileName = $_FILES['itemImages']['name'][$key];
         $filePath = "../uploads/" . $fileName;
@@ -42,6 +49,10 @@ if (isset($_POST['submit'])) {
             continue;
         }
     }
+    
+    $detailSQL = "INSERT INTO item_details (item_ID, item_condition, no_Item, location, user) VALUES ('$item_id', '$itemCond', '$noOfItem', '$location', 'ThamanGrg!23';";
+    $subQuery = $conn->query($detailSQL);
+    
     if ($data) {
         header('location:../Create/create.php');
     }
