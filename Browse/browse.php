@@ -170,7 +170,7 @@ if (!$result) {
                 <?php
                 while ($row = mysqli_fetch_assoc($result)) {
                 ?>
-                    <div class="ItemCard" data-category="<?php echo $row["product_category"]?>">
+                    <div class="ItemCard" data-category="<?php echo $row["product_category"]?>" data-price="<?php echo $row["initial_price"]?>">
                         <div class="itemImage">
                             <div class="imageCard">
                                 <img src="../uploads/<?php echo $row['image_path']; ?>">
@@ -315,6 +315,47 @@ function filterProducts() {
 
     categoryCheckboxes.forEach(checkbox => checkbox.addEventListener('change', filterProducts));
 
+
+    filterProducts();
+</script>
+<script>
+    const categoryCheckboxes = document.querySelectorAll('.categories input[type="checkbox"]');
+    const priceMinInput = document.querySelector('.startingSection input[type="text"]:first-of-type');
+    const priceMaxInput = document.querySelector('.startingSection input[type="text"]:last-of-type');
+    const products = document.querySelectorAll('.product');
+
+    function filterProducts() {
+        let selectedCategories = [];
+        let minPrice = parseFloat(priceMinInput.value) || 0;
+        let maxPrice = parseFloat(priceMaxInput.value) || Infinity;
+
+        categoryCheckboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                selectedCategories.push(checkbox.parentNode.textContent.trim());
+            }
+        });
+
+
+        products.forEach(product => {
+            let productCategory = product.getAttribute('data-category');
+            let productPrice = parseFloat(product.getAttribute('data-price'));
+
+            let categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(productCategory);
+
+            let priceMatch = productPrice >= minPrice && productPrice <= maxPrice;
+
+
+            if (categoryMatch && priceMatch) {
+                product.style.display = 'block';
+            } else {
+                product.style.display = 'none';
+            }
+        });
+    }
+
+    categoryCheckboxes.forEach(checkbox => checkbox.addEventListener('change', filterProducts));
+    priceMinInput.addEventListener('input', filterProducts);
+    priceMaxInput.addEventListener('input', filterProducts);
 
     filterProducts();
 </script>
