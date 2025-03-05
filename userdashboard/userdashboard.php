@@ -1,0 +1,57 @@
+<?php
+session_start();
+include("../php/connection.php");
+if(isset($_SESSION['username'])){
+$query = "SELECT * FROM users WHERE username = '$_SESSION['username']'";}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="userdashboard.css">
+</head>
+<body>
+    <div class="dashboard">
+        <nav class="sidebar">
+            <h2>Dashboard</h2>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </nav>
+        <div class="main-content">
+            <header>
+                <h1>Welcome, Anech Darai</h1>
+                <button id="theme-toggle">Light/Dark</button>
+            </header>
+
+            <section class="user-info">
+                <div class="card">
+                    <h3>User Info</h3>
+                    <p>Name: Anech Darai</p>
+                    <p>Email: ronaldocr7@gmail.com</p>
+                    <p>Phone no: 9876543210</p>
+                    <p>Address: Nepal,Pokhara</p>
+                </div>
+                <div class="card">
+                    <h3>Stats</h3>
+                    <p>Projects: 5</p>
+                    <p>Tasks Completed: 12</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+<script>
+    document.getElementById('theme-toggle').addEventListener('click', function() {
+    document.body.classList.toggle('dark-mode');
+});
+</script>
+</html>
