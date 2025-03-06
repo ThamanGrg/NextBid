@@ -49,12 +49,13 @@ if (isset($_POST['submit'])) {
             continue;
         }
     }
-    
-    $detailSQL = "INSERT INTO item_details (item_ID, item_condition, no_Item, location, user) VALUES ('$item_id', '$itemCond', '$noOfItem', '$location', 'ThamanGrg!23';";
-    $subQuery = $conn->query($detailSQL);
-    
-    if ($data) {
-        header('location:../Create/create.php');
+    if (isset($_SESSION['username'])){
+        $uname = $_SESSION['username'];
+        $detailSQL = "INSERT INTO item_details (item_ID, item_condition, no_Item, location, user) VALUES ('$item_id', '$itemCond', '$noOfItem', '$location', '$uname')";
+        $subQuery = $conn->query($detailSQL);
+        
+        if ($data) {
+            header('location:../Create/create.php');
+        }
     }
-    
 }

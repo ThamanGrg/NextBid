@@ -143,7 +143,7 @@ session_start();
         <div class="loginSignup">
             <?php
             if (isset($_SESSION['username'])) {
-                echo "<button><img src='../assets/icons/user.png' alt='user' class='userDropDown'>" . $_SESSION['username'] . "</button>";
+                echo "<button onclick=userProfile();><img src='../assets/icons/user.png' alt='user' class='userDropDown'>" . $_SESSION['username'] . "</button>";
             } else {
                 echo "<button class='btnLogin-popup' onclick='loginForm();'><img src='assets/icons/user.png' alt='user'>Login</button>";
             }
