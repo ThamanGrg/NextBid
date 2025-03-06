@@ -2,7 +2,9 @@
 session_start();
 include("../php/connection.php");
 if(isset($_SESSION['username'])){
-$query = "SELECT * FROM users WHERE username = '$_SESSION['username']'";}
+    $username = $_SESSION['username'];
+    $query = "SELECT * FROM users WHERE username = '$username'";
+}
 ?>
 
 <!DOCTYPE html>
@@ -11,14 +13,14 @@ $query = "SELECT * FROM users WHERE username = '$_SESSION['username']'";}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
-    <link rel="stylesheet" href="userdashboard.css">
+    <link rel="stylesheet" href="userdashboard.css?version=1.1">
 </head>
 <body>
     <div class="dashboard">
         <nav class="sidebar">
             <h2>Dashboard</h2>
             <ul>
-                <li><a href="#">Home</a></li>
+                <li><a href="../index.php">Home</a></li>
                 <li><a href="#">Profile</a></li>
                 <li><a href="#">Settings</a></li>
                 <li><a href="#">Logout</a></li>

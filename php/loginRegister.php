@@ -6,16 +6,18 @@ if (isset($_POST['register'])) {
     $uname = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
-    
+
     $uname = $conn->real_escape_string($uname);
     $email = $conn->real_escape_string($email);
 
-    
+    $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+
     $sql = "SELECT * FROM users WHERE username = '$uname' OR email = '$email'";
-    $result = $conn->query($sql);
+
 
     if ($result->num_rows > 0) {
         $response = "";
+        
         $sql_user = "SELECT * FROM users WHERE username = '$uname'";
         $result_user = $conn->query($sql_user);
         if ($result_user->num_rows > 0) {
@@ -27,36 +29,48 @@ if (isset($_POST['register'])) {
         if ($result_email->num_rows > 0) {
             $response .= "Email already exists.";
         }
-
-        echo $response;
     } else {
-        $submitQuery = "INSERT INTO users (username, email, password) VALUES ('$uname', '$email', '$password')";
+        $submitQuery = "INSERT INTO users (username, email, password) VALUES ('$uname', '$email', '$hashed_password')";
         $success = $conn->query($submitQuery);
 
-        if($success){
+        if ($success) {
+            $_SESSION['success_message'] = "Registration successful. Please log in.";
             header("Location: ../index.php");
-            $response .= "Registered";
+            exit;
         } else {
+            $_SESSION['error_message'] = "Registration unsuccessful. Please try again.";
             header("Location: ../index.php");
-            $response .= "Register unsuccessful try again!!";
+            exit;
         }
     }
 }
+
 
 if (isset($_POST['login'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $query = "SELECT * FROM users WHERE email='$email' AND password='$password'";
-    $res = mysqli_query($conn, $query);
+    $query = "SELECT * FROM users WHERE email = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-    if (mysqli_num_rows($res) == 1) {
-        $row = mysqli_fetch_assoc($res);
-        $_SESSION['username'] = $row['username'];
-        header("Location: ../index.php");
-        exit();
+    if ($result->num_rows == 1) {
+        $row = $result->fetch_assoc();
+
+        if (password_verify($password, $row['password'])) {
+            $_SESSION['username'] = $row['username'];
+            header("Location: ../index.php");
+            $response .= "login successful";
+            echo $response;
+        } else {
+            echo "Invalid Username or Password!";
+            header("Location: ../index.php");
+        }
     } else {
         echo "Invalid Username or Password!";
+        header("Location: ../index.php");
     }
 }
 
