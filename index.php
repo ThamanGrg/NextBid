@@ -25,7 +25,7 @@ if (isset($_SESSION['username'])) {
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?version=1.6">
+    <link rel="stylesheet" href="style.css?version=1.7">
 </head>
 
 <body>
@@ -164,6 +164,11 @@ if (isset($_SESSION['username'])) {
                                 <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
                                 <input type="email" name="email" required>
                                 <label>Email</label>
+                            </div>
+                            <div class="input-box">
+                                <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                                <input type="text" name="name" id="password" required>
+                                <label>Name</label>
                             </div>
                             <div id="result"></div>
                             <div class="input-box">

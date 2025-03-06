@@ -661,7 +661,7 @@ section {
 }
 
 .wrapper.active {
-    height: 520px;
+    height: 600px;
 }
 
 .wrapper .from-box {
@@ -690,6 +690,7 @@ section {
     transform: translateX(0);
     width: 320px;
 }
+
 
 .wrapper .icon-close {
     position: absolute;

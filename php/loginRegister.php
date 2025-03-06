@@ -5,10 +5,12 @@ include_once('connection.php');
 if (isset($_POST['register'])) {
     $uname = $_POST['username'];
     $email = $_POST['email'];
+    $name = $_POST['name'];
     $password = $_POST['password'];
 
     $uname = $conn->real_escape_string($uname);
     $email = $conn->real_escape_string($email);
+    $name = $conn->real_escape_string($name);
 
     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
@@ -30,7 +32,7 @@ if (isset($_POST['register'])) {
             $response .= "Email already exists.";
         }
     } else {
-        $submitQuery = "INSERT INTO users (username, email, password) VALUES ('$uname', '$email', '$hashed_password')";
+        $submitQuery = "INSERT INTO users (username, email, name, password) VALUES ('$uname', '$email', '$name', '$hashed_password')";
         $success = $conn->query($submitQuery);
 
         if ($success) {

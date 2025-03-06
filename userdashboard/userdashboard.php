@@ -39,7 +39,7 @@ if(isset($_SESSION['username'])){
             <section class="user-info">
                 <div class="card">
                     <h3>User Info</h3>
-                    <p>Name: Anech Darai</p>
+                    <p>Name: <?php echo $row['name']?>;</p>
                     <p>Email:<?php echo $row['email']; ?></p>
                     <p>Phone no: 9876543210</p>
                     <p>Address: Nepal,Pokhara</p>
