@@ -2,7 +2,12 @@
 session_start();
 include("../php/connection.php");
 if(isset($_SESSION['username'])){
-$query = "SELECT * FROM users WHERE username = '$_SESSION['username']'";}
+    $username = $_SESSION['username'];
+    $query = "SELECT * FROM users WHERE username = '$username'";
+    $result = $conn->query($query);
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -25,8 +30,11 @@ $query = "SELECT * FROM users WHERE username = '$_SESSION['username']'";}
             </ul>
         </nav>
         <div class="main-content">
+            <?php
+             while($row = $result->fetch_assoc()) {
+            ?>
             <header>
-                <h1>Welcome, Anech Darai</h1>
+                <h1>Welcome, <?php echo $row['username']; ?></h1>
                 <button id="theme-toggle">Light/Dark</button>
             </header>
 
@@ -34,7 +42,7 @@ $query = "SELECT * FROM users WHERE username = '$_SESSION['username']'";}
                 <div class="card">
                     <h3>User Info</h3>
                     <p>Name: Anech Darai</p>
-                    <p>Email: ronaldocr7@gmail.com</p>
+                    <p>Email:<?php echo $row['email']; ?></p>
                     <p>Phone no: 9876543210</p>
                     <p>Address: Nepal,Pokhara</p>
                 </div>
@@ -44,6 +52,9 @@ $query = "SELECT * FROM users WHERE username = '$_SESSION['username']'";}
                     <p>Tasks Completed: 12</p>
                 </div>
             </section>
+            <?php
+            }
+            ?>
         </div>
     </div>
 
