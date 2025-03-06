@@ -2,8 +2,9 @@
 session_start();
 include("../php/connection.php");
 if(isset($_SESSION['username'])){
-    $username = $_SESSION['username'];
-    $query = "SELECT * FROM users WHERE username = '$username'";
+    $uname = $_SESSION['username'];
+    $query = "SELECT * FROM users WHERE username = '$uname'";
+    $result = $conn->query($query);
 }
 ?>
 
