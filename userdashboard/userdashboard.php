@@ -15,7 +15,7 @@ if (isset($_SESSION['username'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
-    <link rel="stylesheet" href="userdashboard.css?version=1.1">
+    <link rel="stylesheet" href="userdashboard.css?version=1.4">
 </head>
 
 <body>
@@ -23,10 +23,18 @@ if (isset($_SESSION['username'])) {
         <nav class="sidebar">
             <h2>Dashboard</h2>
             <ul>
+<<<<<<< HEAD
                 <li><a href="../index.php">Home</a></li>
                 <li><a href="#" onclick="loadContent('profile.php'); return false;">Profile</a></li>
                 <li><a href="#" onclick="loadContent('setting.php'); return false;">Settings</a></li>
+=======
+            <li><a href="../index.php">Home</a></li>
+                <li><a href="#" onclick="loadContent('profile.php'); return false;">Profile</a></li>
+                <li><a href="#" onclick="loadContent('setting.php'); return false;">Settings</a></li>
+                <li><a href="#" onclick="loadContent('account.php'); return false;">Account</a></li>
+>>>>>>> f896b19fe946933ea89c308ff5fa5424badd23a3
                 <li><a href="../php/logout.php">Logout</a></li>
+                
             </ul>
         </nav>
         <div class="main-content">
@@ -42,6 +50,7 @@ if (isset($_SESSION['username'])) {
     });
 </script>
 <script>
+<<<<<<< HEAD
     window.onload = function() {
         loadContent('profile.php');
     };
@@ -61,4 +70,24 @@ if (isset($_SESSION['username'])) {
     }
 </script>
 
+=======
+window.onload = function () {
+        loadContent('profile.php');
+    };
+
+function loadContent(page) {
+    const mainContent = document.querySelector('.main-content');
+    mainContent.innerHTML = '<div class="loading">Loading...</div>'; // Loading text while fetching data
+
+    fetch(page)
+        .then(response => response.text())
+        .then(data => {
+            mainContent.innerHTML = data;
+        })
+        .catch(() => {
+            mainContent.innerHTML = '<p>Error loading content!</p>';
+        });
+}
+</script>
+>>>>>>> f896b19fe946933ea89c308ff5fa5424badd23a3
 </html>
