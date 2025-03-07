@@ -14,45 +14,23 @@ if(isset($_SESSION['username'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
-    <link rel="stylesheet" href="userdashboard.css?version=1.1">
+    <link rel="stylesheet" href="userdashboard.css?version=1.4">
 </head>
 <body>
     <div class="dashboard">
         <nav class="sidebar">
             <h2>Dashboard</h2>
             <ul>
-                <li><a href="../index.php">Home</a></li>
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Settings</a></li>
+            <li><a href="../index.php">Home</a></li>
+                <li><a href="#" onclick="loadContent('profile.php'); return false;">Profile</a></li>
+                <li><a href="#" onclick="loadContent('setting.php'); return false;">Settings</a></li>
+                <li><a href="#" onclick="loadContent('account.php'); return false;">Account</a></li>
                 <li><a href="../php/logout.php">Logout</a></li>
+                
             </ul>
         </nav>
         <div class="main-content">
-            <?php
-             while($row = $result->fetch_assoc()) {
-            ?>
-            <header>
-                <h1>Welcome, <?php echo $row['username']; ?></h1>
-                <button id="theme-toggle">Light/Dark</button>
-            </header>
 
-            <section class="user-info">
-                <div class="card">
-                    <h3>User Info</h3>
-                    <p>Name: <?php echo $row['name']?>;</p>
-                    <p>Email:<?php echo $row['email']; ?></p>
-                    <p>Phone no: 9876543210</p>
-                    <p>Address: Nepal,Pokhara</p>
-                </div>
-                <div class="card">
-                    <h3>Stats</h3>
-                    <p>Projects: 5</p>
-                    <p>Tasks Completed: 12</p>
-                </div>
-            </section>
-            <?php
-            }
-            ?>
         </div>
     </div>
 
@@ -62,5 +40,24 @@ if(isset($_SESSION['username'])){
     document.getElementById('theme-toggle').addEventListener('click', function() {
     document.body.classList.toggle('dark-mode');
 });
+</script>
+<script>
+window.onload = function () {
+        loadContent('profile.php');
+    };
+
+function loadContent(page) {
+    const mainContent = document.querySelector('.main-content');
+    mainContent.innerHTML = '<div class="loading">Loading...</div>'; // Loading text while fetching data
+
+    fetch(page)
+        .then(response => response.text())
+        .then(data => {
+            mainContent.innerHTML = data;
+        })
+        .catch(() => {
+            mainContent.innerHTML = '<p>Error loading content!</p>';
+        });
+}
 </script>
 </html>
