@@ -25,6 +25,7 @@ section{
     width: 100%;
     height: 950px;
     display: flex;
+    justify-content: space-between;
 }
 
 .leftSection{
@@ -78,7 +79,6 @@ section{
 
 .rightSection{
     height: 800px;
-    width: 45%;
 }
 
 .top{
@@ -200,4 +200,88 @@ section{
 .margin li,.margin p{
     font-size: 18px;
     line-height: 30px;
+}
+
+.userDropdown{
+    display: none;
+    position: absolute;
+    width: auto;
+    height: auto;
+    background-color: #e0f3ff;
+    z-index: 100;
+    right: 120px;
+    top: 61px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border: 1px solid #8E8E8E;
+    overflow: hidden;
+    padding: 16px;
+    padding-right: 30px;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.userPP{
+    width: 80px;
+}
+
+.userDropdown .hr-line{
+    width: 90%;
+    height: 0.1px;
+    background-color: #655C5C;
+    margin: 30px auto ;
+}
+
+.profile {
+    display: flex;
+    width: 100%;
+    height: 150px;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 20px;
+}
+
+.profile p{
+    font-size: 16px;
+    color: #8E8E8E;
+}
+
+.user-info{
+    display: flex;
+    flex-direction: column;
+}
+
+.profile button{
+    margin-top: 15px;
+    height: 40px;
+    width: 120px;
+    background-color: orange;
+    border: none;
+    color: black;
+    border-radius: 20px;
+}
+
+.user-menu{
+    display: flex;
+    padding-left: 10px;
+    flex-direction: column;
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+}
+
+.logout{
+    display: flex;
+    padding-left: 10px;
+    flex-direction: column;
+}
+
+.logout button{
+    width: 100px;
+    height: 35px;
+    font-size: 17px;
 }

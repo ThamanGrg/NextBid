@@ -10,12 +10,67 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="create.css?version=1.5">
+    <link rel="stylesheet" href="create.css?version=1.8">
 </head>
 
 <body>
     <?php
     require_once('../php/header.php');
+    ?>
+    <?php
+  include_once('../php/header.php');
+  ?>
+      <?php
+    if (isset($_SESSION['username'])) {
+    ?>
+        <div id="userDropdown" class="userDropdown">
+            <div class="profile">
+                <?php
+                while ($row = mysqli_fetch_assoc($userR)) {
+                ?>
+                    <div>
+                        <div>
+                            <h2><?php echo $uname ?></h2>
+                        </div>
+                        <div class="user-info">
+                            <p>ID: <?php echo $row['user_id'] ?></p>
+                            <p>Email: <?php echo $row['email'] ?></p>
+                        </div>
+                        <div>
+                            <a href="../userdashboard/editProfile.php"><button>Edit Profile</button></a>
+                        </div>
+                    </div>
+                    <div>
+                        <div><img src="../assets/icons/man avatar with circle frame_8515464.png" alt="User Profile Picture" class="userPP"></div>
+                    </div>
+                <?php
+                }
+                ?>
+            </div>
+            <div class="hr-line"></div>
+            <div class="user-menu">
+                <h2>User menu</h2>
+                <div class="menu">
+                    <a href="../userdashboard/userdashboard.php">My dashboard</a>
+                    <a href="../userdashboard/editprofile.php">My auctions</a>
+                    <a href="../userdashboard/saved.php">Saved items</a>
+                </div>
+            </div>
+            <div class="hr-line"></div>
+            <div class="user-menu">
+                <h2>Auction menu</h2>
+                <div class="menu">
+                    <a href="../browse/browse.php">Auctions</a>
+                    <a href="../create/create.php">Create Auction</a>
+                </div>
+            </div>
+            <div class="hr-line"></div>
+            <div class="logout">
+                <button><a href="../php/logout.php">Logout</a></button>
+            </div>
+        </div>
+    <?php
+    }
     ?>
     <section>
         <div class="container">
@@ -55,9 +110,10 @@
 
                         <div class="inputField">
                             <label for="category">Category: </label>
-                            <select name="category" id="category" >
+                            <select name="category" id="category">
                                 <option value="" class="none">Select category for item</option>
                                 <option value="Vintage Items & Antiques">Vintage Items & Antiques</option>
+                                <option value="Electronics & Technology">Electronics & Technology</option>
                                 <option value="Automobiles">Automobiles</option>
                                 <option value="Arts">Arts</option>
                                 <option value="Jewellery">Jewellery</option>
@@ -76,7 +132,7 @@
                             <input type="file" name="itemImages[]" id="itemImage" multiple>
                         </div>
                         <div class="next">
-                            <button onclick="nxt_page()" class="nxt-btn">Next</button>
+                            <button type="button" onclick="nxt_page()" class="nxt-btn">Next</button>
                         </div>
                     </div>
                     <div class="page2">

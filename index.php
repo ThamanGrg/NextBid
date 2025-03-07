@@ -32,7 +32,7 @@ if (isset($_SESSION['username'])) {
     <header>
         <div class="header">
             <div class="logo">
-                <img src="assets/logo.png" alt="logo">
+                <a href="index.php"><img src="assets/logo.png" alt="logo"></a>
             </div>
             <div class="nav">
                 <ul class="navList">

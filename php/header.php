@@ -1,5 +1,13 @@
 <?php
+include('../php/connection.php');
 session_start();
+
+if (isset($_SESSION['username'])) {
+    $uname = $_SESSION['username'];
+
+    $userQ = "SELECT * FROM users WHERE username = '$uname'";
+    $userR = $conn->query($userQ);
+}
 ?>
 <style>
     .header {
@@ -115,7 +123,7 @@ session_start();
 <header>
     <div class="header">
         <div class="logo">
-            <img src="../assets/logo.png" alt="logo">
+        <a href="../index.php"><img src="../assets/logo.png" alt="logo"></a>
         </div>
         <div class="nav">
             <ul class="navList">
@@ -143,9 +151,9 @@ session_start();
         <div class="loginSignup">
             <?php
             if (isset($_SESSION['username'])) {
-                echo "<button onclick=userProfile();><img src='../assets/icons/user.png' alt='user' class='userDropDown'>" . $_SESSION['username'] . "</button>";
+                echo "<button onclick=\"userProfile();\"><img src='../assets/icons/user.png' alt='user' class='userDropDown'>" . $_SESSION['username'] . "</button>";
             } else {
-                echo "<button class='btnLogin-popup' onclick='loginForm();'><img src='assets/icons/user.png' alt='user'>Login</button>";
+                echo "<button class='btnLogin-popup' onclick='loginForm();'><img src='../assets/icons/user.png' alt='user'>Login</button>";
             }
 
             ?>
