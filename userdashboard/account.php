@@ -7,7 +7,19 @@ if(isset($_SESSION['username'])){
     $result = $conn->query($query);
 }
 ?>
-<h2>Account Settings</h2>
+<div class="container">
+<h3>Account Deactivation</h3>
+<form action="deactivate_account.php" method="POST">
+    <p>Are you sure you want to deactivate your account? You will not be able to log in until you reactivate it.</p>
+    <button type="submit">Deactivate Account</button>
+</form>
+
+<h3>Delete Account</h3>
+<form action="delete_account.php" method="POST">
+    <p>This action is irreversible. Deleting your account will remove all your auction data.</p>
+    <button type="submit" class="delete-btn">Delete Account</button>
+</form>
+</div>
 
 
 <style>
@@ -24,7 +36,6 @@ if(isset($_SESSION['username'])){
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
     }
     h2, h3 {
         color: #333;
@@ -66,36 +77,3 @@ if(isset($_SESSION['username'])){
         background-color: #c82333;
     }
 </style>
-
-<?php
-             while($row = $result->fetch_assoc()) {
-            ?>
-<div class="container">
-    <p>User id: <?php echo $row['user_id']; ?></p>
-    <p>Name: <?php echo $row['name']; ?></p><a href="#" onclick="loadContent('personalinfo.php'); return false;">Change name</a>
-    <p>Email: <?php echo $row['email']; ?></p>
-    <p>Phone: <?php echo $row['phone']; ?></p><a href="#" onclick="loadContent('account.php'); return false;"></a>
-
-
-</div>
-
-<?php
-
-             }
-             ?>
-
-<div class="container">
-<h3>Email Preferences</h3>
-<form action="update_preferences.php" method="POST">
-    <div class="inputField">
-        <label for="notifications">Receive Auction Notifications:</label>
-        <input type="checkbox" id="notifications" name="notifications">
-    </div>
-    <div class="inputField">
-        <label for="marketingEmails">Receive Marketing Emails:</label>
-        <input type="checkbox" id="marketingEmails" name="marketingEmails">
-    </div>
-    <button type="submit">Save Preferences</button>
-</form>
-</div>
-

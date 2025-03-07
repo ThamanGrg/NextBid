@@ -7,7 +7,33 @@ if(isset($_SESSION['username'])){
     $result = $conn->query($query);
 }
 ?>
-<h2>Account Settings</h2>
+<?php
+             while($row = $result->fetch_assoc()) {
+            ?>
+<div class="container">
+    <div>
+<form action="update_settings.php" method="POST">
+    <h3>Personal Information</h3>
+    <div class="inputField">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($row['name']); ?>" required>
+    </div>
+    <div class="inputField">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($row['email']); ?>" required>
+    </div>
+    <div class="inputField">
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" value="<?php echo htmlspecialchars($row['phone']); ?>" required>
+    </div>
+    <button type="submit">Update Information</button>
+</form>
+</div>
+
+</div>
+<?php
+             }
+?>
 
 
 <style>
@@ -66,36 +92,3 @@ if(isset($_SESSION['username'])){
         background-color: #c82333;
     }
 </style>
-
-<?php
-             while($row = $result->fetch_assoc()) {
-            ?>
-<div class="container">
-    <p>User id: <?php echo $row['user_id']; ?></p>
-    <p>Name: <?php echo $row['name']; ?></p><a href="#" onclick="loadContent('personalinfo.php'); return false;">Change name</a>
-    <p>Email: <?php echo $row['email']; ?></p>
-    <p>Phone: <?php echo $row['phone']; ?></p><a href="#" onclick="loadContent('account.php'); return false;"></a>
-
-
-</div>
-
-<?php
-
-             }
-             ?>
-
-<div class="container">
-<h3>Email Preferences</h3>
-<form action="update_preferences.php" method="POST">
-    <div class="inputField">
-        <label for="notifications">Receive Auction Notifications:</label>
-        <input type="checkbox" id="notifications" name="notifications">
-    </div>
-    <div class="inputField">
-        <label for="marketingEmails">Receive Marketing Emails:</label>
-        <input type="checkbox" id="marketingEmails" name="marketingEmails">
-    </div>
-    <button type="submit">Save Preferences</button>
-</form>
-</div>
-

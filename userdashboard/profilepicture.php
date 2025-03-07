@@ -7,7 +7,16 @@ if(isset($_SESSION['username'])){
     $result = $conn->query($query);
 }
 ?>
-<h2>Account Settings</h2>
+<div class="container">
+<h3>Change Profile Picture</h3>
+<form action="update_picture.php" method="POST" enctype="multipart/form-data">
+    <div class="inputField">
+        <label for="profilePicture">Upload Profile Picture:</label>
+        <input type="file" id="profilePicture" name="profilePicture" accept="image/*">
+    </div>
+    <button type="submit">Upload Picture</button>
+</form>
+</div>
 
 
 <style>
@@ -66,36 +75,3 @@ if(isset($_SESSION['username'])){
         background-color: #c82333;
     }
 </style>
-
-<?php
-             while($row = $result->fetch_assoc()) {
-            ?>
-<div class="container">
-    <p>User id: <?php echo $row['user_id']; ?></p>
-    <p>Name: <?php echo $row['name']; ?></p><a href="#" onclick="loadContent('personalinfo.php'); return false;">Change name</a>
-    <p>Email: <?php echo $row['email']; ?></p>
-    <p>Phone: <?php echo $row['phone']; ?></p><a href="#" onclick="loadContent('account.php'); return false;"></a>
-
-
-</div>
-
-<?php
-
-             }
-             ?>
-
-<div class="container">
-<h3>Email Preferences</h3>
-<form action="update_preferences.php" method="POST">
-    <div class="inputField">
-        <label for="notifications">Receive Auction Notifications:</label>
-        <input type="checkbox" id="notifications" name="notifications">
-    </div>
-    <div class="inputField">
-        <label for="marketingEmails">Receive Marketing Emails:</label>
-        <input type="checkbox" id="marketingEmails" name="marketingEmails">
-    </div>
-    <button type="submit">Save Preferences</button>
-</form>
-</div>
-

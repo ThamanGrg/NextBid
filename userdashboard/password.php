@@ -7,8 +7,24 @@ if(isset($_SESSION['username'])){
     $result = $conn->query($query);
 }
 ?>
-<h2>Account Settings</h2>
-
+<div class="container">
+<h3>Change Password</h3>
+<form action="change_password.php" method="POST">
+    <div class="inputField">
+        <label for="currentPassword">Current Password:</label>
+        <input type="password" id="currentPassword" name="currentPassword" required>
+    </div>
+    <div class="inputField">
+        <label for="newPassword">New Password:</label>
+        <input type="password" id="newPassword" name="newPassword" required>
+    </div>
+    <div class="inputField">
+        <label for="confirmPassword">Confirm New Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+    </div>
+    <button type="submit">Change Password</button>
+</form>
+</div>
 
 <style>
     body {
@@ -66,36 +82,3 @@ if(isset($_SESSION['username'])){
         background-color: #c82333;
     }
 </style>
-
-<?php
-             while($row = $result->fetch_assoc()) {
-            ?>
-<div class="container">
-    <p>User id: <?php echo $row['user_id']; ?></p>
-    <p>Name: <?php echo $row['name']; ?></p><a href="#" onclick="loadContent('personalinfo.php'); return false;">Change name</a>
-    <p>Email: <?php echo $row['email']; ?></p>
-    <p>Phone: <?php echo $row['phone']; ?></p><a href="#" onclick="loadContent('account.php'); return false;"></a>
-
-
-</div>
-
-<?php
-
-             }
-             ?>
-
-<div class="container">
-<h3>Email Preferences</h3>
-<form action="update_preferences.php" method="POST">
-    <div class="inputField">
-        <label for="notifications">Receive Auction Notifications:</label>
-        <input type="checkbox" id="notifications" name="notifications">
-    </div>
-    <div class="inputField">
-        <label for="marketingEmails">Receive Marketing Emails:</label>
-        <input type="checkbox" id="marketingEmails" name="marketingEmails">
-    </div>
-    <button type="submit">Save Preferences</button>
-</form>
-</div>
-
