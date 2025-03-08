@@ -10,30 +10,31 @@
                 </h4>
             </div>
             <div class="card-body">
-                <form action="" method="POST">
+                  <? alertsucess();?>
+                <form action="code.php" method="POST">
                     <div class="mb-3">
-                        <label>Name</label>
-                        <input type="text" name="name" class="form-control">
+                        <label>Username</label>
+                        <input type="text" name="username" class="form-control" required>
                     </div>
 
                     <div class="mb-3">
                         <label>Phone No.</label>
-                        <input type="text" name="phone" class="form-control">
+                        <input type="text" name="phone" class="form-control" required>
                     </div>
 
                     <div class="mb-3">
                         <label>Email</label>
-                        <input type="email" name="email" class="form-control">
+                        <input type="email" name="email" class="form-control" required>
                     </div>
 
                     <div class="mb-3">
                         <label>Password</label>
-                        <input type="password" name="password" class="form-control">
+                        <input type="password" name="password" class="form-control" required>
                     </div>
 
                     <div class="mb-3">
                         <label>Select Role</label>
-                        <select name="role" class="form-select">
+                        <select name="role" class="form-select" required>
                             <option value="">Select Role</option>
                             <option value="admin">Admin</option>
                             <option value="user">User</option>
@@ -41,12 +42,12 @@
                     </div>
 
                     <div class="mb-3">
-                        <label>Ban User</label>
+                        <label>Is Ban</label>
                         <br>
-                        <input type="checkbox" name="is_ban" style="width:30px;height:30px">
+                        <input type="checkbox" name="is_ban" value="1" style="width:30px;height:30px">
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-3 text-end">
                         <button type="submit" name="saveUsers" class="btn btn-primary">Save</button>
                     </div>
                 </form>
@@ -56,3 +57,4 @@
 </div>
 
 <?php include('includes/footer.php'); ?>
+

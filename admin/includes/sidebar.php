@@ -4,8 +4,32 @@
             <h6>Admin Users</h6>
         </a>
     </div>
-
     <hr class="horizontal dark mt-0">
+<<<<<<< HEAD
+    <div class="collapse navbar-collapse w-auto " id="sidenav-collapse-main">
+        
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link  active" href="index.php">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa fa-home text-dark text-lg"></i>
+            </div>
+            <span class="nav-link-text ms-1">Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Enquiries</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  " href="enquiries.php">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fa fa-bullhorn text-dark text-lg"></i>
+        
+            </div>
+            <span class="nav-link-text ms-1">Enquiries</span>
+          </a>
+        </li>
+=======
     <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
@@ -16,6 +40,7 @@
                     <span class="nav-link-text ms-1">Dashboard</span>
                 </a>
             </li>
+>>>>>>> 94e79fa02e2937d95687e8e31d44387fe24ef007
 
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Enquiries</h6>
@@ -29,6 +54,31 @@
                 </a>
             </li>
 
+<<<<<<< HEAD
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Manage Services</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  " href="services.php">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fa fa-cogs text-dark text-lg"></i>
+        
+            </div>
+            <span class="nav-link-text ms-1">Services</span>
+          </a>
+        </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Site Management</h6>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link  " href="users.php">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="fa fa-user-plus text-dark text-lg"></i>
+            </div>
+            <span class="nav-link-text ms-1">Admin / users</span>
+          </a>
+        </li>
+=======
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Manage Services</h6>
             </li>
@@ -40,6 +90,7 @@
                     <span class="nav-link-text ms-1">Services</span>
                 </a>
             </li>
+>>>>>>> 94e79fa02e2937d95687e8e31d44387fe24ef007
 
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Site Management</h6>
