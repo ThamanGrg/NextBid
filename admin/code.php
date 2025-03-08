@@ -1,6 +1,6 @@
 <?php
 require '../php/function.php';
-require '../php/db_connection.php'; // Ensure the database connection is included
+require '../php/connection.php';
 
 if (isset($_POST['saveUsers'])) {
     global $conn; 
@@ -12,19 +12,15 @@ if (isset($_POST['saveUsers'])) {
     $is_ban = isset($_POST['is_ban']) ? (int) $_POST['is_ban'] : 0; 
     $role = isset($_POST['role']) ? 1 : 0;
 
-    // Check for required fields
     if (!empty($username) && !empty($email) && !empty($phone) && !empty($password)) {
 
-        // Validate email format
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             redirect('users-create.php', 'Invalid email format');
             exit;
         }
 
-        // Hash the password securely
         $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
-        // Prepare SQL Query
         $query = "INSERT INTO users (username, email, password, phone, is_ban, role) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = mysqli_prepare($conn, $query);
 
@@ -58,16 +54,13 @@ if(isset($_POST['updateUser']))
     $role = isset($_POST['role']) ? 1 : 0;
     $userId = validate($_POST['userid']);
 
-    // Check for required fields
     if (!empty($username) && !empty($email) && !empty($phone) && !empty($password)) {
 
-        // Validate email format
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             redirect('users-create.php', 'Invalid email format');
             exit;
         }
-
-        // Hash the password securely
+        
         $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
         // Prepare SQL Query
