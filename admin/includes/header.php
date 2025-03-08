@@ -1,5 +1,5 @@
 <?php
-require'../php/function.php';
+require '../php/function.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,9 +28,9 @@ require'../php/function.php';
 
 <body class="g-sidenav-show  bg-gray-100">
 
-    <?php include('sidebar.php') ?>
+  <?php include('sidebar.php') ?>
 
-        <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+  <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
 
-           <?php include('navbar.php') ?>
-              <div class="container-fluid py-4">
+    <?php include('navbar.php') ?>
+    <div class="container-fluid py-4">

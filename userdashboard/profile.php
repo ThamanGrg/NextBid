@@ -10,11 +10,6 @@ if (isset($_SESSION['username'])) {
 <?php
 while ($row = $result->fetch_assoc()) {
 ?>
-    <header>
-        <h1>Welcome, <?php echo $row['username']; ?></h1>
-        <button id="theme-toggle">Light/Dark</button>
-    </header>
-
     <section class="user-info">
         <div class="card">
             <div>

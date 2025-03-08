@@ -133,7 +133,8 @@ if (isset($_GET['itemId'])) {
                 </div>
                 <div class="biddingSection">
                   <form action="" method="post">
-                    <input type="text" placeholder="$ 1406 or Up" class="bidInput">
+                    <input type="hidden" name="itemId" value="<?php echo $id; ?>">
+                    <input type="number" name="bidAmount" placeholder="Enter your bid" class="bidInput" min="1" required>
                     <input type="submit" class="submit" value="Place Bid">
                   </form>
 
@@ -167,16 +168,16 @@ if (isset($_GET['itemId'])) {
             <div class="itemOverview margin">
               <h3>Item Overview</h3>
               <ul>
-                <li>Condition: <?php echo $item['item_condition']?></li>
-                <li>No of item: <?php echo $item['no_Item']?></li>
-                <li>Location: <?php echo $item['location']?></li>
-                <li>Category: <?php echo $item['product_category']?></li>
+                <li>Condition: <?php echo $item['item_condition'] ?></li>
+                <li>No of item: <?php echo $item['no_Item'] ?></li>
+                <li>Location: <?php echo $item['location'] ?></li>
+                <li>Category: <?php echo $item['product_category'] ?></li>
               </ul>
             </div>
             <div class="auctionDetails margin">
               <h3>Auction Details</h3>
-              <p><b><?php echo $item['item_title']?></b></p>
-              <p>Auction By: <b><?php echo $item['user']?></b></p>
+              <p><b><?php echo $item['item_title'] ?></b></p>
+              <p>Auction By: <b><?php echo $item['user'] ?></b></p>
               <p>Added Date: December 15, 10:50 PM</p>
               <p>Location: Tokyo-to, Shibuya-ku, Japan</p>
             </div>
