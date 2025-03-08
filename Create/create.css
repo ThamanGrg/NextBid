@@ -8,7 +8,7 @@ body {
     margin: 0 120px;
 }
 
-section{
+section {
     max-width: 1800px;
     min-width: 200px;
     float: none;
@@ -17,96 +17,139 @@ section{
     display: block;
 }
 
-.container{
+.container {
     margin-top: 10px;
     width: 100%;
-    height: 1400px;
+    height: auto;
     background-color: #f8f8f8;
     display: flex;
     justify-content: center;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
-}
-
-.auctionCreateForm{
-    margin-top: 100px;
-    height: 900px;
     border: 0.5px solid rgba(95, 95, 95, 0.301);
-    border-radius: 30px;
-    padding: 50px 90px;
 }
 
-.Title h1{
+
+.auctionCreateForm {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    width: 40%;
+    background: #fff;
+    padding: 50px 90px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    border-radius: 30px;
+    overflow: hidden;
+    border: 0.5px solid rgba(95, 95, 95, 0.301);
+}
+
+.Title h1 {
     font-size: 60px;
 }
 
-form{
-    margin-top: 60px;
+.form {
+    display: flex;
+    width: 200%;
+    transition: transform 0.5s ease-in-out;
 }
 
-.inputField{
+.page1, .page2 {
+    width: 60%;
+    padding: 20px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.inputField {
     margin: 20px 0;
 }
 
-.inputField select{
-    width: 270px;
-    height: 35px;
-    outline: none;
-    border: 0.5px solid rgba(133, 133, 133, 0.438);
-    border-radius: 5px;
-    padding: 0 10px;
-}
-
-.inputField select .none{
-    display: none;
-}
-
-label{
+label {
     display: inline-block;
     width: 240px;
     font-size: 20px;
 }
 
-#startDate, #startTime, #endDate, #endTime{
-    width: 150px;
-}
-
-input{
-    height: 35px;
+input, select, textarea {
     width: 320px;
+    height: 35px;
+    padding: 0 10px;
     border: 0.5px solid rgba(133, 133, 133, 0.438);
     border-radius: 5px;
-    padding: 0 10px;
     outline: none;
     font-size: 14px;
+}
+
+input[type="date"], input[type="time"] {
+    width: 150px;
+    border: 0.5px solid rgba(133, 133, 133, 0.438);
+}
+
+input[type="number"]{
+    -moz-appearance: textfield;
+}
+
+.no-spinner::-webkit-inner-spin-button,
+.no-spinner::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.noOfItem{
+    display: flex;
+    align-items: center;
+}
+
+#slider{
+    width: 260px;
+}
+
+#number{
+    width: 20px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 #itemImage{
-    border: none;
-    border-radius: none;
+    height: 22px;
 }
 
-input:focus{
-    border: 0.5px solid rgba(133, 133, 133, 0.438);
-}
-
-textarea{
+textarea {
     width: 400px;
     height: 150px;
-    padding: 10px 10px;
-    font-size: 14px;
-    outline: none;
     border-radius: 10px;
+    padding: 10px;
 }
 
-.submit{
-    display: block;
-    margin-top: 90px;
-    margin-left: 35%;
+select .none {
+    display: none;
 }
 
-.submitButton{
+.next, .previous {
+    display: flex;
+    justify-content: center;
+}
+
+.nxt-btn, .submitButton, .previous button {
+    width: 200px;
+    height: 50px;
+    background-color: #758BFD;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.submitButton {
     width: 200px;
     height: 50px;
     background-color: #758BFD;
@@ -114,4 +157,88 @@ textarea{
     border-radius: 25px;
     color: white;
     font-size: 20px;
+}
+
+.userDropdown{
+    display: none;
+    position: absolute;
+    width: auto;
+    height: auto;
+    background-color: #e0f3ff;
+    z-index: 100;
+    right: 120px;
+    top: 61px;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border: 1px solid #8E8E8E;
+    overflow: hidden;
+    padding: 16px;
+    padding-right: 30px;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.userPP{
+    width: 80px;
+}
+
+.userDropdown .hr-line{
+    width: 90%;
+    height: 0.1px;
+    background-color: #655C5C;
+    margin: 30px auto ;
+}
+
+.profile {
+    display: flex;
+    width: 100%;
+    height: 150px;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 20px;
+}
+
+.profile p{
+    font-size: 16px;
+    color: #8E8E8E;
+}
+
+.user-info{
+    display: flex;
+    flex-direction: column;
+}
+
+.profile button{
+    margin-top: 15px;
+    height: 40px;
+    width: 120px;
+    background-color: orange;
+    border: none;
+    color: black;
+    border-radius: 20px;
+}
+
+.user-menu{
+    display: flex;
+    padding-left: 10px;
+    flex-direction: column;
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+}
+
+.logout{
+    display: flex;
+    padding-left: 10px;
+    flex-direction: column;
+}
+
+.logout button{
+    width: 100px;
+    height: 35px;
+    font-size: 17px;
 }

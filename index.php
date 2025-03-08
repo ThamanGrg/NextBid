@@ -1,8 +1,16 @@
 <?php
+session_start();
 include_once("php/connection.php");
 
 $query = "SELECT p.item_ID, p.item_title, p.ending_date, p.endTime, i.image_path FROM products p LEFT JOIN item_images i ON p.item_ID = i.item_ID WHERE i.is_primary = 1";
 $result = mysqli_query($conn, $query);
+
+if (isset($_SESSION['username'])) {
+    $uname = $_SESSION['username'];
+
+    $userQ = "SELECT * FROM users WHERE username = '$uname'";
+    $userR = $conn->query($userQ);
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,14 +25,14 @@ $result = mysqli_query($conn, $query);
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?version=1">
+    <link rel="stylesheet" href="style.css?version=1.7">
 </head>
 
 <body>
     <header>
         <div class="header">
             <div class="logo">
-                <img src="assets/logo.png" alt="logo">
+                <a href="index.php"><img src="assets/logo.png" alt="logo"></a>
             </div>
             <div class="nav">
                 <ul class="navList">
@@ -51,12 +59,70 @@ $result = mysqli_query($conn, $query);
                 <img src="assets/icons/bell.png" alt="">
             </div>
             <div class="loginSignup">
-                <button class="btnLogin-popup" onclick="loginForm();"><img src="assets/icons/user.png" alt="user">Login</button>
+                <?php
+                if (isset($_SESSION['username'])) {
+                    echo "<button onclick=\"userProfile();\"><img src='assets/icons/user.png' alt='user' class='userDropDown'>" . $_SESSION['username'] . "</button>";
+                } else {
+                    echo "<button class='btnLogin-popup' onclick='loginForm();'><img src='assets/icons/user.png' alt='user'>Login</button>";
+                }
+
+                ?>
             </div>
         </div>
     </header>
+    <?php
+    if (isset($_SESSION['username'])) {
+    ?>
+        <div id="userDropdown" class="userDropdown">
+            <div class="profile">
+                <?php
+                while ($row = mysqli_fetch_assoc($userR)) {
+                ?>
+                    <div>
+                        <div>
+                            <h2><?php echo $uname ?></h2>
+                        </div>
+                        <div>
+                            <p>ID: <?php echo $row['user_id'] ?></p>
+                            <p>Email: <?php echo $row['email'] ?></p>
+                        </div>
+                        <div>
+                            <a href="userdashboard/editProfile.php"><button>Edit Profile</button></a>
+                        </div>
+                    </div>
+                    <div>
+                        <div><img src="assets/icons/man avatar with circle frame_8515464.png" alt="User Profile Picture" class="userPP"></div>
+                    </div>
+                <?php
+                }
+                ?>
+            </div>
+            <div class="hr-line"></div>
+            <div class="user-menu">
+                <h2>User menu</h2>
+                <div class="menu">
+                    <a href="userdashboard/userdashboard.php">My dashboard</a>
+                    <a href="userdashboard/editprofile.php">My auctions</a>
+                    <a href="userdashboard/saved.php">Saved items</a>
+                </div>
+            </div>
+            <div class="hr-line"></div>
+            <div class="user-menu">
+                <h2>Auction menu</h2>
+                <div class="menu">
+                    <a href="browse/browse.php">Auctions</a>
+                    <a href="create/create.php">Create Auction</a>
+                </div>
+            </div>
+            <div class="hr-line"></div>
+            <div class="logout">
+                <button><a href="php/logout.php">Logout</a></button>
+            </div>
+        </div>
+    <?php
+    }
+    ?>
     <section>
-
         <div class="loginBg">
             <div class="loginForm">
                 <div class="wrapper">
@@ -66,23 +132,23 @@ $result = mysqli_query($conn, $query);
                         <form action="php/loginRegister.php" method="POST" id="loginForm">
                             <div class="input-box">
                                 <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                                <input type="email" required>
+                                <input type="email" name="email" required>
                                 <label>Email</label>
                             </div>
                             <div class="input-box">
                                 <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                                <input type="password" required>
+                                <input type="password" name="password" required>
                                 <label>password</label>
                             </div>
                             <div class="remember-forgot">
                                 <label><input type="checkbox">Remember me </label>
-                                <a href="#">forgot password?</a>
+                                <a href="">forgot password?</a>
                             </div>
                             <button type="submit" name="login" class="btn">login</button>
-                            <div class="login-register">
-                                <p>Don't have an account?<a href="#" class="register-link">Register</a></p>
-                            </div>
                         </form>
+                        <div class="login-register">
+                            <p>Don't have an account?<a href="#" class="register-link">Register</a></p>
+                        </div>
                     </div>
 
                     <div class="from-box register" id="registerForm">
@@ -99,6 +165,11 @@ $result = mysqli_query($conn, $query);
                                 <input type="email" name="email" required>
                                 <label>Email</label>
                             </div>
+                            <div class="input-box">
+                                <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                                <input type="text" name="name" id="password" required>
+                                <label>Name</label>
+                            </div>
                             <div id="result"></div>
                             <div class="input-box">
                                 <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
@@ -114,10 +185,11 @@ $result = mysqli_query($conn, $query);
                                 <label><input type="checkbox">I agree to the trems & conditions</label>
                             </div>
                             <button type="submit" class="btn" name="register">Register</button>
-                            <div class="login-register">
-                                <p>Already have an account?<a href="#" class="login-link">Login</a></p>
-                            </div>
+
                         </form>
+                        <div class="login-register">
+                            <p>Already have an account?<a href="#" class="login-link">Login</a></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -281,6 +353,17 @@ $result = mysqli_query($conn, $query);
             };
             xhr.send("username=" + username + "&email=" + email);
         }
+</script>
+<script>
+    function userProfile() {
+        let dropdown = document.querySelector(".userDropdown");
+
+        if (dropdown.style.display === "none") {
+            dropdown.style.setProperty("display", "flex");
+        } else {
+            dropdown.style.setProperty("display", "none");
+        }
+    }
 </script>
 
 </html>
