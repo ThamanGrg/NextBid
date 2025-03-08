@@ -4,15 +4,14 @@
       <H>Admin users</H>
       </a>
     </div>
-
     <hr class="horizontal dark mt-0">
-    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+    <div class="collapse navbar-collapse w-auto " id="sidenav-collapse-main">
         
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link  active" href="index.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="fa fa-home text-white text-lg"></i>
+              <i class="fa fa-home text-dark text-lg"></i>
             </div>
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
@@ -37,7 +36,7 @@
         <li class="nav-item">
           <a class="nav-link  " href="services.php">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-            <i class="fa fa-cogss text-dark text-lg"></i>
+            <i class="fa fa-cogs text-dark text-lg"></i>
         
             </div>
             <span class="nav-link-text ms-1">Services</span>
