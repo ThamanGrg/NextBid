@@ -13,12 +13,11 @@
                     <form action="code.php" method="POST">
                         <?php
                         $paramResult = checkParamId('userid');
-                            if(is_numeric($paramResult)){
+                            if(!is_numeric($paramResult)){
                                 echo'<h5>'.$paramResult.'</h5>';
                                 return false;
-
                             }
-                            $user=getById('users',checkParamId('user_id'));                                 
+                            $user=getById('users',checkParamId('userid'));                                 
                             if($user['status'] == 200)
                             {
                              ?>
@@ -80,7 +79,7 @@
 
                         <div class="mb-3">
                             <label>Phone No.</label>
-                            <input type="text" name="phone"  required class="form-control">
+                            <input type="text" name="phone" required class="form-control">
                         </div>
 
                         <div class="mb-3">
