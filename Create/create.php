@@ -93,7 +93,12 @@
 
                         <div class="inputField">
                             <label for="maximum price">Maximum Price($): </label>
-                            <input type="number" name="maximumPrice" id="maximumPrice" min="1" required placeholder="Enter end price" class="no-spinner">
+                            <input type="number" name="maximumPrice" id="maximumPrice" min="1" required placeholder="Enter max price" class="no-spinner">
+                        </div>
+
+                        <div class="inputField">
+                            <label for="maximum price">Reserve Price($): </label>
+                            <input type="number" name="reservePrice" id="reservePrice" min="1" required placeholder="Enter reserve price" class="no-spinner">
                         </div>
 
                         <div class="inputField">

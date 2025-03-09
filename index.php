@@ -328,31 +328,37 @@ if (isset($_SESSION['username'])) {
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script>
-    document.getElementById('registerForm').addEventListener("submit"),
-        function(e) {
-            var password = document.getElementById('password').value;
-            var confirmPassword = document.getElementById('confirm_password').value;
-            var resultDiv = document.getElementById("result");
-            e.preventDefault();
+    document.getElementById('registerForm').addEventListener("submit", function(e) {
+    
 
-            if (password.length < 6) {
-                alert('Password must be length of 8')
-            } else if (password !== confirmPassword) {
-                alert('Password do not Match!!')
-            }
+    var username = document.getElementById('username').value;
+    var email = document.getElementById('email').value;
+    var password = document.getElementById('password').value;
+    var confirmPassword = document.getElementById('confirm_password').value;
+    e.preventDefault();
+    if (password.length < 6) {
+        alert('Password must be at least 6 characters long');
+        return;
+    } else if (password !== confirmPassword) {
+        alert('Passwords do not match!');
+        return;
+    }
 
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "php/loginRegister.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "php/loginRegister.php", true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState == 4 && xhr.status == 200) {
-                    alert(xhr.responseText);
-                }
-            };
-            xhr.send("username=" + username + "&email=" + email);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            alert(xhr.responseText);
         }
+    };
+
+    var data = "username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email) + "&password=" + encodeURIComponent(password);
+
+    xhr.send(data);
+});
+
 </script>
 <script>
     function userProfile() {

@@ -15,7 +15,7 @@ if (isset($_POST['register'])) {
     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
     $sql = "SELECT * FROM users WHERE username = '$uname' OR email = '$email'";
-
+    $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
         $response = "";
@@ -24,12 +24,14 @@ if (isset($_POST['register'])) {
         $result_user = $conn->query($sql_user);
         if ($result_user->num_rows > 0) {
             $response .= "Username already exists. ";
+            echo $response;
         }
 
         $sql_email = "SELECT * FROM users WHERE email = '$email'";
         $result_email = $conn->query($sql_email);
         if ($result_email->num_rows > 0) {
             $response .= "Email already exists.";
+            echo $response;
         }
     } else {
         $submitQuery = "INSERT INTO users (username, email, name, password) VALUES ('$uname', '$email', '$name', '$hashed_password')";
@@ -49,6 +51,7 @@ if (isset($_POST['register'])) {
 
 
 if (isset($_POST['login'])) {
+    $response = "";
     $email = $_POST['email'];
     $password = $_POST['password'];
 
@@ -62,17 +65,21 @@ if (isset($_POST['login'])) {
         $row = $result->fetch_assoc();
 
         if (password_verify($password, $row['password'])) {
+            $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['username'] = $row['username'];
+            
             header("Location: ../index.php");
             $response .= "login successful";
             echo $response;
         } else {
-            echo "Invalid Username or Password!";
             header("Location: ../index.php");
+            $response .= "Invalid Username or Password!";
+            echo $response;
         }
     } else {
-        echo "Invalid Username or Password!";
         header("Location: ../index.php");
+        $response .= "Invalid Username or Password!";
+        echo $response;
     }
 }
 
