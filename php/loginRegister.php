@@ -63,6 +63,7 @@ if (isset($_POST['login'])) {
 
         if (password_verify($password, $row['password'])) {
             $_SESSION['username'] = $row['username'];
+            $_SESSION['user_id'] = $row['user_id'];
             header("Location: ../index.php");
             $response .= "login successful";
             echo $response;
@@ -78,3 +79,4 @@ if (isset($_POST['login'])) {
 
 $conn->close();
 ?>
+
