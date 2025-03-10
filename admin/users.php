@@ -38,17 +38,17 @@
                                      <td><?= $usersitem['role'];?></td>
                                      <td>
                                         <a href="users-edit.php?id=<?= $usersitem['user_id'];?>" class="btn btn-success btn-sm">Edit</a>
-                                        <a href="users-delete.php" class="btn btn-danger btn-sm mx-2">Delete</a>
+                                        <a href="users-delete.php?id=<?= $usersitem['user_id'];?>"><button onclick="return confirm('Are you sure you want to delete this?')" class="btn btn-danger btn-sm mx-2">Delete</button></a>
                                      </td>
                                  </tr>
                                  <?php
-                            }
+                                }
                                } else {
                                  ?>
                               <tr>
                                 <td colspan="7">No Record Found</td>
                                </tr>
-                            <?php
+                             <?php
                         }
                         ?>
                     </tbody>

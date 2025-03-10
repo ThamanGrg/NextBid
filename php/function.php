@@ -59,7 +59,7 @@ function getById($tableName, $userid)
     $table = validate($tableName);
     $id = validate($userid);
 
-    $query ="SELECT * FROM  $table WHERE userid= '$userid' LIMIT 1";
+    $query ="SELECT * FROM  $table WHERE user_id= '$id' LIMIT 1";
     $result = mysqli_query($conn, $query);
     if($result)
     {
@@ -90,5 +90,31 @@ function getById($tableName, $userid)
     }
 
 
+}
+
+
+function deleteQuery($tableName, $userid) {
+    global $conn;
+
+    if (!isset($conn)) {
+        return "Error: Database connection not established.";
+    }
+
+    if (empty($tableName) || empty($userid)) {
+        return "Error: Table name and user ID cannot be empty.";
+    }
+
+    $tableName = mysqli_real_escape_string($conn, $tableName);
+    $userid = mysqli_real_escape_string($conn, $userid);
+
+    $query = "DELETE FROM '$tableName' WHERE user_id = '$userid' LIMIT 1";
+
+    $result = mysqli_query($conn, $query);
+
+    if ($result) {
+        return true; 
+    } else {
+        return "Error: " .mysqli_error($conn); 
+    }
 }
 ?>
