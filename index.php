@@ -87,7 +87,7 @@ if (isset($_SESSION['username'])) {
                             <p>Email: <?php echo $row['email'] ?></p>
                         </div>
                         <div>
-                            <a href="userdashboard/editProfile.php"><button>Edit Profile</button></a>
+                            <a href="userdashboard/userdashboard.php#" onclick="loadContent('personalinfo.php'); return false;"><button>Edit Profile</button></a>
                         </div>
                     </div>
                     <div>
@@ -132,16 +132,16 @@ if (isset($_SESSION['username'])) {
                         <form action="php/loginRegister.php" method="POST" id="loginForm">
                             <div class="input-box">
                                 <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                                <input type="email" name="email" required>
-                                <label>Email</label>
+                                <input type="email" name="email" id="email-login" required autocomplete="email">
+                                <label for="email">Email</label>
                             </div>
                             <div class="input-box">
                                 <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                                <input type="password" name="password" required>
-                                <label>password</label>
+                                <input type="password" name="password" id="password-login" required>
+                                <label for="password">password</label>
                             </div>
                             <div class="remember-forgot">
-                                <label><input type="checkbox">Remember me </label>
+                                <label for="remember-me"><input type="checkbox" id="remember-me" name="remember-me">Remember me </label>
                                 <a href="">forgot password?</a>
                             </div>
                             <button type="submit" name="login" class="btn">login</button>
@@ -156,33 +156,33 @@ if (isset($_SESSION['username'])) {
                         <form action="php/loginRegister.php" method="POST" id="registerForm">
                             <div class="input-box">
                                 <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
-                                <input type="text" name="username" required>
-                                <label>Username</label>
+                                <input type="text" name="username" id="username" required autocomplete="username">
+                                <label for="username">Username</label>
                             </div>
                             <div id="result"></div>
                             <div class="input-box">
                                 <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
-                                <input type="email" name="email" required>
-                                <label>Email</label>
+                                <input type="email" name="email" id="email" required autocomplete="email">
+                                <label for="email">Email</label>
                             </div>
                             <div class="input-box">
                                 <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                                <input type="text" name="name" id="password" required>
-                                <label>Name</label>
+                                <input type="text" name="name" id="name" required autocomplete="name">
+                                <label for="name">Name</label>
                             </div>
                             <div id="result"></div>
                             <div class="input-box">
                                 <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                                <input type="text" name="password" id="password" required>
-                                <label>password</label>
+                                <input type="text" name="password" id="password" required autocomplete="123">
+                                <label for="password">password</label>
                             </div>
                             <div class="input-box">
                                 <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                                <input type="text" name="confirm_password" id="confirm_password" required>
-                                <label>Confirm password</label>
+                                <input type="text" name="confirm_password" id="confirm_password" required autocomplete="123"> 
+                                <label for="confirm_password">Confirm password</label>
                             </div>
                             <div class="remember-forgot">
-                                <label><input type="checkbox">I agree to the trems & conditions</label>
+                                <label for="terms"><input type="checkbox" id="terms" name="terms" required>I agree to the trems & conditions</label>
                             </div>
                             <button type="submit" class="btn" name="register">Register</button>
 
@@ -362,14 +362,18 @@ if (isset($_SESSION['username'])) {
 </script>
 <script>
     function userProfile() {
-        let dropdown = document.querySelector(".userDropdown");
+    let dropdown = document.querySelector(".userDropdown");
 
+    if (dropdown) {
         if (dropdown.style.display === "none") {
-            dropdown.style.setProperty("display", "flex");
+            dropdown.style.display = "flex";
         } else {
-            dropdown.style.setProperty("display", "none");
+            dropdown.style.display = "none";
         }
+    } else {
+        console.error("Dropdown element not found.");
     }
+}
 </script>
 
 </html>

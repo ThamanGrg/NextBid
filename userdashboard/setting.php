@@ -7,12 +7,12 @@ if (isset($_SESSION['username'])) {
     $result = $conn->query($query);
 }
 ?>
-<h2>Account Settings</h2>
+<h2 class="heading">Account Settings</h2>
 
 
 <style>
     .container {
-        max-width: 600px;
+        max-width: 660px;
         margin: 0 auto;
         background: white;
         padding: 20px;
@@ -21,10 +21,32 @@ if (isset($_SESSION['username'])) {
         margin-bottom: 20px;
     }
 
-    h2,
-    h3 {
-        color: #333;
+    .userEdit{
+        width: 620px;
+        display: flex;
+        align-items: center;
+        text-align: left;
     }
+
+    .userEdit p{
+        width: 1260px;
+    }
+
+    .heading {
+        text-align: center;
+        color: #333;
+        font-size: 50px;
+    }
+
+    .userEdit a{
+        width: 100%;
+        text-align: right;
+    }
+
+    h2{
+        color: white;
+    }
+
 
     .inputField {
         margin-bottom: 15px;
@@ -69,21 +91,19 @@ if (isset($_SESSION['username'])) {
         background-color: #c82333;
     }
 
-     h3 {
+    h3 {
         margin-bottom: 10px;
         font-size: 50px;
         color: #333;
-        border-bottom: 2px solid #007bff;
         padding-bottom: 5px;
     }
 
     h2{
-        text-align: center;
         margin-bottom: 20px;
     }
 
     p {
-        font-size: 26px;
+        font-size: 24px;
         color: #555;
         margin: 8px 0;
     }
@@ -97,12 +117,18 @@ if (isset($_SESSION['username'])) {
 while ($row = $result->fetch_assoc()) {
 ?>
     <div class="container">
-        <p>User id: <?php echo $row['user_id']; ?></p>
-        <p>Name: <?php echo $row['name']; ?><a href="#" onclick="loadContent('personalinfo.php'); return false;">   Change name</a></p>
-        <p>Email: <?php echo $row['email']; ?></p>
-        <p>Phone: <?php echo $row['phone']; ?><a href="#" onclick="loadContent('personalinfo.php'); return false;">     Add or Change phone</a>
-</p>
-
+        <div class="userEdit">
+           <p>User id: <?php echo $row['user_id']; ?></p> 
+        </div>
+        <div class="userEdit">
+            <p>Name: <?php echo $row['name']; ?></p><a href="#" onclick="loadContent('personalinfo.php'); return false;">Change name</a>
+        </div>
+        <div class="userEdit">
+            <p>Email: <?php echo $row['email']; ?></p><a href="#" onclick="loadContent('personalinfo.php'); return false;">Change email</a>
+        </div>
+        <div class="userEdit">
+            <p>Phone: <?php echo $row['phone']; ?></p><a href="#" onclick="loadContent('personalinfo.php'); return false;">Add or Change phone</a>
+        </div>
     </div>
 
 <?php
