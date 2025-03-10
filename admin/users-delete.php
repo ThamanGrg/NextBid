@@ -1,26 +1,23 @@
 <?php
-
 require '../php/function.php';
 
-$paramResult = checkParamId('id');
+if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+    global $conn;
+    $userId = validate($_GET['id']);
 
-if (is_numeric($paramResult)) {
-    $userId = validate($paramResult);
-    $userId= getById('users', $userId); 
+    $response = getById('users', $userId);
+    if ($response['status'] == 200) {
+        $userDeleteRes = deleteQuery('users', $userId);
 
-    if ($user['status'] == 200) {
-        $userDeleteRes = deleteQuery('users', $userId); 
-
-        if ($userDeleteRes) {
-            redirect('users.php', 'User deleted successfully'); 
+        if ($userDeleteRes === true) {
+            redirect('users.php', 'User deleted successfully');
         } else {
-            redirect('users.php', 'Something went wrong');
+            redirect('users.php', 'Error: ' . $userDeleteRes);
         }
     } else {
-        redirect('users.php', $user['message']);
+        redirect('users.php', 'No user found to delete');
     }
 } else {
-    redirect('users.php', $paramResult);
+    redirect('users.php', 'Invalid request');
 }
-
 ?>

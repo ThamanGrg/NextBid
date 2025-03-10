@@ -10,6 +10,7 @@ if (isset($_POST['submit'])) {
     $productCategory = mysqli_real_escape_string($conn, $_POST['category']);
     $initialPrice = $_POST['initialPrice'];
     $maximumPrice = $_POST['maximumPrice'];
+    $reservePrice = $_POST['reservePrice'];
     $postDate = date("Y/m/d");
     $startDate = $_POST['startDate'];
     $startTime = $_POST['startTime'];
@@ -21,7 +22,7 @@ if (isset($_POST['submit'])) {
     $noOfItem = $_POST['no_Item'];
     $location = $_POST['location'];
 
-    $sql = "INSERT INTO products (item_title, product_category, initial_price, maximum_price, post_date, starting_date, startTime, ending_date, endTime, item_description) VALUES ('$itemTitle', '$productCategory', '$initialPrice', '$maximumPrice', '$postDate', '$startDate', '$startTime', '$endDate', '$endTime', '$itemDescription')";
+    $sql = "INSERT INTO products (item_title, product_category, initial_price, maximum_price, reserve_price, post_date, starting_date, startTime, ending_date, endTime, item_description) VALUES ('$itemTitle', '$productCategory', '$initialPrice', '$maximumPrice', '$reservePrice','$postDate', '$startDate', '$startTime', '$endDate', '$endTime', '$itemDescription')";
 
 
     $data = mysqli_query($conn, $sql);

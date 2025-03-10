@@ -3,7 +3,7 @@
 include('includes/header.php');
 
 $userid = isset($_GET['id']) ? $_GET['id'] : null;
-$paramResult = checkParamId($userid);
+$paramResult = checkParamId('id');
 if (!is_numeric($paramResult)) {
     echo '<h5>' . $paramResult . '</h5>';
     exit;
@@ -38,7 +38,7 @@ if ($user['status'] == 200) {
                         </div>
                         <div class="mb-3">
                             <label>Password</label>
-                            <input type="password" name="password" value="<?= $user['data']['password']; ?>" required class="form-control">
+                            <input type="password" name="password" placeholder="Leave blank to keep current password" class="form-control">
                         </div>
                         <div class="mb-3">
                             <label>Select Role</label>

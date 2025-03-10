@@ -26,7 +26,7 @@ while ($row = $result->fetch_assoc()) {
                     <label for="phone">Phone:</label>
                     <input type="tel" id="phone" name="phone" value="<?php echo htmlspecialchars($row['phone']); ?>" required>
                 </div>
-                <button type="submit">Update Information</button>
+                <button type="submit" name="update_info">Update Information</button>
             </form>
         </div>
 

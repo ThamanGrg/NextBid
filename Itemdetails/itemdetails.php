@@ -2,12 +2,29 @@
 include("../php/connection.php");
 
 if (isset($_GET['itemId'])) {
-  $id = $_GET['itemId'];
-  $query = "SELECT p.*, i.*, d.* FROM products p LEFT JOIN item_images i ON p.item_id = i.item_id LEFT JOIN item_details d ON p.item_id = d.item_id WHERE p.item_id = $id;";
+  $id = intval($_GET['itemId']);
+  $query = "SELECT p.*, i.*, d.*, (SELECT MAX(bid_amount) FROM bids WHERE item_id = p.item_id) AS highest_bid FROM products p LEFT JOIN item_images i ON p.item_id = i.item_id LEFT JOIN item_details d ON p.item_id = d.item_id WHERE p.item_id = $id;";
   $result = mysqli_query($conn, $query);
   $item = mysqli_fetch_assoc($result);
   mysqli_data_seek($result, 0);
+  if (!$item) {
+    echo "<h1 style='color: red;'>Item not found!</h1>";
+    exit();
+  }
+
+  $currentBid = $item['highest_bid'] ?? $item['initial_price'];
+  $reservePrice = $item['maximum_price'];
+} else {
+  header('Location: itemdetails.php?message="Id not given"');
 }
+
+if (isset($_GET['message'])) {
+  $message = $_GET['message'];
+  echo "<script type='text/javascript'>
+            alert('$message');
+          </script>";
+}
+?>
 
 ?>
 
@@ -23,7 +40,7 @@ if (isset($_GET['itemId'])) {
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="itemdetails.css?version=1.5">
+  <link rel="stylesheet" href="itemdetails.css?version=1.8">
 </head>
 
 <body>
@@ -84,7 +101,11 @@ if (isset($_GET['itemId'])) {
   ?>
   <section>
     <?php
-    if ($item) {
+    if (!$item) {
+      $color = 'red';
+      echo ("<h1 style='color: $color';>$message</h1>");
+      exit();
+    } else {
     ?>
       <div class="main">
         <div class="path">
@@ -128,17 +149,29 @@ if (isset($_GET['itemId'])) {
               </div>
               <div class="bidCard">
                 <div class="top">
-                  <p>Current Bid: $1,405</p>
-                  <p>Reserve Price: $2,000</p>
-                </div>
-                <div class="biddingSection">
-                  <form action="" method="post">
-                    <input type="hidden" name="itemId" value="<?php echo $id; ?>">
-                    <input type="number" name="bidAmount" placeholder="Enter your bid" class="bidInput" min="1" required>
-                    <input type="submit" class="submit" value="Place Bid">
-                  </form>
+                  <p>Current Bid: $<?php echo number_format($currentBid, 2); ?></p>
+                  <p>Reserve Price: $<?php echo number_format($item['reserve_price'], 2); ?></p>
+                  <p>Maximum Price: $<?php echo number_format($item['maximum_price'], 2); ?></p>
 
+                  <?php
+                  if ($currentBid < $reservePrice) {
+                    $statusMessage = "Reserve price not met";
+                  ?>
+                    <div class="biddingSection">
+                      <form action="place_bid.php" method="post">
+                        <input type="hidden" name="itemId" value="<?php echo $id; ?>">
+                        <input type="number" name="bidAmount" placeholder="Enter your bid" class="bidInput no-spinner" min="1" max="99999" required>
+                        <input type="submit" class="submit" value="Place Bid">
+                      </form>
+                    </div>
+                  <?php
+                  } else {
+                    $statusMessage = "Highest bid meets the reserve price";
+                  }
+                  ?>
+                  <h4 class="statusMsg">Status: <b><?php echo $statusMessage ?></b></h4>
                 </div>
+
                 <hr>
                 <div class="biddedUser">
                   <h1>Bids:</h1>
@@ -148,13 +181,22 @@ if (isset($_GET['itemId'])) {
                       <th>Time</th>
                       <th>Bid</th>
                     </tr>
-                    <tr>
-                      <td>username23</td>
-                      <td>24 minutes ago</td>
-                      <td>$1405</td>
-                    </tr>
+                    <?php
+                    $bidQuery = "SELECT u.username, b.bid_time, b.bid_amount FROM bids b JOIN users u ON b.user_id = u.user_id WHERE b.item_id = $id ORDER BY b.bid_amount DESC";
+                    $bidResult = mysqli_query($conn, $bidQuery);
+                    if (mysqli_num_rows($bidResult) > 0) {
+                      while ($bid = mysqli_fetch_assoc($bidResult)) {
+                        echo "<tr>
+                                  <td>{$bid['username']}</td>
+                                  <td>{$bid['bid_time']}</td>
+                                  <td>\${$bid['bid_amount']}</td>
+                                </tr>";
+                      }
+                    } else {
+                      echo "<tr><td colspan='3'>No bids placed yet.</td></tr>";
+                    }
+                    ?>
                   </table>
-                  <p>See all bids <button><img src="../assets/icons/chevron.png" alt=""></button></p>
                 </div>
               </div>
             </div>
@@ -192,9 +234,6 @@ if (isset($_GET['itemId'])) {
         ?>
       </div>
     <?php
-    } else {
-      $color = 'red';
-      echo ("<h1 style=color: red;>Item Not Found!</h1>");
     }
     ?>
   </section>
@@ -232,3 +271,4 @@ if (isset($_GET['itemId'])) {
 </script>
 
 </html>
+<?php

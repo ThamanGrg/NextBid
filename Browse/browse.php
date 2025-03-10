@@ -193,21 +193,6 @@ if (!$result) {
                         </ul>
                     </div>
                     <hr>
-                    <div class="locationSection">
-                        <h4>Sale Location</h4>
-                        <label for="Location">Select Location:</label>
-                        <select name="saleLocation" id="">
-                            <option>none</option>
-                            <option value="">United State</option>
-                            <option value="">Australia</option>
-                            <option value="">United Kingdom</option>
-                            <option value="">Canada</option>
-                            <option value="">Nepal</option>
-                            <option value="">Germany</option>
-                            <option value="">France</option>
-                        </select>
-                    </div>
-                    <hr>
                     <div class="startingSection">
                         <h4>Price range</h4>
                         <div class="price">
