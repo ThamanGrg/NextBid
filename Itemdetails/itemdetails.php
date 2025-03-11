@@ -2,7 +2,7 @@
 session_start();
 include("../php/connection.php");
 
-if(!$_SESSION['username']){
+if (!$_SESSION['username']) {
   header('Location: ../index.php?message="Login first for bidding"');
 }
 
@@ -48,7 +48,7 @@ if (isset($_GET['message'])) {
 
 <body>
   <?php
-  include_once('../php/header.php');
+  require_once('../php/header.php');
   ?>
   <?php
   if (isset($_SESSION['username'])) {
@@ -167,23 +167,22 @@ if (isset($_GET['message'])) {
                       $statusMessage = "Reserve price not met";
                     } else {
                       $statusMessage = "Highest bid meets the reserve price";
+                    ?>
+                      <div class="biddingSection">
+                        <form action="place_bid.php" method="post">
+                          <input type="hidden" name="itemId" value="<?php echo $id; ?>">
+                          <input type="number" name="bidAmount" placeholder="Enter your bid" class="bidInput no-spinner" min="1" max="99999" required>
+                          <input type="submit" class="submit" value="Place Bid">
+                        </form>
+                      </div>
+                      <h4 class="statusMsg">Status: <b><?php echo $statusMessage ?></b></h4>
+                    <?php
                     }
                     ?>
-                    <div class="biddingSection">
-                      <form action="place_bid.php" method="post">
-                        <input type="hidden" name="itemId" value="<?php echo $id; ?>">
-                        <input type="number" name="bidAmount" placeholder="Enter your bid" class="bidInput no-spinner" min="1" max="99999" required>
-                        <input type="submit" class="submit" value="Place Bid">
-                      </form>
-                    </div>
-                    <h4 class="statusMsg">Status: <b><?php echo $statusMessage ?></b></h4>
                 </div>
-
-                <?php
+              <?php
                   }
-                ?>
-              </div>
-              <hr>
+              ?>
               <div class="biddedUser">
                 <h1>Bids:</h1>
                 <table>
@@ -214,43 +213,46 @@ if (isset($_GET['message'])) {
                 </table>
               </div>
               </div>
-            </div>
-          </div>
+              <hr>
 
-          <div class="lowerSection">
-            <div class="title">
-              <h2><?php echo $item['item_title'] ?></h2>
-              <p><?php echo $item['item_description']; ?></p>
-            </div>
-            <div class="itemOverview margin">
-              <h3>Item Overview</h3>
-              <ul>
-                <li>Condition: <?php echo $item['item_condition'] ?></li>
-                <li>No of item: <?php echo $item['no_Item'] ?></li>
-                <li>Location: <?php echo $item['location'] ?></li>
-                <li>Category: <?php echo $item['product_category'] ?></li>
-              </ul>
-            </div>
-            <div class="auctionDetails margin">
-              <h3>Auction Details</h3>
-              <p><b><?php echo $item['item_title'] ?></b></p>
-              <p>Auction By: <b><?php echo $item['user'] ?></b></p>
-              <p>Added Date: December 15, 10:50 PM</p>
-              <p>Location: Tokyo-to, Shibuya-ku, Japan</p>
-            </div>
-            <div class="shippingDetails">
-              <h3>Shipping Details</h3>
-              <p>Pokhara 8, Kaski, Nepal</p>
-              <p>Contact: email@gmail.com</p>
             </div>
           </div>
-        <?php
-        }
-        ?>
+      </div>
+
+      <div class="lowerSection">
+        <div class="title">
+          <h2><?php echo $item['item_title'] ?></h2>
+          <p><?php echo $item['item_description']; ?></p>
+        </div>
+        <div class="itemOverview margin">
+          <h3>Item Overview</h3>
+          <ul>
+            <li>Condition: <?php echo $item['item_condition'] ?></li>
+            <li>No of item: <?php echo $item['no_Item'] ?></li>
+            <li>Location: <?php echo $item['location'] ?></li>
+            <li>Category: <?php echo $item['product_category'] ?></li>
+          </ul>
+        </div>
+        <div class="auctionDetails margin">
+          <h3>Auction Details</h3>
+          <p><b><?php echo $item['item_title'] ?></b></p>
+          <p>Auction By: <b><?php echo $item['user'] ?></b></p>
+          <p>Added Date: December 15, 10:50 PM</p>
+          <p>Location: Tokyo-to, Shibuya-ku, Japan</p>
+        </div>
+        <div class="shippingDetails">
+          <h3>Shipping Details</h3>
+          <p>Pokhara 8, Kaski, Nepal</p>
+          <p>Contact: email@gmail.com</p>
+        </div>
       </div>
     <?php
-    }
+        }
     ?>
+    </div>
+  <?php
+    }
+  ?>
   </section>
 
   <footer>
