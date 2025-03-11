@@ -2,7 +2,7 @@
 session_start();
 include("../php/connection.php");
 
-if(!$_SESSION['username']){
+if (!$_SESSION['username']) {
   header('Location: ../index.php?message="Login first for bidding"');
 }
 
@@ -48,7 +48,7 @@ if (isset($_GET['message'])) {
 
 <body>
   <?php
-  include_once('../php/header.php');
+  require_once('../php/header.php');
   ?>
   <?php
   if (isset($_SESSION['username'])) {
@@ -177,11 +177,12 @@ if (isset($_GET['message'])) {
                       </form>
                     </div>
                     <h4 class="statusMsg">Status: <b><?php echo $statusMessage ?></b></h4>
-                </div>
 
-                <?php
+                </div>
+              <?php
                   }
-                ?>
+              ?>
+
               </div>
               <hr>
               <div class="biddedUser">
@@ -213,44 +214,44 @@ if (isset($_GET['message'])) {
                   </tbody>
                 </table>
               </div>
-              </div>
             </div>
           </div>
+      </div>
 
-          <div class="lowerSection">
-            <div class="title">
-              <h2><?php echo $item['item_title'] ?></h2>
-              <p><?php echo $item['item_description']; ?></p>
-            </div>
-            <div class="itemOverview margin">
-              <h3>Item Overview</h3>
-              <ul>
-                <li>Condition: <?php echo $item['item_condition'] ?></li>
-                <li>No of item: <?php echo $item['no_Item'] ?></li>
-                <li>Location: <?php echo $item['location'] ?></li>
-                <li>Category: <?php echo $item['product_category'] ?></li>
-              </ul>
-            </div>
-            <div class="auctionDetails margin">
-              <h3>Auction Details</h3>
-              <p><b><?php echo $item['item_title'] ?></b></p>
-              <p>Auction By: <b><?php echo $item['user'] ?></b></p>
-              <p>Added Date: December 15, 10:50 PM</p>
-              <p>Location: Tokyo-to, Shibuya-ku, Japan</p>
-            </div>
-            <div class="shippingDetails">
-              <h3>Shipping Details</h3>
-              <p>Pokhara 8, Kaski, Nepal</p>
-              <p>Contact: email@gmail.com</p>
-            </div>
-          </div>
-        <?php
-        }
-        ?>
+      <div class="lowerSection">
+        <div class="title">
+          <h2><?php echo $item['item_title'] ?></h2>
+          <p><?php echo $item['item_description']; ?></p>
+        </div>
+        <div class="itemOverview margin">
+          <h3>Item Overview</h3>
+          <ul>
+            <li>Condition: <?php echo $item['item_condition'] ?></li>
+            <li>No of item: <?php echo $item['no_Item'] ?></li>
+            <li>Location: <?php echo $item['location'] ?></li>
+            <li>Category: <?php echo $item['product_category'] ?></li>
+          </ul>
+        </div>
+        <div class="auctionDetails margin">
+          <h3>Auction Details</h3>
+          <p><b><?php echo $item['item_title'] ?></b></p>
+          <p>Auction By: <b><?php echo $item['user'] ?></b></p>
+          <p>Added Date: December 15, 10:50 PM</p>
+          <p>Location: Tokyo-to, Shibuya-ku, Japan</p>
+        </div>
+        <div class="shippingDetails">
+          <h3>Shipping Details</h3>
+          <p>Pokhara 8, Kaski, Nepal</p>
+          <p>Contact: email@gmail.com</p>
+        </div>
       </div>
     <?php
-    }
+        }
     ?>
+    </div>
+  <?php
+    }
+  ?>
   </section>
 
   <footer>
