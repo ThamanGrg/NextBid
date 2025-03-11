@@ -5,6 +5,13 @@ include_once("php/connection.php");
 $query = "SELECT p.item_ID, p.item_title, p.ending_date, p.endTime, i.image_path FROM products p LEFT JOIN item_images i ON p.item_ID = i.item_ID WHERE i.is_primary = 1";
 $result = mysqli_query($conn, $query);
 
+if(isset($_GET['message'])){
+    $message = $_GET['message'];
+    echo "<script>";
+    echo "alert('$message')";
+    echo "</script>";
+}
+
 if (isset($_SESSION['username'])) {
     $uname = $_SESSION['username'];
 

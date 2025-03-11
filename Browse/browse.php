@@ -27,10 +27,10 @@ if (!$result) {
     <?php
     require_once('../php/header.php');
     ?>
-<?php
-  include_once('../php/header.php');
-  ?>
-      <?php
+    <?php
+    include_once('../php/header.php');
+    ?>
+    <?php
     if (isset($_SESSION['username'])) {
     ?>
         <div id="userDropdown" class="userDropdown">
@@ -197,19 +197,13 @@ if (!$result) {
                         <h4>Price range</h4>
                         <div class="price">
                             <label for="filter Price">Minimum Price:</label>
-                            <input type="text" min="0" maxlength="10" id="minPrice">
+                            <input type="number" min="0" maxlength="10">
                         </div>
                         <div class="price">
                             <label for="filter Price">Maximum Price:</label>
-                            <input type="text" min="0" maxlength="10" id="maxPrice">
+                            <input type="number" min="0" maxlength="10">
                         </div>
-                        <div class="click">
-                            <button class="button" onclick="filterproducts()">Button</button> 
-                        </div>
-                        
-                        
-
-
+                        <button onclick="filterProducts()">filter</button>
                     </div>
                 </div>
             </div>
@@ -233,7 +227,7 @@ if (!$result) {
                                         <p>Seller: Thaman@123</p><br>
                                         <p>Location: Pokhara, kaski</p><br>
                                         <p>December 13, 2024 | 22:22</p><br>
-                                        <p data-price="<?php echo $row['reserve_price']; ?>">reserve price: <?php echo $row['reserve_price']; ?></p><br>
+                                        <p>reserve price: <?php echo $row['reserve_price']; ?></p><br>
                                     </div>
                                     <div class="itemLinks">
                                         <a href="../Itemdetails/itemdetails.php?itemId=<?php echo $row['item_ID']; ?>">View item</a>
@@ -334,44 +328,6 @@ if (!$result) {
 <script>
     const categoryCheckboxes = document.querySelectorAll('.categories input[type="checkbox"]');
     const products = document.querySelectorAll('.ItemCard');
-
-    function filterProducts() {
-        let selectedCategories = [];
-
-        categoryCheckboxes.forEach(checkbox => {
-            if (checkbox.checked) {
-                selectedCategories.push(checkbox.parentNode.textContent.trim());
-            }
-        });
-
-        products.forEach(product => {
-            let productCategory = product.getAttribute('data-category');
-            let categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(productCategory);
-            if (categoryMatch) {
-                product.style.display = 'flex';
-            } else {
-                product.style.display = 'none';
-            }
-        });
-    }
-
-    categoryCheckboxes.forEach(checkbox => checkbox.addEventListener('change', filterProducts));
-    filterProducts();
-</script>
-<script>
-    function userProfile() {
-        let dropdown = document.querySelector(".userDropdown");
-
-        if (dropdown.style.display === "none") {
-            dropdown.style.setProperty("display", "flex");
-        } else {
-            dropdown.style.setProperty("display", "none");
-        }
-    }
-</script>
-<script>
-    const categoryCheckboxes = document.querySelectorAll('.categories input[type="checkbox"]');
-    const products = document.querySelectorAll('.ItemCard');
     const priceMinInput = document.getElementById('minPrice');
     const priceMaxInput = document.getElementById('maxPrice');
 
@@ -380,8 +336,8 @@ if (!$result) {
         let selectedCategories = [];
 
         // Get min and max price, ensuring proper handling of empty or invalid input
-        const minPrice = parseFloat(priceMinInput.value)  0;
-        const maxPrice = parseFloat(priceMaxInput.value)  Infinity;
+        const minPrice = parseFloat(priceMinInput.value) || 0;
+        const maxPrice = parseFloat(priceMaxInput.value) || Infinity;
 
         // Get selected categories
         categoryCheckboxes.forEach(checkbox => {
@@ -393,10 +349,10 @@ if (!$result) {
         // Filter products
         products.forEach(product => {
             let productCategory = product.getAttribute('data-category');
-            let productPrice = parseFloat(product.getAttribute('data-price'))  0;
+            let productPrice = parseFloat(product.getAttribute('data-price')) || 0;
 
             // Check category filter
-            let categoryMatch = selectedCategories.length === 0  selectedCategories.includes(productCategory);
+            let categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(productCategory);
 
             // Check price range filter
             let priceMatch = productPrice >= minPrice && productPrice <= maxPrice;
@@ -418,4 +374,18 @@ if (!$result) {
     // Initial filter call to load products
     filterProducts();
 </script>
+
+</html>
+<script>
+    function userProfile() {
+        let dropdown = document.querySelector(".userDropdown");
+
+        if (dropdown.style.display === "none") {
+            dropdown.style.setProperty("display", "flex");
+        } else {
+            dropdown.style.setProperty("display", "none");
+        }
+    }
+</script>
+
 </html>

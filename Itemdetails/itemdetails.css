@@ -101,12 +101,13 @@ section{
     background-color: #F8F8F8;
     margin-top: 25px;
     border: 1px solid rgba(51, 51, 51, 0.445);
-    height: auto;
+    height: 730px;
     min-height: 700px;
     width: 600px;
     border-radius: 20px;
     padding-left: 45px;
     padding-top: 45px;
+    padding-right: 28px;
 }
 
 .biddingSection{
@@ -160,9 +161,36 @@ section{
 }
 
 .biddedUser table{
-    margin-top: 25px;
     width: 100%;
     text-align: left;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+tbody {
+    display: block;
+    max-height: 145px;
+    overflow-y: auto;
+    width: 100%;
+}
+
+tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
 }
 
 .biddedUser p{

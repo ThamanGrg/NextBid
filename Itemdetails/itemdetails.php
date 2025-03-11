@@ -1,5 +1,10 @@
 <?php
+session_start();
 include("../php/connection.php");
+
+if(!$_SESSION['username']){
+  header('Location: ../index.php?message="Login first for bidding"');
+}
 
 if (isset($_GET['itemId'])) {
   $id = intval($_GET['itemId']);
@@ -26,8 +31,6 @@ if (isset($_GET['message'])) {
 }
 ?>
 
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,7 +43,7 @@ if (isset($_GET['message'])) {
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="itemdetails.css?version=1.8">
+  <link rel="stylesheet" href="itemdetails.css?version=1.9">
 </head>
 
 <body>
@@ -154,9 +157,18 @@ if (isset($_GET['message'])) {
                   <p>Maximum Price: $<?php echo number_format($item['maximum_price'], 2); ?></p>
 
                   <?php
-                  if ($currentBid < $reservePrice) {
-                    $statusMessage = "Reserve price not met";
+                  $endingDateTime = $item['ending_date'] . ' ' . $item['endTime'];
+                  if (strtotime($endingDateTime) <= time()) {
+                    echo "<h1 style='color: red;'>Auction Ended</h1>";
+                  } else {
                   ?>
+                    <?php
+                    if ($currentBid < $reservePrice) {
+                      $statusMessage = "Reserve price not met";
+                    } else {
+                      $statusMessage = "Highest bid meets the reserve price";
+                    }
+                    ?>
                     <div class="biddingSection">
                       <form action="place_bid.php" method="post">
                         <input type="hidden" name="itemId" value="<?php echo $id; ?>">
@@ -164,23 +176,25 @@ if (isset($_GET['message'])) {
                         <input type="submit" class="submit" value="Place Bid">
                       </form>
                     </div>
-                  <?php
-                  } else {
-                    $statusMessage = "Highest bid meets the reserve price";
-                  }
-                  ?>
-                  <h4 class="statusMsg">Status: <b><?php echo $statusMessage ?></b></h4>
+                    <h4 class="statusMsg">Status: <b><?php echo $statusMessage ?></b></h4>
                 </div>
 
-                <hr>
-                <div class="biddedUser">
-                  <h1>Bids:</h1>
-                  <table>
+                <?php
+                  }
+                ?>
+              </div>
+              <hr>
+              <div class="biddedUser">
+                <h1>Bids:</h1>
+                <table>
+                  <thead>
                     <tr>
                       <th>Username</th>
                       <th>Time</th>
                       <th>Bid</th>
                     </tr>
+                  </thead>
+                  <tbody>
                     <?php
                     $bidQuery = "SELECT u.username, b.bid_time, b.bid_amount FROM bids b JOIN users u ON b.user_id = u.user_id WHERE b.item_id = $id ORDER BY b.bid_amount DESC";
                     $bidResult = mysqli_query($conn, $bidQuery);
@@ -196,8 +210,9 @@ if (isset($_GET['message'])) {
                       echo "<tr><td colspan='3'>No bids placed yet.</td></tr>";
                     }
                     ?>
-                  </table>
-                </div>
+                  </tbody>
+                </table>
+              </div>
               </div>
             </div>
           </div>
