@@ -1,3 +1,12 @@
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    $_SESSION['message'] = "Login first for creating auction";
+    header('Location: ../index.php');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,12 +24,9 @@
 
 <body>
     <?php
-    require_once('../php/header.php');
+    include('../php/header.php');
     ?>
     <?php
-  include_once('../php/header.php');
-  ?>
-      <?php
     if (isset($_SESSION['username'])) {
     ?>
         <div id="userDropdown" class="userDropdown">

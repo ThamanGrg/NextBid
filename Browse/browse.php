@@ -3,6 +3,8 @@ include_once('../php/connection.php');
 
 $query = "SELECT p.*, i.* FROM products p LEFT JOIN item_images i ON p.item_ID = i.item_ID AND i.is_primary = 1";
 $result = mysqli_query($conn, $query);
+$no_of_rows = mysqli_num_rows($result);
+
 if (!$result) {
     die("Query Failed: " . mysqli_error($conn));
 }
@@ -25,10 +27,7 @@ if (!$result) {
 
 <body>
     <?php
-    require_once('../php/header.php');
-    ?>
-    <?php
-    include_once('../php/header.php');
+    include('../php/header.php');
     ?>
     <?php
     if (isset($_SESSION['username'])) {
@@ -148,7 +147,8 @@ if (!$result) {
         </div>
         <div class="TopSection">
             <div class="TotalAuction">
-                <h2>100</h2>
+
+                <h2><?php echo $no_of_rows ?></h2>
                 <p>Auction</p>
             </div>
             <div class="searchBox">

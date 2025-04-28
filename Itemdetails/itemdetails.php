@@ -2,8 +2,10 @@
 session_start();
 include("../php/connection.php");
 
-if (!$_SESSION['username']) {
-  header('Location: ../index.php?message="Login first for bidding"');
+if (!isset($_SESSION['username'])) {
+  $_SESSION['message'] = "Login first for bidding";
+  header('Location: ../index.php');
+  exit();
 }
 
 if (isset($_GET['itemId'])) {
@@ -12,22 +14,26 @@ if (isset($_GET['itemId'])) {
   $result = mysqli_query($conn, $query);
   $item = mysqli_fetch_assoc($result);
   mysqli_data_seek($result, 0);
+
+  $currentBid = $item['highest_bid'] ?? $item['initial_price'];
+  $reservePrice = $item['reserve_price'];
+  $maximumPrice = $item['maximum_price'];
+
+
   if (!$item) {
     echo "<h1 style='color: red;'>Item not found!</h1>";
     exit();
   }
-
-  $currentBid = $item['highest_bid'] ?? $item['initial_price'];
-  $reservePrice = $item['maximum_price'];
 } else {
-  header('Location: itemdetails.php?message="Id not given"');
+  header('Location: itemdetails.php');
 }
 
-if (isset($_GET['message'])) {
-  $message = $_GET['message'];
-  echo "<script type='text/javascript'>
-            alert('$message');
-          </script>";
+if (isset($_GET['status'])) {
+  if ($_GET['status'] == 'success') {
+    echo "<script>alert('Bid placed successfully!');</script>";
+  } elseif ($_GET['status'] == 'error') {
+    echo "<script>alert('Error placing bid. Please try again.');</script>";
+  }
 }
 ?>
 
@@ -152,9 +158,7 @@ if (isset($_GET['message'])) {
               </div>
               <div class="bidCard">
                 <div class="top">
-                  <p>Current Bid: $<?php echo number_format($currentBid, 2); ?></p>
                   <p>Reserve Price: $<?php echo number_format($item['reserve_price'], 2); ?></p>
-                  <p>Maximum Price: $<?php echo number_format($item['maximum_price'], 2); ?></p>
 
                   <?php
                   $endingDateTime = $item['ending_date'] . ' ' . $item['endTime'];
@@ -162,56 +166,24 @@ if (isset($_GET['message'])) {
                     echo "<h1 style='color: red;'>Auction Ended</h1>";
                   } else {
                   ?>
+                    <div class="biddingSection">
+                      <form action="place_bid.php" method="post">
+                        <input type="hidden" name="itemId" value="<?php echo $id; ?>">
+                        <input type="number" name="bidAmount" placeholder="Enter your bid" class="bidInput no-spinner" min="1" max="99999" required>
+                        <input type="submit" class="submit" value="Place Bid">
+                      </form>
+                    </div>
                     <?php
-                    if ($currentBid < $reservePrice) {
-                      $statusMessage = "Reserve price not met";
-                    } else {
-                      $statusMessage = "Highest bid meets the reserve price";
+                      if($currentBid >= $maximumPrice){
+                        echo "<h1 style='color: red;'>Auction Ended</h1>";
+                        $statusMessage = "Item Sold";
+                      }
                     ?>
-                      <div class="biddingSection">
-                        <form action="place_bid.php" method="post">
-                          <input type="hidden" name="itemId" value="<?php echo $id; ?>">
-                          <input type="number" name="bidAmount" placeholder="Enter your bid" class="bidInput no-spinner" min="1" max="99999" required>
-                          <input type="submit" class="submit" value="Place Bid">
-                        </form>
-                      </div>
-                      <h4 class="statusMsg">Status: <b><?php echo $statusMessage ?></b></h4>
-                    <?php
-                    }
-                    ?>
+                    <h4 class="statusMsg">Status: <b><?php echo $statusMessage ?></b></h4>
                 </div>
               <?php
                   }
               ?>
-              <div class="biddedUser">
-                <h1>Bids:</h1>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Username</th>
-                      <th>Time</th>
-                      <th>Bid</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                    $bidQuery = "SELECT u.username, b.bid_time, b.bid_amount FROM bids b JOIN users u ON b.user_id = u.user_id WHERE b.item_id = $id ORDER BY b.bid_amount DESC";
-                    $bidResult = mysqli_query($conn, $bidQuery);
-                    if (mysqli_num_rows($bidResult) > 0) {
-                      while ($bid = mysqli_fetch_assoc($bidResult)) {
-                        echo "<tr>
-                                  <td>{$bid['username']}</td>
-                                  <td>{$bid['bid_time']}</td>
-                                  <td>\${$bid['bid_amount']}</td>
-                                </tr>";
-                      }
-                    } else {
-                      echo "<tr><td colspan='3'>No bids placed yet.</td></tr>";
-                    }
-                    ?>
-                  </tbody>
-                </table>
-              </div>
               </div>
               <hr>
 
@@ -285,6 +257,27 @@ if (isset($_GET['message'])) {
       dropdown.style.setProperty("display", "none");
     }
   }
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const bidForm = document.querySelector("form[action='place_bid.php']");
+    const bidInput = bidForm.querySelector(".bidInput");
+
+    const maxBid = parseFloat(document.getElementById("maxPrice").innerText.replace("$", "").replace(",", ""));
+    const currentBid = parseFloat(document.getElementById("currentBid").innerText.replace("$", "").replace(",", ""));
+
+    bidForm.addEventListener("submit", function(event) {
+      const bidAmount = parseFloat(bidInput.value);
+
+      if (bidAmount <= currentBid) {
+        alert("Your bid must be higher than the current bid");
+        event.preventDefault();
+      } else if (bidAmount > maxBid) {
+        alert("Your bid exceeds the maximum allowed price ");
+        event.preventDefault();
+      }
+    });
+  });
 </script>
 
 </html>
