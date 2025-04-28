@@ -12,7 +12,7 @@ while ($row = $result->fetch_assoc()) {
 ?>
     <div class="container">
         <div>
-            <form action="update_settings.php" method="POST">
+            <form action="update_setting.php" method="POST">
                 <h3>Edit Personal Information</h3>
                 <div class="inputField">
                     <label for="name">Name:</label>
