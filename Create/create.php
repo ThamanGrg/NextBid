@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(!$_SESSION['username']){
+    header('Location: ../index.php?message="login to create auction"');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

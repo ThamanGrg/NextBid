@@ -167,6 +167,7 @@ if (isset($_GET['message'])) {
                       $statusMessage = "Reserve price not met";
                     } else {
                       $statusMessage = "Highest bid meets the reserve price";
+                    }
                     ?>
                       <div class="biddingSection">
                         <form action="place_bid.php" method="post">
@@ -176,9 +177,6 @@ if (isset($_GET['message'])) {
                         </form>
                       </div>
                       <h4 class="statusMsg">Status: <b><?php echo $statusMessage ?></b></h4>
-                    <?php
-                    }
-                    ?>
                 </div>
               <?php
                   }
