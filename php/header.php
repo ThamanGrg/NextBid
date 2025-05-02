@@ -150,7 +150,7 @@ if (isset($_SESSION['username'])) {
         <div class="loginSignup">
             <?php
             if (isset($_SESSION['username'])) {
-                echo "<button onclick=\"userProfile();\"><img src='../assets/icons/user.png' alt='user' class='userDropDown'>" . $_SESSION['username'] . "</button>";
+                echo "<button onclick=\"userProfile();\"    class='userDropDown'><img src='../assets/icons/user.png' alt='user' >" . $_SESSION['username'] . "</button>";
             } else {
                 echo "<button class='btnLogin-popup' onclick='loginForm();'><img src='../assets/icons/user.png' alt='user'>Login</button>";
             }

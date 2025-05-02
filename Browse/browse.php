@@ -303,34 +303,10 @@ if (!$result) {
         }
     });
 </script>
-<script>
-    document.querySelectorAll('.categories input[type="checkbox"]').forEach(checkbox => {
-        checkbox.addEventListener('change', filterProducts);
-    });
 
-    function filterProducts() {
-        let selectedCategories = [];
-        document.querySelectorAll('.categories input[type="checkbox"]:checked').forEach(checkbox => {
-            selectedCategories.push(checkbox.parentElement.textContent.trim());
-        });
-
-        const products = document.querySelectorAll('.ItemCard');
-
-        products.forEach(product => {
-            const productCategory = product.querySelector('.itemCategory').textContent.trim();
-            if (selectedCategories.length === 0 || selectedCategories.includes(productCategory)) {
-                product.style.display = 'block';
-            } else {
-                product.style.display = 'none';
-            }
-        });
-    }
-</script>
 <script>
     const categoryCheckboxes = document.querySelectorAll('.categories input[type="checkbox"]');
     const products = document.querySelectorAll('.ItemCard');
-    const priceMinInput = document.getElementById('minPrice');
-    const priceMaxInput = document.getElementById('maxPrice');
 
     function filterProducts() {
         let selectedCategories = [];
@@ -348,7 +324,6 @@ if (!$result) {
 
         products.forEach(product => {
             let productCategory = product.getAttribute('data-category');
-            let productPrice = parseFloat(product.getAttribute('data-price')) || 0;
 
             let categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(productCategory);
             let priceMatch = productPrice >= minPrice && productPrice <= maxPrice;
