@@ -1,9 +1,12 @@
 <?php
 session_start();
-if(!$_SESSION['username']){
-    header('Location: ../index.php?message="login to create auction"');
+if (!isset($_SESSION['username'])) {
+    $_SESSION['message'] = "Login first for creating auction";
+    header('Location: ../index.php');
+    exit();
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,12 +24,9 @@ if(!$_SESSION['username']){
 
 <body>
     <?php
-    require_once('../php/header.php');
+    include('../php/header.php');
     ?>
     <?php
-  include_once('../php/header.php');
-  ?>
-      <?php
     if (isset($_SESSION['username'])) {
     ?>
         <div id="userDropdown" class="userDropdown">

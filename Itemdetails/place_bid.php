@@ -19,14 +19,13 @@ if ($bidAmount > $highestBid) {
     $insertBid = "INSERT INTO bids (item_id, user_id, bid_amount) VALUES ('$itemId', '$userId', '$bidAmount')";
     if (mysqli_query($conn, $insertBid)) {
         $message= "Bid placed successfully!";
-        header("Location: itemdetails.php?itemId=$itemId&message=$message");
+        header("Location: itemdetails.php?itemId=$itemId&status='success'");
         exit();
     } else {
-        $message= "Error: " . mysqli_error($conn);
-        header("Location: itemdetails.php?itemId=$itemId&message=$message");
+        echo '"Error: " . mysqli_error($conn)';
+        header("Location: itemdetails.php?itemId=$itemId");
     }
 } else {
-    $message = "Your bid must be higher than the current bid!";
-    header("Location: itemdetails.php?itemId=$itemId&message=$message");
+    header("Location: itemdetails.php?itemId=$itemId");
 }
 ?>

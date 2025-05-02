@@ -1,3 +1,14 @@
+<?php
+session_start();
+include("../php/connection.php");
+
+if (!isset($_SESSION['username'])) {
+  $_SESSION['message'] = "Login first for registering bid";
+  header('Location: ../index.php');
+  exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
