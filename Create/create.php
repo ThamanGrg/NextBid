@@ -92,10 +92,6 @@ if (!isset($_SESSION['username'])) {
                             <label for="Item Title">Item Title: </label>
                             <input type="text" name="itemTitle" id="itemTitle" maxlength="255" required placeholder="Enter the title for item">
                         </div>
-                        <div class="inputField">
-                            <label for="initial Price">Initial Price($): </label>
-                            <input type="number" name="initialPrice" id="initialPrice" min="1" required placeholder="Enter starting price" class="no-spinner">
-                        </div>
 
                         <div class="inputField">
                             <label for="maximum price">Maximum Price($): </label>

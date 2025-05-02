@@ -23,26 +23,28 @@ if (isset($_POST['register'])) {
         $sql_user = "SELECT * FROM users WHERE username = '$uname'";
         $result_user = $conn->query($sql_user);
         if ($result_user->num_rows > 0) {
-            $response .= "Username already exists. ";
-            echo $response;
+            $_SESSION['message'] = "Username already exists. ";
+            header("Location: ../index.php");
+            exit;
         }
 
         $sql_email = "SELECT * FROM users WHERE email = '$email'";
         $result_email = $conn->query($sql_email);
         if ($result_email->num_rows > 0) {
-            $response .= "Email already exists.";
-            echo $response;
+            $_SESSION['message'] = "Email already exists. ";
+            header("Location: ../index.php");
+            exit;
         }
     } else {
         $submitQuery = "INSERT INTO users (username, email, name, password) VALUES ('$uname', '$email', '$name', '$hashed_password')";
         $success = $conn->query($submitQuery);
 
         if ($success) {
-            $_SESSION['success_message'] = "Registration successful. Please log in.";
+            $_SESSION['message'] = "Registration successful. Please log in.";
             header("Location: ../index.php");
             exit;
         } else {
-            $_SESSION['error_message'] = "Registration unsuccessful. Please try again.";
+            $_SESSION['message'] = "Registration unsuccessful. Please try again.";
             header("Location: ../index.php");
             exit;
         }
@@ -67,19 +69,20 @@ if (isset($_POST['login'])) {
         if (password_verify($password, $row['password'])) {
             $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['username'] = $row['username'];
+            $_SESSION['role'] = $row['role'];
             
+            $_SESSION['message'] = "Login successful";
             header("Location: ../index.php");
-            $response .= "login successful";
-            echo $response;
+            exit;
         } else {
+            $_SESSION['message'] = "Invalid username or password";
             header("Location: ../index.php");
-            $response .= "Invalid Username or Password!";
-            echo $response;
+            exit;
         }
     } else {
-        header("Location: ../index.php");
-        $response .= "Invalid Username or Password!";
-        echo $response;
+        $_SESSION['message'] = "Invalid username or password";
+            header("Location: ../index.php");
+            exit;
     }
 }
 

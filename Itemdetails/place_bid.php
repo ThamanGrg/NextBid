@@ -3,29 +3,32 @@ session_start();
 include('../php/connection.php');
 
 if (!isset($_SESSION['user_id'])) {
-    die("You must be logged in to place a bid.");
+    $_SESSION['message'] = "Login first for bidding";
+    header('Location: ../index.php');
+    exit();
 }
 
-$itemId = $_POST['itemId'];
-$bidAmount = $_POST['bidAmount'];
-$userId = $_SESSION['user_id'];
+$itemId = intval($_POST['auctionId']);
+$bidAmount = floatval($_POST['bidAmount']);
+$userId = intval($_SESSION['user_id']);
 
-$query = "SELECT MAX(bid_amount) as max_bid FROM bids WHERE item_id = $itemId";
+$query = "SELECT MAX(b.bid_amount) AS max_bid, p.reserve_price FROM bids b JOIN products p ON b.auction_id = p.item_ID WHERE b.auction_id = $itemId";
 $result = mysqli_query($conn, $query);
 $row = mysqli_fetch_assoc($result);
 $highestBid = $row['max_bid'] ?? 0;
+$reservedPrice = $row['reserve_price'];
 
-if ($bidAmount > $highestBid) {
-    $insertBid = "INSERT INTO bids (item_id, user_id, bid_amount) VALUES ('$itemId', '$userId', '$bidAmount')";
+if ($bidAmount > $highestBid && $bidAmount >= $reservedPrice) {
+    $insertBid = "INSERT INTO bids (auction_id, user_id, bid_amount) VALUES ($itemId, $userId, $bidAmount)";
     if (mysqli_query($conn, $insertBid)) {
-        $message= "Bid placed successfully!";
-        header("Location: itemdetails.php?itemId=$itemId&status='success'");
-        exit();
+        $_SESSION['message'] = "Bid placed successfully";
     } else {
-        echo '"Error: " . mysqli_error($conn)';
-        header("Location: itemdetails.php?itemId=$itemId");
+        $_SESSION['message'] = "Error placing bid: " . mysqli_error($conn);
     }
 } else {
-    header("Location: itemdetails.php?itemId=$itemId");
+    $_SESSION['message'] = "Bid must be higher than the current bid and at least the reserved price.";
 }
+
+header("Location: itemdetails.php?itemId=$itemId");
+exit();
 ?>

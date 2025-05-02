@@ -1,24 +1,18 @@
 <footer class="footer pt-3  ">
-    <div class="container-fluid">
-        <div class="row align-items-center justify-content-lg-between">
-            <div class="col-lg-6">
-                <ul class="nav nav-footer justify-content-center justify-content-lg-end">a
-                    <li class="nav-item">
-                        <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+  <div class="container-fluid">
+    <div class="row align-items-center justify-content-lg-between">
+      <div class="col-lg-6">
+        <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+          <li class="nav-item">
+            <a href="#" class="nav-link text-muted" target="_blank">About Us</a>
+          </li>
+        </ul>
+      </div>
     </div>
+  </div>
 </footer>
 
-    
+
 </div>
 
 </main>
@@ -37,11 +31,9 @@
           <i class="fa fa-close"></i>
         </button>
       </div>
-      <!-- End Toggle Button -->
     </div>
     <hr class="horizontal dark my-1">
     <div class="card-body pt-sm-3 pt-0">
-      <!-- Sidebar Backgrounds -->
       <div>
         <h6 class="mb-0">Sidebar Colors</h6>
       </div>
@@ -55,7 +47,6 @@
           <span class="badge filter bg-gradient-danger" data-color="danger" onclick="sidebarColor(this)"></span>
         </div>
       </a>
-      <!-- Sidenav Type -->
       <div class="mt-3">
         <h6 class="mb-0">Sidenav Type</h6>
         <p class="text-sm">Choose between 2 different sidenav types.</p>
@@ -65,7 +56,7 @@
         <button class="btn btn-primary w-100 px-3 mb-2 ms-2" data-class="bg-white" onclick="sidebarType(this)">White</button>
       </div>
       <p class="text-sm d-xl-none d-block mt-2">You can change the sidenav type just on desktop view.</p>
-      <!-- Navbar Fixed -->
+
       <div class="mt-3">
         <h6 class="mb-0">Navbar Fixed</h6>
       </div>

@@ -31,10 +31,6 @@
                 <a href="#">Logout</a>
             </div>
             <div class="info">
-
-            <P>what is random text generator? Random Text generator is a web application which provides true random text which you can use in your documents or wed designs</P>
-
-
             </div>
         </div>
 </body>

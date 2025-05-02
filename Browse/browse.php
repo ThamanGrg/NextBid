@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once('../php/connection.php');
 
 $query = "SELECT p.*, i.* FROM products p LEFT JOIN item_images i ON p.item_ID = i.item_ID AND i.is_primary = 1";
@@ -172,13 +173,13 @@ if (!$result) {
                     <div class="categories">
                         <h4>Categories</h4>
                         <ul>
-                            <li><input type="checkbox"> Vintage Items & Antiques</li>
-                            <li><input type="checkbox"> Automobiles</li>
-                            <li><input type="checkbox"> Decorative items & Gifts</li>
-                            <li><input type="checkbox"> Arts</li>
-                            <li><input type="checkbox"> Electronics & Technology</li>
-                            <li><input type="checkbox"> Jewellery</li>
-                            <li><input type="checkbox"> Furniture</li>
+                            <li><label><input type="checkbox" value="Vintage Items & Antiques"> Vintage Items & Antiques</label></li>
+                            <li><label><input type="checkbox" value="Automobiles"> Automobiles</label></li>
+                            <li><label><input type="checkbox" value="Decorative items & Gifts"> Decorative items & Gifts</label></li>
+                            <li><label><input type="checkbox" value="Arts"> Arts</label></li>
+                            <li><label><input type="checkbox" value="Electronics & Technology"> Electronics & Technology</label></li>
+                            <li><label><input type="checkbox" value="Jewellery"> Jewellery</label></li>
+                            <li><label><input type="checkbox" value="Furniture"> Furniture</label></li>
                         </ul>
                     </div>
                     <hr>
@@ -211,7 +212,7 @@ if (!$result) {
                 <?php
                 while ($row = mysqli_fetch_assoc($result)) {
                 ?>
-                    <div class="ItemCard" data-category="<?php echo $row["product_category"] ?>" data-price="<?php echo $row['reserve_price']; ?>">
+                    <div class="ItemCard" data-category="<?php echo trim($row["product_category"]) ?>" data-price="<?php echo $row['reserve_price']; ?>">
                         <div class="itemImage">
                             <div class="imageCard">
                                 <img src="../uploads/<?php echo $row['image_path']; ?>">
@@ -331,47 +332,40 @@ if (!$result) {
     const priceMinInput = document.getElementById('minPrice');
     const priceMaxInput = document.getElementById('maxPrice');
 
-    // Function to filter products based on selected criteria
     function filterProducts() {
         let selectedCategories = [];
 
-        // Get min and max price, ensuring proper handling of empty or invalid input
         const minPrice = parseFloat(priceMinInput.value) || 0;
         const maxPrice = parseFloat(priceMaxInput.value) || Infinity;
 
-        // Get selected categories
         categoryCheckboxes.forEach(checkbox => {
             if (checkbox.checked) {
-                selectedCategories.push(checkbox.parentNode.textContent.trim());
+                selectedCategories.push(checkbox.value);
             }
         });
 
-        // Filter products
+        console.log("Selected Categories:", selectedCategories);
+
         products.forEach(product => {
             let productCategory = product.getAttribute('data-category');
             let productPrice = parseFloat(product.getAttribute('data-price')) || 0;
 
-            // Check category filter
             let categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(productCategory);
-
-            // Check price range filter
             let priceMatch = productPrice >= minPrice && productPrice <= maxPrice;
 
-            // Show or hide product based on filters
             if (categoryMatch && priceMatch) {
-                product.style.display = 'block';
+                product.style.display = 'flex';
             } else {
                 product.style.display = 'none';
             }
         });
     }
 
-    // Attach event listeners to filter elements
+
     categoryCheckboxes.forEach(checkbox => checkbox.addEventListener('change', filterProducts));
     priceMinInput.addEventListener('input', filterProducts);
     priceMaxInput.addEventListener('input', filterProducts);
 
-    // Initial filter call to load products
     filterProducts();
 </script>
 

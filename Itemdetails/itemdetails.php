@@ -8,17 +8,25 @@ if (!isset($_SESSION['username'])) {
   exit();
 }
 
+if (isset($_SESSION['message'])) {
+  $message = $_SESSION['message'];
+  echo "<script>alert('$message');</script>";
+  unset($_SESSION['message']);
+}
+
 if (isset($_GET['itemId'])) {
   $id = intval($_GET['itemId']);
-  $query = "SELECT p.*, i.*, d.*, (SELECT MAX(bid_amount) FROM bids WHERE item_id = p.item_id) AS highest_bid FROM products p LEFT JOIN item_images i ON p.item_id = i.item_id LEFT JOIN item_details d ON p.item_id = d.item_id WHERE p.item_id = $id;";
+  $query = "SELECT p.*, i.*, d.*, (SELECT MAX(bid_amount) FROM bids WHERE auction_id = p.item_id) AS highest_bid FROM products p LEFT JOIN item_images i ON p.item_id = i.item_id LEFT JOIN item_details d ON p.item_id = d.item_id WHERE p.item_id = $id;";
   $result = mysqli_query($conn, $query);
   $item = mysqli_fetch_assoc($result);
   mysqli_data_seek($result, 0);
 
-  $currentBid = $item['highest_bid'] ?? $item['initial_price'];
+  $currentBid = $item['highest_bid'];
   $reservePrice = $item['reserve_price'];
   $maximumPrice = $item['maximum_price'];
 
+  $auctionWinner = "SELECT u.username, b.bid_amount FROM bids b JOIN users u ON b.user_id = u.user_id WHERE b.auction_id = $id ORDER BY b.bid_amount DESC LIMIT 1";
+  $winnerResult = mysqli_query($conn, $auctionWinner);
 
   if (!$item) {
     echo "<h1 style='color: red;'>Item not found!</h1>";
@@ -35,6 +43,8 @@ if (isset($_GET['status'])) {
     echo "<script>alert('Error placing bid. Please try again.');</script>";
   }
 }
+
+$statusMessage = "Auction Running"
 ?>
 
 <!DOCTYPE html>
@@ -126,7 +136,10 @@ if (isset($_GET['status'])) {
         </div>
         <?php
         if ($item = mysqli_fetch_assoc($result)) {
+          $startingDateTime = $item['starting_date'] . ' ' . $item['startTime'];
+          $endingDateTime = $item['ending_date'] . ' ' . $item['endTime'];
         ?>
+
           <div class="upperSection">
             <div class="leftSection">
               <div class="itemTitle">
@@ -153,42 +166,61 @@ if (isset($_GET['status'])) {
               </div>
             </div>
             <div class="rightSection">
-              <div class="bidTime">
-                <h1>Closes in <?php echo date("F d, Y", strtotime($item['ending_date'])) . " at " . date("h:i A", strtotime($item['endTime'])) ?></h1>
-              </div>
-              <div class="bidCard">
-                <div class="top">
-                  <p>Reserve Price: $<?php echo number_format($item['reserve_price'], 2); ?></p>
-
-                  <?php
-                  $endingDateTime = $item['ending_date'] . ' ' . $item['endTime'];
-                  if (strtotime($endingDateTime) <= time()) {
-                    echo "<h1 style='color: red;'>Auction Ended</h1>";
-                  } else {
-                  ?>
-                    <div class="biddingSection">
-                      <form action="place_bid.php" method="post">
-                        <input type="hidden" name="itemId" value="<?php echo $id; ?>">
-                        <input type="number" name="bidAmount" placeholder="Enter your bid" class="bidInput no-spinner" min="1" max="99999" required>
-                        <input type="submit" class="submit" value="Place Bid">
-                      </form>
-                    </div>
+              <?php
+              if (strtotime($startingDateTime) <= time()) {
+              ?>
+                <div class="bidTime">
+                  <h1>Closes in <?php echo date("F d, Y", strtotime($item['ending_date'])) . " at " . date("h:i A", strtotime($item['endTime'])) ?></h1>
+                </div>
+                <div class="bidCard">
+                  <div class="top">
                     <?php
-                      if($currentBid >= $maximumPrice){
-                        echo "<h1 style='color: red;'>Auction Ended</h1>";
-                        $statusMessage = "Item Sold";
+                    $endingDateTime = $item['ending_date'] . ' ' . $item['endTime'];
+                    if ((strtotime($endingDateTime) <= time()) || ($currentBid >= $maximumPrice)) {
+                      echo "<h1 style='color: red;'>Auction Ended</h1>";
+                      if ($winner = mysqli_fetch_assoc($winnerResult)) {
+                        echo "<p>Winner: " . htmlspecialchars($winner['username']) . "</p>";
+                        echo "<p>Winning Bid: $" . number_format($winner['bid_amount'], 2) . "</p>";
+                        $statusMessage = "Sold";
+                      } else {
+                        echo "<p>Auction Ended - No Bids</p>";
                       }
                     ?>
-                    <h4 class="statusMsg">Status: <b><?php echo $statusMessage ?></b></h4>
-                </div>
-              <?php
-                  }
-              ?>
-              </div>
-              <hr>
+                    <?php
+                    } else {
+                    ?>
+                      <p>Current Price: <span id="currentBid">$<?php echo number_format($currentBid, 2); ?></span></p>
+                      <p>Reserve Price: <span id="reservePrice">$<?php echo number_format($item['reserve_price'], 2); ?></span></p>
+                      <span id="maxPrice" hidden>$<?php echo number_format($item['maximum_price'], 2); ?></span>
 
+                      <div class="biddingSection">
+                        <form action="place_bid.php" method="post">
+                          <input type="hidden" name="auctionId" value="<?php echo $id; ?>">
+                          <input type="number" name="bidAmount" placeholder="Enter your bid" class="bidInput no-spinner" min="1" max="99999" required>
+                          <input type="submit" class="submit" value="Place Bid">
+                        </form>
+                      </div>
+                      <h4 class="statusMsg">Status: <b><?php echo $statusMessage ?></b></h4>
+                  </div>
+                <?php
+                    }
+                ?>
+                </div>
+                <hr>
+              <?php
+              } else {
+                echo "<div class='bidTime'>";
+                echo "<h1>Starts in " . date('F d, Y', strtotime($item['starting_date'])) . " at " . date('h:i A', strtotime($item['startTime'])) . "</h1>";
+                echo '</div>';
+                echo "<div class='bidCard'>";
+                echo "<h2 style='color: red;'>Auction not started</h2>";
+                echo '</div>';
+              }
+              ?>
             </div>
           </div>
+
+
       </div>
 
       <div class="lowerSection">
@@ -265,12 +297,13 @@ if (isset($_GET['status'])) {
 
     const maxBid = parseFloat(document.getElementById("maxPrice").innerText.replace("$", "").replace(",", ""));
     const currentBid = parseFloat(document.getElementById("currentBid").innerText.replace("$", "").replace(",", ""));
+    const reservePrice = parseFloat(document.getElementById("reservePrice").innerText.replace("$", "").replace(",", ""));
 
     bidForm.addEventListener("submit", function(event) {
       const bidAmount = parseFloat(bidInput.value);
 
-      if (bidAmount <= currentBid) {
-        alert("Your bid must be higher than the current bid");
+      if (bidAmount <= currentBid || bidAmount <= reservePrice) {
+        alert("Your bid must be higher than the current bid and reserve price");
         event.preventDefault();
       } else if (bidAmount > maxBid) {
         alert("Your bid exceeds the maximum allowed price ");

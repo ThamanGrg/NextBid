@@ -17,30 +17,19 @@
             </li>
 
             <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Enquiries</h6>
+                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Auctions</h6>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="enquiries.php">
+                <a class="nav-link" href="auctions.php">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa fa-bullhorn text-dark text-lg"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Enquiries</span>
-                </a>
-            </li>
-            <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Manage Services</h6>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="services.php">
-                    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fa fa-cogs text-dark text-lg"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Services</span>
+                    <span class="nav-link-text ms-1">Auctions</span>
                 </a>
             </li>
 
             <li class="nav-item mt-3">
-                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Site Management</h6>
+                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Management</h6>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="users.php">
@@ -48,15 +37,6 @@
                         <i class="fa fa-user-plus text-dark text-lg"></i>
                     </div>
                     <span class="nav-link-text ms-1">Admin / Users</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="social-media.php">
-                    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="fa fa-globe text-dark text-lg"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Social Media</span>
                 </a>
             </li>
 

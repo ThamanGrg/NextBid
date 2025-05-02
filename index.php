@@ -2,8 +2,9 @@
 session_start();
 include_once("php/connection.php");
 
-$query = "SELECT p.item_ID, p.item_title, p.ending_date, p.endTime, i.image_path FROM products p LEFT JOIN item_images i ON p.item_ID = i.item_ID WHERE i.is_primary = 1";
+$query = "SELECT p.item_ID, p.item_title, p.ending_date, p.endTime, p.starting_date, p.startTime, i.image_path FROM products p LEFT JOIN item_images i ON p.item_ID = i.item_ID WHERE i.is_primary = 1 ORDER BY item_ID DESC LIMIT 6";
 $result = mysqli_query($conn, $query);
+
 
 if (isset($_SESSION['message'])) {
     $message = $_SESSION['message'];
@@ -107,7 +108,12 @@ if (isset($_SESSION['username'])) {
             <div class="user-menu">
                 <h2>User menu</h2>
                 <div class="menu">
-                    <a href="userdashboard/userdashboard.php">My dashboard</a>
+                    <a <?php if($_SESSION['role'] == 'admin'){
+                        echo "href='admin'";
+                    } elseif ($_SESSION['role'] == 'user'){
+                        echo "href='userdashboard/userdashboard.php'";
+                    }
+                    ?>>My dashboard</a>
                     <a href="userdashboard/editprofile.php">My auctions</a>
                     <a href="userdashboard/saved.php">Saved items</a>
                 </div>
@@ -157,7 +163,7 @@ if (isset($_SESSION['username'])) {
                         </div>
                     </div>
 
-                    <div class="from-box register" id="registerForm">
+                    <div class="from-box register">
                         <h1>Registration</h1>
                         <form action="php/loginRegister.php" method="POST" id="registerForm">
                             <div class="input-box">
@@ -184,7 +190,7 @@ if (isset($_SESSION['username'])) {
                             </div>
                             <div class="input-box">
                                 <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
-                                <input type="text" name="confirm_password" id="confirm_password" required autocomplete="123"> 
+                                <input type="text" name="confirm_password" id="confirm_password" required autocomplete="123">
                                 <label for="confirm_password">Confirm password</label>
                             </div>
                             <div class="remember-forgot">
@@ -273,6 +279,12 @@ if (isset($_SESSION['username'])) {
             <div class="topItemListContainer">
                 <?php
                 while ($row = mysqli_fetch_assoc($result)) {
+                    $startingDateTime = $row['starting_date'] . ' ' . $row['startTime'];
+                    if (strtotime($startingDateTime) > time()) {
+                        $auctionStatus = "notStarted";
+                    } else {
+                        $auctionStatus = "started";
+                    }
                 ?>
                     <div class="topItemsCard">
                         <div class="cardImage">
@@ -282,7 +294,14 @@ if (isset($_SESSION['username'])) {
                         </div>
                         <div class="itemDetails">
                             <h2><?php echo $row['item_title'] ?></h2>
-                            <?php echo "<p> Ending Time: " . $row['ending_date'] . "   " . $row['endTime'] . "</p>" ?>
+                            <?php
+                            if ($auctionStatus == "notStarted") {
+                                echo "<p> Starting Time: " . $row['starting_date'] . "   " . $row['startTime'] . "</p>";
+                            } else if ($auctionStatus == "started") {
+                                echo "<p> Ending Time: " . $row['ending_date'] . "   " . $row['endTime'] . "</p>";
+                            }
+
+                            ?>
                             <p>Current Bid: </p>
                         </div>
                         <a href="Itemdetails/itemdetails.php?itemId=<?php echo $row["item_ID"] ?>"><button class="bidButton">Bid</button></a>
@@ -334,52 +353,48 @@ if (isset($_SESSION['username'])) {
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script>
-    document.getElementById('registerForm').addEventListener("submit", function(e) {
-    
+    document.getElementById('registerForm').addEventListener('submit', function(event) {
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+        const confirmPassword = document.getElementById('confirm_password').value.trim();
 
-    var username = document.getElementById('username').value;
-    var email = document.getElementById('email').value;
-    var password = document.getElementById('password').value;
-    var confirmPassword = document.getElementById('confirm_password').value;
-    e.preventDefault();
-    if (password.length < 6) {
-        alert('Password must be at least 6 characters long');
-        return;
-    } else if (password !== confirmPassword) {
-        alert('Passwords do not match!');
-        return;
-    }
+        event.preventDefault();
 
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "php/loginRegister.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            alert(xhr.responseText);
+        if (username.includes(" ")) {
+            alert("Username must not contain spaces.");
+            return;
         }
-    };
 
-    var data = "username=" + encodeURIComponent(username) + "&email=" + encodeURIComponent(email) + "&password=" + encodeURIComponent(password);
+        const minLength = 8;
+        const hasNumber = /\d/;
 
-    xhr.send(data);
-});
+        if (password.length < minLength) {
+            alert("Password must be at least 8 characters long.");
+            return;
+        }
 
+        if (password !== confirmPassword) {
+            alert("Passwords do not match.");
+            return;
+        }
+
+    });
 </script>
+
 <script>
     function userProfile() {
-    let dropdown = document.querySelector(".userDropdown");
+        let dropdown = document.querySelector(".userDropdown");
 
-    if (dropdown) {
-        if (dropdown.style.display === "none") {
-            dropdown.style.display = "flex";
+        if (dropdown) {
+            if (dropdown.style.display === "none") {
+                dropdown.style.display = "flex";
+            } else {
+                dropdown.style.display = "none";
+            }
         } else {
-            dropdown.style.display = "none";
+            console.error("Dropdown element not found.");
         }
-    } else {
-        console.error("Dropdown element not found.");
     }
-}
 </script>
 
 </html>

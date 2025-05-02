@@ -1,5 +1,4 @@
 <?php
-// user-edit.php
 include('includes/header.php');
 
 $userid = isset($_GET['id']) ? $_GET['id'] : null;
