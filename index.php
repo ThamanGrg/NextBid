@@ -244,26 +244,26 @@ if (isset($_SESSION['username'])) {
                 <div class="autoMobiles">
                     <h1>Auto</h1>
                     <h1>mobiles</h1>
-                    <a href="browse.html?p=automobiles"><button><img src="assets/icons/right-arrow.png"
+                    <a href="browse/browse.php?category=Automobiles"><button><img src="assets/icons/right-arrow.png"
                                 alt="">Category</button></a>
                     <img src="assets/images/Automobiles.png" alt="" class="automobilesImage">
                 </div>
                 <div class="vintageItems">
                     <h1>Vintage Items</h1>
                     <h1>& Antiques</h1>
-                    <a href="browse.html?p=vintageItems"><button><img src="assets/icons/right-arrow.png"
+                    <a href="browse/browse.php?category=Vintage%20Items%20%26%20Antiques"><button><img src="assets/icons/right-arrow.png"
                                 alt="">Category</button></a>
                     <img src="assets/images/vintageitems.png" alt="" class="vintageImage">
                 </div>
                 <div class="arts">
                     <h1>Arts</h1>
-                    <a href="browse.html?p=arts"><button><img src="assets/icons/right-arrow.png"
+                    <a href="browse/browse.php?category=Arts"><button><img src="assets/icons/right-arrow.png"
                                 alt="">Category</button></a>
                     <img src="assets/images/arts.png" alt="" class="artsImage">
                 </div>
                 <div class="viewCategory">
                     <img src="assets/images/categories.png" alt="">
-                    <a href="../browse/browse.html"><button><img src="assets/icons/right-arrow.png" alt="">Explore
+                    <a href="browse/browse.php"><button><img src="assets/icons/right-arrow.png" alt="">Explore
                             categories</button></a>
                 </div>
             </div>

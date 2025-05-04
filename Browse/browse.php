@@ -239,13 +239,12 @@ if (!$result) {
                             </div>
 
                         </div>
+                        
                     </div>
-                    <hr>
+                   <hr>
                 <?php
                 }
                 ?>
-
-
             </div>
         </div>
         </div>
@@ -308,11 +307,11 @@ if (!$result) {
     const categoryCheckboxes = document.querySelectorAll('.categories input[type="checkbox"]');
     const products = document.querySelectorAll('.ItemCard');
 
+    const urlParams = new URLSearchParams(window.location.search);
+    const preselectedCategory = urlParams.get('category');
+
     function filterProducts() {
         let selectedCategories = [];
-
-        const minPrice = parseFloat(priceMinInput.value) || 0;
-        const maxPrice = parseFloat(priceMaxInput.value) || Infinity;
 
         categoryCheckboxes.forEach(checkbox => {
             if (checkbox.checked) {
@@ -324,11 +323,9 @@ if (!$result) {
 
         products.forEach(product => {
             let productCategory = product.getAttribute('data-category');
-
             let categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(productCategory);
-            let priceMatch = productPrice >= minPrice && productPrice <= maxPrice;
 
-            if (categoryMatch && priceMatch) {
+            if (categoryMatch) {
                 product.style.display = 'flex';
             } else {
                 product.style.display = 'none';
@@ -336,13 +333,17 @@ if (!$result) {
         });
     }
 
-
-    categoryCheckboxes.forEach(checkbox => checkbox.addEventListener('change', filterProducts));
-    priceMinInput.addEventListener('input', filterProducts);
-    priceMaxInput.addEventListener('input', filterProducts);
+    categoryCheckboxes.forEach(checkbox => {
+        if (preselectedCategory && checkbox.value === preselectedCategory) {
+            checkbox.checked = true;
+        }
+        checkbox.addEventListener('change', filterProducts);
+    });
 
     filterProducts();
 </script>
+
+
 
 </html>
 <script>
